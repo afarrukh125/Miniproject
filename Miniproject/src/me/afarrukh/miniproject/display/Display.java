@@ -42,4 +42,8 @@ public class Display {
 	public Canvas getCanvas() { //Standard getter method to return our canvas
 		return canvas;
 	}
+	
+	public JFrame getFrame() {
+		return frame;
+	}
 }

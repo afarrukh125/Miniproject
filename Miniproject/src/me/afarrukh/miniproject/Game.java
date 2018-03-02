@@ -5,7 +5,10 @@ import java.awt.image.BufferStrategy;
 
 import me.afarrukh.miniproject.display.Display;
 import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.input.KeyManager;
 import me.afarrukh.miniproject.states.GameState;
+import me.afarrukh.miniproject.states.MenuState;
+import me.afarrukh.miniproject.states.SettingState;
 import me.afarrukh.miniproject.states.State;
 
 public class Game implements Runnable {
@@ -20,10 +23,14 @@ public class Game implements Runnable {
 	private Thread thread; //Each individual game is only a section of the larger program
 	
 	private BufferStrategy buffStrat; //A bufferstrategy governs how and what is drawn
-	//A bufferstrategy prevents flickering.
+	//A bufferstrategy prevents flickering since it preloads elements onto the display.
 	private Graphics g; //A graphics object is a paintbrush style object
 	
-	private State gameState; //The default state referred to by THIS class
+	private State gameState; //The state of the game in which characters interact (This should be the main one)
+	private State menuState; //The main menu state
+	private State settingState; //The state for the settings menu
+	
+	private KeyManager keyManager; //The keyboard input manager we have made
 	
 	
 	public Game(String title, int width, int height) {
@@ -39,9 +46,14 @@ public class Game implements Runnable {
 		//By looping over and over we continually update the game elements
 		
 		display = new Display(title, width, height);
+		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 		
-		gameState = new GameState();
+		gameState = new GameState(this);
+		//We want to initialise the states we may switch to for easy access
+		menuState = new MenuState(this); 
+		settingState = new SettingState(this);
+		
 		State.setState(gameState); //This sets the state of the program to our game
 		
 	}
@@ -105,7 +117,7 @@ public class Game implements Runnable {
 			}
 			
 			if(timer >= 1000000000) {
-				System.out.println("Ticks and frames " +ticks);
+				//System.out.println("Ticks and frames " +ticks);
 				ticks = 0;
 				timer = 0;
 			}

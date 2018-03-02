@@ -1,25 +1,33 @@
 package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
-import me.afarrukh.miniproject.gfx.Assets;
+
+import me.afarrukh.miniproject.Game;
+import me.afarrukh.miniproject.entities.actors.Player;
 
 //This is the state of the main game
 
 public class GameState extends State{
+	
+	private Player player;
 
-	public GameState() {
-		
+	public GameState(Game game) {
+		super(game);
+		player = new Player(100, 100);
 	}
 	
 	@Override
 	public void tick() {
 		
+		player.tick();
+		
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.archer, 0, 0, null);
-		g.drawImage(Assets. mage, 85, 85, null);
+		
+		player.render(g);
+		
 	}
 
 	

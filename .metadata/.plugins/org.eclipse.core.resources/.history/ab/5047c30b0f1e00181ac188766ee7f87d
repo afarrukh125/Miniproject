@@ -1,0 +1,7 @@
+package me.afarrukh.miniproject.states;
+
+public class MenuState extends State{
+	
+	
+
+}

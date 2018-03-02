@@ -1,0 +1,10 @@
+package me.afarrukh.miniproject.entities.actors;
+
+/*
+ * This class extends the entity class and can be further subclassed into classes which define
+ * things such as our main character, monsters, enemy characters and so on.
+ */
+
+public abstract class Actor extends Entity{
+	
+}

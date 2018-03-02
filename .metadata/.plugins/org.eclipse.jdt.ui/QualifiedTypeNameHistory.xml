@@ -6,4 +6,6 @@
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.gfx.Assets"/>
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.states.State"/>
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.states.GameState"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.entities.Entity"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.input.KeyManager"/>
 </qualifiedTypeNameHistroy>

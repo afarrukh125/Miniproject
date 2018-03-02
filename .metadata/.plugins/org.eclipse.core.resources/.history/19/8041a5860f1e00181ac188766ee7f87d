@@ -1,0 +1,19 @@
+package me.afarrukh.miniproject.states;
+
+import java.awt.Graphics;
+
+public class SettingsState extends State {
+
+	@Override
+	public void tick() {
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		
+	}
+	
+	
+
+}

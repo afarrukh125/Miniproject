@@ -1,6 +1,4 @@
-package me.afarrukh.miniproject;
-
-import me.afarrukh.miniproject.display.Display;
+package me.afarrukh.miniproject;;
 
 public class Launcher {
 	

@@ -1,0 +1,5 @@
+package me.afarrukh.miniproject.entities.actors;
+
+public class Player {
+
+}
