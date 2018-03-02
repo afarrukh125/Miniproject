@@ -2,6 +2,7 @@ package me.afarrukh.miniproject.entities.actors;
 
 import me.afarrukh.miniproject.Handler;
 import me.afarrukh.miniproject.entities.Entity;
+import me.afarrukh.miniproject.tiles.Tile;
 
 /*
  * This class extends the entity class and can be further subclassed into classes which define
@@ -30,8 +31,54 @@ public abstract class Actor extends Entity{
 	}
 	
 	public void move() {
-		x += xMove;
-		y += yMove;
+		moveX();
+		moveY();
+	}
+	
+	
+	//tx and ty refer to temporary x and y variables in which we check the collision status of a tile
+	public void moveX() {
+		if(xMove > 0) { //Right side collision detection
+			int tx = (int) (x + xMove + hitbox.x + hitbox.width) /Tile.TILEWIDTH; //Dividing by tile width to convert between pixels and tile units
+			
+			if(!collisionWithTile(tx, (int) (y + hitbox.y) /Tile.TILEHEIGHT) &&
+					!collisionWithTile(tx, (int) (y + hitbox.y + hitbox.height) / Tile.TILEHEIGHT)) {
+				//&& statement checks both upper and lower right corner of hitbox
+				x += xMove; //Only move if the tile being moved to is not solid
+			}
+				
+		} else if(xMove < 0) { //Left side collision detection
+			int tx = (int) (x + xMove + hitbox.x) /Tile.TILEWIDTH; //Dividing by tile width to convert between pixels and tile units
+			
+			if(!collisionWithTile(tx, (int) (y + hitbox.y) /Tile.TILEHEIGHT) &&
+					!collisionWithTile(tx, (int) (y + hitbox.y + hitbox.height) / Tile.TILEHEIGHT)) {
+				//&& statement checks both upper and lower right corner of hitbox
+				x += xMove; //Only move if the tile being moved to is not solid
+			}
+		}
+	}
+	
+	public void moveY() {
+		if(yMove < 0) { //Up side collision detection
+			int ty = (int) (y + yMove + hitbox.y) /Tile.TILEHEIGHT;
+			
+			if(!collisionWithTile((int) (x + hitbox.x)/Tile.TILEWIDTH, ty) &&
+					!collisionWithTile((int) (x + hitbox.x + hitbox.width)/Tile.TILEWIDTH, ty)) { //Upper left hand of hitbox
+				y += yMove;
+			}
+				
+		} else if(yMove > 0) { //Down side collision detection
+			int ty = (int) (y + yMove + hitbox.y + hitbox.height) /Tile.TILEHEIGHT; //For the lower portion of the hitbox, we add the hitbox height
+			
+			if(!collisionWithTile((int) (x + hitbox.x)/Tile.TILEWIDTH, ty) &&
+					!collisionWithTile((int) (x + hitbox.x + hitbox.width)/Tile.TILEWIDTH, ty)) { //Upper left hand of hitbox
+				y += yMove;
+			}
+		}
+	}
+	
+	protected boolean collisionWithTile(int x, int y) {
+		return handler.getMap().getTile(x, y).isSolid();
 	}
 
 	//Getter/Setter methods for this class

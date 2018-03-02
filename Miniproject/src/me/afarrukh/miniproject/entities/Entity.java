@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.entities;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import me.afarrukh.miniproject.Handler;
 
@@ -18,6 +19,8 @@ public abstract class Entity {
 	protected Handler handler;
 	protected float x, y; //Making it float achieves smooth movement in our game. Furthermore, the calculations we do in our game will not give whole numbers.
 	protected int width, height; //This is the size of the entity
+	protected Rectangle hitbox; //The interactable boundaries of which the player can detect if a terrain (tile) is interactable or not
+	
 	
 	public Entity(Handler handler, float x, float y, int width, int height) {
 		this.handler = handler;
@@ -26,6 +29,8 @@ public abstract class Entity {
 		
 		this.width = width;
 		this.height = height;
+		
+		hitbox = new Rectangle(0, 0, width, height);
 	}
 	
 	public abstract void tick();

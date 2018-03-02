@@ -44,11 +44,16 @@ public class Map {
 		}
 	}
 	
-	public Tile getTile(int x, int y) { //Find the ID in the instance variable tiles and get what tile id it is
+	public Tile getTile(int x, int y) { 
+		
+		if(x<0 || y <0 || x>=width || y>=height)
+			return Tile.grassTile;
+		//Find the ID in the instance variable tiles and get what tile id it is
 		Tile t = Tile.tiles[tiles[x][y]]; //Finds the tile location in tile position x and y
 		if(t == null) //Return a grass tile if there is no tile in that region
 			return Tile.grassTile;
 		return t;
+		
 	}
 	
 	private void loadMap(String path) {

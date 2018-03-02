@@ -16,9 +16,9 @@ public class GameCamera {
 	
 	public void centerOnEntity(Entity entity) {
 		/*We divide by 2 the first time to centre the camera, and the second entity dimensions
-		 * also being divided by 2 is to account for the entity movement being done from the top left of the entity.*/
+		 also being divided by 2 is to account for the entity movement being done from the top left of the entity.*/
 		xOffSet = entity.getX() - game.getWidth() / 2 + entity.getWidth() / 2;
-		yOffSet = entity.getY() - game.getHeight() / 2 + entity.getHeight() /2;
+		yOffSet = entity.getY() - game.getHeight() / 2 + entity.getHeight() / 2;
 	}
 	
 	public void move(float xAmount, float yAmount) {
