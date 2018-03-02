@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 
 import me.afarrukh.miniproject.display.Display;
 import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.gfx.GameCamera;
 import me.afarrukh.miniproject.input.KeyManager;
 import me.afarrukh.miniproject.states.GameState;
 import me.afarrukh.miniproject.states.MenuState;
@@ -17,7 +18,7 @@ public class Game implements Runnable {
 	private Display display;
 	
 	public String title;
-	public int width, height;
+	private int width, height;
 	
 	private boolean running = false; //This decides if the game is already running
 	private Thread thread; //Each individual game is only a section of the larger program
@@ -31,6 +32,10 @@ public class Game implements Runnable {
 	private State settingState; //The state for the settings menu
 	
 	private KeyManager keyManager; //The keyboard input manager we have made
+	
+	private GameCamera gameCamera; //The camera for the game
+	
+	private Handler handler;
 	
 	
 	public Game(String title, int width, int height) {
@@ -50,10 +55,13 @@ public class Game implements Runnable {
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 		
-		gameState = new GameState(this);
+		gameCamera = new GameCamera(this, 0, 0);
+		handler = new Handler(this);
+		
+		gameState = new GameState(handler);
 		//We want to initialise the states we may switch to for easy access
-		menuState = new MenuState(this); 
-		settingState = new SettingState(this);
+		menuState = new MenuState(handler); 
+		settingState = new SettingState(handler);
 		
 		State.setState(gameState); //This sets the state of the program to our game
 		
@@ -131,6 +139,18 @@ public class Game implements Runnable {
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public GameCamera getGameCamera() {
+		return gameCamera;
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 	
 	public synchronized void start() {

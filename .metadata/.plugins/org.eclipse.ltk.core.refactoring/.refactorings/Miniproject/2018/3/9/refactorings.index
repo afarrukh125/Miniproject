@@ -9,3 +9,5 @@
 1520018495977	Rename resource 'worlds'
 1520018509867	Rename resource 'world1.lvl'
 1520018884748	Rename field 'world'
+1520025164503	Rename method 'loadWorld'
+1520027594808	Rename field 'game'

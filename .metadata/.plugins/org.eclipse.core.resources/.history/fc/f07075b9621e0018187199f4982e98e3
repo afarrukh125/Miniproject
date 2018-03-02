@@ -1,0 +1,13 @@
+package me.afarrukh.miniproject;
+
+import me.afarrukh.miniproject.maps.Map;
+
+public class Handler {
+
+	private Game game;
+	private Map map;
+	
+	public Handler(Game game) {
+		this.game = game;
+	}
+}

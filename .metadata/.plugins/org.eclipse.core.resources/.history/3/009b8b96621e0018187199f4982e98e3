@@ -1,0 +1,10 @@
+package me.afarrukh.miniproject;
+
+public class Handler {
+
+	private Game game;
+	
+	public Handler(Game game) {
+		
+	}
+}

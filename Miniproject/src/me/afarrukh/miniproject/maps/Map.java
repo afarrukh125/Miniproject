@@ -2,18 +2,25 @@ package me.afarrukh.miniproject.maps;
 
 import java.awt.Graphics;
 
+import me.afarrukh.miniproject.Handler;
 import me.afarrukh.miniproject.tiles.Tile;
 import me.afarrukh.miniproject.utils.UtilityTasks;
 
+/**
+ * 
+ * @author Abdullah
+ * This defines a map for the game. A traversable zone containing many tiles to give a particular style for the map.
+ */
 public class Map {
-	
+
+	private Handler handler;
 	private int width, height; //In terms of tiles this is the size of the map. Note that this is NOT in terms of pixels
 	private int spawnX, spawnY; //Determines which tile the player will arrive for this particular map/world.
 	private int[][] tiles; //We require a multidimensional array to manage the tile positions
 	
-	public Map(String path) {
-		
-		loadWorld(path);
+	public Map(Handler handler, String path) {
+		this.handler = handler;
+		loadMap(path);
 	}
 	
 	public void tick() {
@@ -21,9 +28,18 @@ public class Map {
 	}
 	
 	public void render(Graphics g) {
-		for(int y = 0; y < height; y++) {
-			for(int x = 0; x<width; x++) {
-				getTile(x, y).render(g, x * Tile.TILEWIDTH, y * Tile.TILEHEIGHT); //We must use the TILE.TILEWIDTH/HEIGHT to match the units, otherwise only pixels are rendered
+		//The first four lines don't visually change anything but changes the efficiency of the program.
+		//Using math.max with 0 as one of the parameters ensures we always get a positive number, or math.min ensures we get far right
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tiles with negative coordinates
+		int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffSet() + handler.getWidth()) / Tile.TILEWIDTH + 1);
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
+		int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffSet() + handler.getHeight()) / Tile.TILEHEIGHT + 1);
+		
+		for(int y = yStart; y<yEnd; y++) {
+			for(int x = xStart; x<xEnd ; x++) {
+				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffSet()), 
+										(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffSet()));
+				//We must use the TILE.TILEWIDTH/HEIGHT to match the units, otherwise only pixels are rendered
 			}
 		}
 	}
@@ -35,7 +51,7 @@ public class Map {
 		return t;
 	}
 	
-	private void loadWorld(String path) {
+	private void loadMap(String path) {
 		String file = UtilityTasks.loadFileAsString(path);
 		String[] tokens = file.split("\\s+");//Splits the file into string array elements if it is empty space or new line
 		
@@ -53,5 +69,13 @@ public class Map {
 			}
 		}
 	}
+
+	public int getSpawnX() {
+		return spawnX;
+	}
+
+	public int getSpawnY() {
+		return spawnY;
+	}	
 		
 }

@@ -1,0 +1,11 @@
+package me.afarrukh.miniproject;
+
+public class Handler {
+
+	private Game game;
+	private Map map;
+	
+	public Handler(Game game) {
+		
+	}
+}

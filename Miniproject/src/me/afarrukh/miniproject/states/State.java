@@ -2,7 +2,7 @@ package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Game;
+import me.afarrukh.miniproject.Handler;
 
 //This class defines everything each state of the game should have,
 //whether it be the main game, the settings menu or the launcher
@@ -23,10 +23,10 @@ public abstract class State {
 	
 	//Class methods required of subclasses
 	
-	protected Game game;
+	protected Handler handler;
 	
-	public State(Game game) {
-		this.game = game;
+	public State(Handler handler) {
+		this.handler = handler;
 	}
 	
 	public abstract void tick();

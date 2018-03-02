@@ -2,7 +2,7 @@ package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Game;
+import me.afarrukh.miniproject.Handler;
 
 /**
  * 
@@ -12,8 +12,8 @@ import me.afarrukh.miniproject.Game;
 
 public class MenuState extends State{
 
-	public MenuState(Game game) {
-		super(game);
+	public MenuState(Handler handler) {
+		super(handler);
 	}
 	
 	@Override

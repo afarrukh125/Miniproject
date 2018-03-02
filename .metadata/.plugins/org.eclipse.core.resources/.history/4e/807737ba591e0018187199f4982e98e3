@@ -1,0 +1,5 @@
+package me.afarrukh.miniproject.gfx;
+
+public class GameCamera {
+
+}

@@ -2,38 +2,36 @@ package me.afarrukh.miniproject.entities.actors;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Game;
+import me.afarrukh.miniproject.Handler;
 import me.afarrukh.miniproject.gfx.Assets;
 
 public class Player extends Actor {
-
-	private Game game; //We need a game object here so we can access our keymanager object
 	
-	public Player(Game game, float x, float y) {
-		super(x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
-		this.game = game;
+	public Player(Handler handler, float x, float y) {
+		super(handler, x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
 	}
 
 	@Override
 	public void tick() {
 		getInput();
 		move();
+		handler.getGameCamera().centerOnEntity(this);
 	}
 	
 	public void getInput() {
 		xMove = 0;
 		yMove = 0;
 		
-		if(game.getKeyManager().up) {
+		if(handler.getKeyManager().up) {
 			yMove = -speed;
 		}
-		if(game.getKeyManager().down) {
+		if(handler.getKeyManager().down) {
 			yMove = speed;
 		}
-		if(game.getKeyManager().left) {
+		if(handler.getKeyManager().left) {
 			xMove = -speed;
 		}
-		if(game.getKeyManager().right) {
+		if(handler.getKeyManager().right) {
 			xMove = speed;
 		}
 	}
@@ -41,7 +39,7 @@ public class Player extends Actor {
 	@Override
 	public void render(Graphics g) {
 		
-		g.drawImage(Assets.mage, (int) x, (int) y, width, height, null);
+		g.drawImage(Assets.fighter, (int) (x - handler.getGameCamera().getxOffSet()), (int) (y - handler.getGameCamera().getyOffSet()), width, height, null);
 		
 		
 	}

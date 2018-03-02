@@ -1,5 +1,6 @@
 package me.afarrukh.miniproject.entities.actors;
 
+import me.afarrukh.miniproject.Handler;
 import me.afarrukh.miniproject.entities.Entity;
 
 /*
@@ -10,7 +11,7 @@ import me.afarrukh.miniproject.entities.Entity;
 public abstract class Actor extends Entity{
 	
 	public static final int DEFAULT_HEALTH = 100;
-	public static final float DEFAULT_MOVESPEED = 5.0f;
+	public static final float DEFAULT_MOVESPEED = 4.0f;
 	public static final int DEFAULT_ACTOR_WIDTH = 32,
 							DEFAULT_ACTOR_HEIGHT = 32;
 	
@@ -18,9 +19,9 @@ public abstract class Actor extends Entity{
 	protected float speed;
 	protected float xMove, yMove; //How much the characters move by in pixels
 	
-	public Actor(float x, float y, int width, int height) {
+	public Actor(Handler handler, float x, float y, int width, int height) {
 		
-		super(x, y, width, height);
+		super(handler, x, y, width, height);
 		health = DEFAULT_HEALTH;
 		speed = DEFAULT_MOVESPEED;
 		xMove = 0;

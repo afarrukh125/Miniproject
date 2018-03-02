@@ -2,10 +2,9 @@ package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Game;
+import me.afarrukh.miniproject.Handler;
 import me.afarrukh.miniproject.entities.actors.Player;
 import me.afarrukh.miniproject.maps.Map;
-import me.afarrukh.miniproject.tiles.Tile;
 
 //This is the state of the main game
 
@@ -14,10 +13,12 @@ public class GameState extends State{
 	private Player player;
 	private Map map;
 
-	public GameState(Game game) {
-		super(game);
-		player = new Player(game, 100, 100);
-		map = new Map("res/maps/map1.map");
+	public GameState(Handler handler) {
+		super(handler);
+		
+		map = new Map(handler, "res/maps/map1.map");
+		handler.setMap(map);
+		player = new Player(handler, map.getSpawnX(), map.getSpawnY());
 	}
 	
 	@Override

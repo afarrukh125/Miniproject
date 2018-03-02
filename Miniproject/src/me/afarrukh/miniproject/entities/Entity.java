@@ -2,6 +2,8 @@ package me.afarrukh.miniproject.entities;
 
 import java.awt.Graphics;
 
+import me.afarrukh.miniproject.Handler;
+
 /*
  * We want to create an entity class which defines what
  * an object to be painted onto the display is.
@@ -13,10 +15,12 @@ import java.awt.Graphics;
  */
 public abstract class Entity {
 
+	protected Handler handler;
 	protected float x, y; //Making it float achieves smooth movement in our game. Furthermore, the calculations we do in our game will not give whole numbers.
 	protected int width, height; //This is the size of the entity
 	
-	public Entity(float x, float y, int width, int height) {
+	public Entity(Handler handler, float x, float y, int width, int height) {
+		this.handler = handler;
 		this.x = x;
 		this.y = y;
 		
