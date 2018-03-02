@@ -17,10 +17,13 @@ public class Tile {
 	public static Tile[] tiles = new Tile[256]; //This tile array will hold every single tile in our game
 	public static Tile grassTile = new GrassTile(0); //A tile with id 0 is a grass tile
 	public static Tile rockTile = new RockTile(1); //Rock tiles have id 1
+	public static Tile waterTile = new WaterTile(2);
+	public static Tile lavaTile = new LavaTile(3);
+	public static Tile sandTile = new SandTile(4);
 	
 	//CLASS 
-	public static final int TILEWIDTH = 64, 
-							TILEHEIGHT = 64; //These are the dimensions for a tile.
+	public static final int TILEWIDTH = 32, 
+							TILEHEIGHT = 32; //These are the dimensions for a tile.
 	
 	protected BufferedImage image;
 	protected final int id;

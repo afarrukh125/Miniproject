@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 
-	public static BufferedImage archer, fighter, mage, grass, rock;
+	public static BufferedImage archer, fighter, mage, grass, rock, water, lava, sand;
 	private static final int width = 32, height = 32;
 	
 	public static void init() {
@@ -14,8 +14,11 @@ public class Assets {
 		archer = sheet.crop(0, 0, width, height);
 		fighter = sheet.crop(32, 0, width, height);
 		mage = sheet.crop(64, 0, width, height);
+		water = sheet.crop(96, 0, width, height);
+		lava = sheet.crop(64, 32, width, height);
 		grass = sheet.crop(32, 32, width, height);
 		rock = sheet.crop(0, 32, width, height);
+		sand = sheet.crop(96, 32, width, height);
 	}
 	
 }

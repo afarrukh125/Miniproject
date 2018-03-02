@@ -1,8 +1,5 @@
 package me.afarrukh.miniproject.tiles;
 
-public class Tile {
+public class LavaTile {
 
-	public Tile() {
-		
-	}
 }

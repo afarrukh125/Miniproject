@@ -1,0 +1,7 @@
+package me.afarrukh.miniproject.tiles;
+
+public class WaterTile extends Tile{
+	
+	
+
+}
