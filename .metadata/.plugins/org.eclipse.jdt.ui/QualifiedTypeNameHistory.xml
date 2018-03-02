@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.gfx.ImageLoader"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.gfx.Assets"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.states.State"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.states.GameState"/>
+</qualifiedTypeNameHistroy>

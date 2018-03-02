@@ -1,0 +1,12 @@
+package me.afarrukh.miniproject;
+
+import me.afarrukh.miniproject.display.Display;
+
+public class Launcher {
+	
+	public static void main(String[] args) {
+		
+		new Display("GameWindow", 1000, 800);
+		
+	}
+}

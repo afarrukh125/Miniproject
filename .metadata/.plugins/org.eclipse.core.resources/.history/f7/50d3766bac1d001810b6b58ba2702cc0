@@ -1,0 +1,16 @@
+package me.afarrukh.miniproject.gfx;
+
+import java.awt.image.BufferedImage;
+
+public class Asset {
+
+	public static BufferedImage archer, fighter, mage;
+	
+	public static void init() {
+		
+		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/images/spritesheet.png"));
+		
+		
+	}
+	
+}

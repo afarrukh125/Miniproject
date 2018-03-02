@@ -1,0 +1,13 @@
+package me.afarrukh.miniproject.gfx;
+
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+
+public class ImageLoader {
+
+	public static BufferedImage loadImage(String path) {
+		return ImageIO.read(path);
+	}
+	
+}

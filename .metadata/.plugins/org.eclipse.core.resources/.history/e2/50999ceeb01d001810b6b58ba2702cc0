@@ -1,0 +1,15 @@
+package me.afarrukh.miniproject.states;
+
+import java.awt.Graphics;
+
+//This class defines everything each state of the game should have,
+//whether it be the main game, the settings menu or the launcher
+
+public abstract class State {
+	
+	
+	//Class methods required of subclasses
+	public abstract void tick();
+	
+	public abstract void render(Graphics g);
+}

@@ -1,0 +1,25 @@
+package me.afarrukh.miniproject.states;
+
+import java.awt.Graphics;
+
+//This is the state of the main game
+
+public class GameState extends State{
+
+	public GameState() {
+		
+	}
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

@@ -1,0 +1,6 @@
+package me.afarrukh.miniproject.states;
+
+public class GameState {
+
+	
+}
