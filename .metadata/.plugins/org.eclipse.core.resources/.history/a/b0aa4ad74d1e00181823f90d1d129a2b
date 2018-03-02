@@ -1,0 +1,10 @@
+package me.afarrukh.miniproject.utils;
+/**
+ * 
+ * @author Abdullah
+ * A file of helper functions which can help us in our game
+ */
+
+public class UtilityTasks {
+
+}

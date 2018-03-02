@@ -37,6 +37,7 @@ public class Game implements Runnable {
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		keyManager = new KeyManager();
 		
 	}
 	
@@ -60,6 +61,7 @@ public class Game implements Runnable {
 	
 	private void tick() {
 		//This method updates the game continually
+		keyManager.tick(); //Updates our KeyManager object
 		
 		if(State.getState() != null) {
 			State.getState().tick();
@@ -105,7 +107,7 @@ public class Game implements Runnable {
 		while(running) {
 			now = System.nanoTime();
 			delta += (now - lastTime) /timePerTick;
-			timer += (now -lastTime);
+			timer += (now - lastTime);
 			lastTime = now;
 			
 			if(delta >= 1) { //This checks if the game is running at 30 frames
@@ -117,7 +119,7 @@ public class Game implements Runnable {
 			}
 			
 			if(timer >= 1000000000) {
-				//System.out.println("Ticks and frames " +ticks);
+				System.out.println("Ticks and frames " +ticks);
 				ticks = 0;
 				timer = 0;
 			}
@@ -125,6 +127,10 @@ public class Game implements Runnable {
 		}
 		
 		stop(); //If the game has not already been stopped
+	}
+	
+	public KeyManager getKeyManager() {
+		return keyManager;
 	}
 	
 	public synchronized void start() {

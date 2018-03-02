@@ -1,0 +1,51 @@
+package me.afarrukh.miniproject.tiles;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+public class Tile {
+
+	//STATIC CONSTANTS
+	
+	public static Tile[] tiles = new Tile[256]; //This tile array will hold every single tile in our game
+	public static Tile grassTile = new GrassTile(0); //A tile with id 0 is a grass tile
+	public static Tile rockTile = new RockTile(1);
+	
+	//CLASS 
+	public static final int TILEWIDTH = 64, 
+							TILEHEIGHT = 64; //These are the dimensions for a tile.
+	
+	protected BufferedImage image;
+	protected final int id;
+	
+	public Tile(BufferedImage image, int id) {
+		this.image = image;
+		this.id = id;
+		
+		tiles[id] = this;
+	}
+	
+	
+	public void tick() {
+		
+	}
+	
+	/**
+	 * 
+	 * @param g - The graphics object that will render our tile
+	 * @param x - The x coordinate of where this tile is to be rendered
+	 * @param y - The y coordinate of where this tile is to be rendered
+	 */
+	
+	public void render(Graphics g, int x, int y) {
+		g.drawImage(image, x, y, TILEWIDTH, TILEHEIGHT, null);
+	}
+	public int getId() {
+		return id;
+	}
+	
+	public boolean isSolid() { //Determines if this tile is traversable by an entity
+							   //If a tile is solid then it is not traversable by entities
+		return false; //By default it is traversable
+	}
+}

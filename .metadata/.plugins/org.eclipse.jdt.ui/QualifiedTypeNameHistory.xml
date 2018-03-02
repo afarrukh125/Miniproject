@@ -3,9 +3,11 @@
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.gfx.ImageLoader"/>
-<fullyQualifiedTypeName name="me.afarrukh.miniproject.gfx.Assets"/>
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.states.State"/>
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.states.GameState"/>
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.entities.Entity"/>
 <fullyQualifiedTypeName name="me.afarrukh.miniproject.input.KeyManager"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.gfx.Assets"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="me.afarrukh.miniproject.utils.UtilityTasks"/>
 </qualifiedTypeNameHistroy>

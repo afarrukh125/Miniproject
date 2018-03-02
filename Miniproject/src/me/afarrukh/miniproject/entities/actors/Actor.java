@@ -9,13 +9,60 @@ import me.afarrukh.miniproject.entities.Entity;
 
 public abstract class Actor extends Entity{
 	
-	protected int health;
+	public static final int DEFAULT_HEALTH = 100;
+	public static final float DEFAULT_MOVESPEED = 5.0f;
+	public static final int DEFAULT_ACTOR_WIDTH = 32,
+							DEFAULT_ACTOR_HEIGHT = 32;
 	
-	public Actor(float x, float y) {
+	protected int health;
+	protected float speed;
+	protected float xMove, yMove; //How much the characters move by in pixels
+	
+	public Actor(float x, float y, int width, int height) {
 		
-		super(x, y);
-		health = 10;
+		super(x, y, width, height);
+		health = DEFAULT_HEALTH;
+		speed = DEFAULT_MOVESPEED;
+		xMove = 0;
+		yMove = 0;
 		
-		
+	}
+	
+	public void move() {
+		x += xMove;
+		y += yMove;
+	}
+
+	//Getter/Setter methods for this class
+	public float getxMove() {
+		return xMove;
+	}
+
+	public void setxMove(float xMove) {
+		this.xMove = xMove;
+	}
+
+	public float getyMove() {
+		return yMove;
+	}
+
+	public void setyMove(float yMove) {
+		this.yMove = yMove;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public float getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(float moveSpeed) {
+		this.speed = moveSpeed;
 	}
 }

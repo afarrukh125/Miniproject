@@ -2,3 +2,10 @@
 1519948979184	Rename type 'Asset'
 1519991281776	Rename type 'SettingsState'
 1519992793293	Delete element
+1520013577456	Rename field 'moveSpeed'
+1520017949476	Rename resource 'world1.txt'
+1520018467844	Rename package 'me.afarrukh.miniproject.worlds'
+1520018483812	Rename type 'World'
+1520018495977	Rename resource 'worlds'
+1520018509867	Rename resource 'world1.lvl'
+1520018884748	Rename field 'world'

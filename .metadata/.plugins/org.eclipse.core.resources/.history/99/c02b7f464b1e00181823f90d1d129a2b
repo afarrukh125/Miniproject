@@ -1,0 +1,47 @@
+package me.afarrukh.miniproject.worlds;
+
+import java.awt.Graphics;
+
+import me.afarrukh.miniproject.tiles.Tile;
+
+public class World {
+	
+	private int width, height; //In terms of tiles this is the size of the map. Note that this is NOT in terms of pixels
+	private int[][] tiles; //We require a multidimensional array to manage the tile positions
+	
+	public World(String path) {
+		
+		loadWorld(path);
+	}
+	
+	public void tick() {
+		
+	}
+	
+	public void render(Graphics g) {
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x<width; x++) {
+				
+			}
+		}
+	}
+	
+	public Tile getTile(int x, int y) { //Find the ID in the instance variable tiles and get what tile id it is
+		Tile t = Tile.tiles[x][y];
+		if(t == null)
+			return Tile.grassTile;
+		
+	}
+	
+	private void loadWorld(String path) {
+		width = 5;
+		height = 5;
+		tiles = new int[width][height];
+		
+		for(int x = 0; x <width; x++) { //Outer for loop loads x coordinates
+			for(int y = 0; y < height; y++) {
+				tiles[x][y] = 0;
+			}
+		}
+	}
+}

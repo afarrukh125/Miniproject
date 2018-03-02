@@ -1,0 +1,10 @@
+package me.afarrukh.miniproject.tiles;
+
+import java.awt.image.BufferedImage;
+
+public class Tile {
+
+	public Tile(BufferedImage image) {
+		
+	}
+}

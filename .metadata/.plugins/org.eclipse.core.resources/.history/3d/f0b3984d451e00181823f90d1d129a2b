@@ -1,0 +1,8 @@
+package me.afarrukh.miniproject.tiles;
+
+public class Tile {
+
+	public Tile() {
+		
+	}
+}
