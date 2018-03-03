@@ -38,7 +38,7 @@ public abstract class Actor extends Entity{
 	
 	//tx and ty refer to temporary x and y variables in which we check the collision status of a tile
 	public void moveX() {
-		if(xMove > 0) { //Right side collision detection
+		if(xMove > 0) { //Right side with collision detection
 			int tx = (int) (x + xMove + hitbox.x + hitbox.width) /Tile.TILEWIDTH; //Dividing by tile width to convert between pixels and tile units
 			
 			if(!collisionWithTile(tx, (int) (y + hitbox.y) /Tile.TILEHEIGHT) &&
@@ -46,8 +46,13 @@ public abstract class Actor extends Entity{
 				//&& statement checks both upper and lower right corner of hitbox
 				x += xMove; //Only move if the tile being moved to is not solid
 			}
+			else {
+				//Subtracted 1 in below line to allow sliding, surprisingly not required in moving left
+				x = tx * Tile.TILEWIDTH - hitbox.x - hitbox.width - 1; //Ensures the hitbox matches perfectly
+				//We are taking away the hitbox x and the width so the character does not instantly align with the tile
+			}
 				
-		} else if(xMove < 0) { //Left side collision detection
+		} else if(xMove < 0) { //Left side movement with collision detection
 			int tx = (int) (x + xMove + hitbox.x) /Tile.TILEWIDTH; //Dividing by tile width to convert between pixels and tile units
 			
 			if(!collisionWithTile(tx, (int) (y + hitbox.y) /Tile.TILEHEIGHT) &&
@@ -55,24 +60,33 @@ public abstract class Actor extends Entity{
 				//&& statement checks both upper and lower right corner of hitbox
 				x += xMove; //Only move if the tile being moved to is not solid
 			}
+			else {
+				x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - hitbox.x;
+			}
 		}
 	}
 	
 	public void moveY() {
-		if(yMove < 0) { //Up side collision detection
+		if(yMove < 0) { //Up side with collision detection
 			int ty = (int) (y + yMove + hitbox.y) /Tile.TILEHEIGHT;
 			
 			if(!collisionWithTile((int) (x + hitbox.x)/Tile.TILEWIDTH, ty) &&
 					!collisionWithTile((int) (x + hitbox.x + hitbox.width)/Tile.TILEWIDTH, ty)) { //Upper left hand of hitbox
 				y += yMove;
 			}
+			else {
+				y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - hitbox.y;
+			}
 				
-		} else if(yMove > 0) { //Down side collision detection
+		} else if(yMove > 0) { //Down side with collision detection
 			int ty = (int) (y + yMove + hitbox.y + hitbox.height) /Tile.TILEHEIGHT; //For the lower portion of the hitbox, we add the hitbox height
 			
 			if(!collisionWithTile((int) (x + hitbox.x)/Tile.TILEWIDTH, ty) &&
 					!collisionWithTile((int) (x + hitbox.x + hitbox.width)/Tile.TILEWIDTH, ty)) { //Upper left hand of hitbox
 				y += yMove;
+			}
+			else {
+				y = ty * Tile.TILEHEIGHT - hitbox.y - hitbox.height - 1; //Subtracting 1 to remove sliding problem (also exists in moving right)
 			}
 		}
 	}

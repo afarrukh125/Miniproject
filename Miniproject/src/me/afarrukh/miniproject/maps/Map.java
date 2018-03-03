@@ -82,5 +82,13 @@ public class Map {
 	public int getSpawnY() {
 		return spawnY;
 	}	
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
+	}
 		
 }

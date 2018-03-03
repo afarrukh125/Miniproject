@@ -14,7 +14,7 @@ public class Player extends Actor {
 		hitbox.x = 2;
 		hitbox.y = 12;
 		hitbox.width = 24;
-		hitbox.height = 32;
+		hitbox.height = 24;
 	}
 
 	@Override
@@ -46,11 +46,11 @@ public class Player extends Actor {
 	public void render(Graphics g) {
 		
 		g.drawImage(Assets.fighter, (int) (x - handler.getGameCamera().getxOffSet()), (int) (y - handler.getGameCamera().getyOffSet()), width, height, null);
-		g.setColor(Color.RED);
-		
-		g.fillRect((int) (x + hitbox.x - handler.getGameCamera().getxOffSet()),
-				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 
-						   hitbox.width, hitbox.height);
+//		g.setColor(Color.RED);
+//		
+//		g.fillRect((int) (x + hitbox.x - handler.getGameCamera().getxOffSet()),
+//				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 
+//						   hitbox.width, hitbox.height);
 		
 	}
 	
