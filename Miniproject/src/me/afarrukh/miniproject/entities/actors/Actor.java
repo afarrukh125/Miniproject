@@ -13,8 +13,8 @@ public abstract class Actor extends Entity{
 	
 	public static final int DEFAULT_HEALTH = 100;
 	public static final float DEFAULT_MOVESPEED = 4.0f;
-	public static final int DEFAULT_ACTOR_WIDTH = 32,
-							DEFAULT_ACTOR_HEIGHT = 32;
+	public static final int DEFAULT_ACTOR_WIDTH = 64,
+							DEFAULT_ACTOR_HEIGHT = 64;
 	
 	protected int health;
 	protected float speed;
@@ -31,8 +31,10 @@ public abstract class Actor extends Entity{
 	}
 	
 	public void move() {
-		moveX();
-		moveY();
+		if(!checkEntityCollisions(xMove, 0f))
+			moveX();
+		if(!checkEntityCollisions(0f, yMove))
+			moveY();
 	}
 	
 	

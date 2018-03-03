@@ -36,6 +36,20 @@ public abstract class Entity {
 	public abstract void tick();
 	
 	public abstract void render(Graphics g);
+	
+	public boolean checkEntityCollisions(float xOffset, float yOffset) {
+		for(Entity e: handler.getMap().getEntityManager().getEntities()) {
+			if(e.equals(this)) //Checks if the entity that is being checked for collisions is not itself
+				continue;
+			if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
+				return true; //If the rectangles of the entity's hitbox intersect with the collisionbounds then there is a collision
+		}
+		return false;
+	}
+	
+	public Rectangle getCollisionBounds(float xOffset, float yOffset) {
+		return new Rectangle((int) (x+hitbox.x+xOffset), (int) (y+hitbox.y+yOffset), hitbox.width, hitbox.height);
+	}
 
 	public float getX() {
 		return x;

@@ -7,7 +7,7 @@ import me.afarrukh.miniproject.maps.Map;
 /**
  * 
  * @author Abdullah
- * A handler class is required in order to have one location from which the game and the current world can be loaded from
+ * @description A handler class is required in order to have one location from which the game and the current world can be loaded from
  * It is basically a way to simplify our access to the game.
  * A handler also assists things like collision detection.
  */

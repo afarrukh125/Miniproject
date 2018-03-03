@@ -3,6 +3,9 @@ package me.afarrukh.miniproject.maps;
 import java.awt.Graphics;
 
 import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.entities.EntityManager;
+import me.afarrukh.miniproject.entities.actors.Player;
+import me.afarrukh.miniproject.entities.stillentities.Tree;
 import me.afarrukh.miniproject.tiles.Tile;
 import me.afarrukh.miniproject.utils.UtilityTasks;
 
@@ -18,13 +21,27 @@ public class Map {
 	private int spawnX, spawnY; //Determines which tile the player will arrive for this particular map/world.
 	private int[][] tiles; //We require a multidimensional array to manage the tile positions
 	
+	//Entities
+	private EntityManager entityManager;
+	
 	public Map(Handler handler, String path) {
 		this.handler = handler;
+		
+		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+		
+		//Adding entities
+		for(int i = 0; i <= 8; i++) {
+			entityManager.addEntity(new Tree(handler, 100 * i, 100 * i));
+		}
+		
 		loadMap(path);
+		
+		entityManager.getPlayer().setX(spawnX);
+		entityManager.getPlayer().setY(spawnY);
 	}
 	
 	public void tick() {
-		
+		entityManager.tick();
 	}
 	
 	public void render(Graphics g) {
@@ -42,6 +59,8 @@ public class Map {
 				//We must use the TILE.TILEWIDTH/HEIGHT to match the units, otherwise only pixels are rendered
 			}
 		}
+		
+		entityManager.render(g);
 	}
 	
 	public Tile getTile(int x, int y) { 
@@ -73,6 +92,10 @@ public class Map {
 				tiles[x][y] = UtilityTasks.parseInt(tokens[(x + y * width) + 4]); //Adding 4 to account for first few elements
 			}
 		}
+	}
+
+	public EntityManager getEntityManager() {
+		return entityManager;
 	}
 
 	public int getSpawnX() {
