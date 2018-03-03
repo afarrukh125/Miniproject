@@ -2,6 +2,7 @@ package me.afarrukh.miniproject.entities;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import me.afarrukh.miniproject.Handler;
 import me.afarrukh.miniproject.entities.actors.Player;
@@ -16,6 +17,17 @@ public class EntityManager {
 	private Player player;
 	private ArrayList<Entity> entities; //By using ArrayLists, we can have entities loaded/removed and 
 										//don't have to commit to a specific number of entities we require for our game
+	private Comparator<Entity> renderSorter = new Comparator<Entity>() { //Sorting entities so they are rendered such that the entities higher up render later than entities lower down
+
+		@Override
+		public int compare(Entity a, Entity b) {
+			//Returns -1 if a should be rendered before be or +1 if vice versa
+			if(a.getY() + a.getHeight() < b.getY() + b.getHeight()) //Add the heights so we are checking bottom areas of entities
+				return - 1;
+			return 1;
+		}
+		
+	};
 	
 	public EntityManager(Handler handler, Player player) {
 		this.handler = handler;
@@ -32,6 +44,7 @@ public class EntityManager {
 			Entity e = entities.get(i);
 			e.tick();
 		}
+		entities.sort(renderSorter);
 	}
 	
 	public void render(Graphics g) {

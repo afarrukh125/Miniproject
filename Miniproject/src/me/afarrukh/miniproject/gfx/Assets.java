@@ -6,12 +6,17 @@ public class Assets {
 
 	public static BufferedImage grass, rock, water, lava, sand, tree;
 	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still;
+	public static BufferedImage[] startBtn;
 	
 	private static final int width = 44, height = 44;
 	
 	public static void init() {
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/images/spritesheet.png"));
+		
+		startBtn = new BufferedImage[2];
+		startBtn[0] = sheet.crop(width*4, height, width*2, height);
+		startBtn[1] = sheet.crop(width*4, height*2, width*2, height);
 		
 		archer_up = new BufferedImage[2];
 		archer_up[0] = sheet.crop(width*2, height*2, width, height);

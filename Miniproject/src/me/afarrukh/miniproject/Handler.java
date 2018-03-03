@@ -2,6 +2,7 @@ package me.afarrukh.miniproject;
 
 import me.afarrukh.miniproject.gfx.GameCamera;
 import me.afarrukh.miniproject.input.KeyManager;
+import me.afarrukh.miniproject.input.MouseManager;
 import me.afarrukh.miniproject.maps.Map;
 
 /**
@@ -30,6 +31,10 @@ public class Handler {
 	
 	public KeyManager getKeyManager() {
 		return game.getKeyManager();
+	}
+	
+	public MouseManager getMouseManager() {
+		return game.getMouseManager();
 	}
 	
 	public GameCamera getGameCamera() {

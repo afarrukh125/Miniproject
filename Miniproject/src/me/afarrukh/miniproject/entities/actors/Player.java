@@ -16,9 +16,9 @@ public class Player extends Actor {
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
 		
-		hitbox.x = 2;
+		hitbox.x = 10;
 		hitbox.y = 12;
-		hitbox.width = 56;
+		hitbox.width = 48;
 		hitbox.height = 56;
 		
 		//Animations

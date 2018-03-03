@@ -14,7 +14,7 @@ public class Tree extends StillEntity {
 		hitbox.x = hitbox.width /2 - 20;
 		hitbox.y = hitbox.height/2 + 15;
 		hitbox.width = 40;
-		hitbox.height = (int) (height - height / 1.5f);
+		hitbox.height = (int) (height - height / 1.2f);
 	}
 
 	@Override
@@ -26,9 +26,9 @@ public class Tree extends StillEntity {
 	public void render(Graphics g) {
 		g.drawImage(Assets.tree, (int) (x - handler.getGameCamera().getxOffSet()), (int) (y - handler.getGameCamera().getyOffSet()), width, height, null);
 		
-		g.fillRect((int) (x + hitbox.x - handler.getGameCamera().getxOffSet()),
-				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 
-						   hitbox.width, hitbox.height);
+//		g.fillRect((int) (x + hitbox.x - handler.getGameCamera().getxOffSet()),
+//				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 
+//						   hitbox.width, hitbox.height);
 	
 	}
 	

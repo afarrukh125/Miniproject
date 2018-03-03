@@ -7,6 +7,7 @@ import me.afarrukh.miniproject.display.Display;
 import me.afarrukh.miniproject.gfx.Assets;
 import me.afarrukh.miniproject.gfx.GameCamera;
 import me.afarrukh.miniproject.input.KeyManager;
+import me.afarrukh.miniproject.input.MouseManager;
 import me.afarrukh.miniproject.states.GameState;
 import me.afarrukh.miniproject.states.MenuState;
 import me.afarrukh.miniproject.states.SettingState;
@@ -27,11 +28,12 @@ public class Game implements Runnable {
 	//A bufferstrategy prevents flickering since it preloads elements onto the display.
 	private Graphics g; //A graphics object is a paintbrush style object
 	
-	private State gameState; //The state of the game in which characters interact (This should be the main one)
-	private State menuState; //The main menu state
-	private State settingState; //The state for the settings menu
+	public State gameState; //The state of the game in which characters interact (This should be the main one)
+	public State menuState; //The main menu state
+	public State settingState; //The state for the settings menu
 	
 	private KeyManager keyManager; //The keyboard input manager we have made
+	private MouseManager mouseManager; //This manages the mouse inputs
 	
 	private GameCamera gameCamera; //The camera for the game
 	
@@ -43,6 +45,7 @@ public class Game implements Runnable {
 		this.height = height;
 		this.title = title;
 		keyManager = new KeyManager();
+		mouseManager = new MouseManager();
 		
 	}
 	
@@ -53,6 +56,14 @@ public class Game implements Runnable {
 		
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
+		display.getFrame().addMouseListener(mouseManager);
+		display.getFrame().addMouseMotionListener(mouseManager);
+		
+		//Adding the mouseManager to the canvas reduces glitches
+		display.getCanvas().addMouseListener(mouseManager); 
+		display.getCanvas().addMouseMotionListener(mouseManager);
+		
+		
 		Assets.init();
 		
 		handler = new Handler(this);
@@ -63,7 +74,7 @@ public class Game implements Runnable {
 		menuState = new MenuState(handler); 
 		settingState = new SettingState(handler);
 		
-		State.setState(gameState); //This sets the state of the program to our game
+		State.setState(menuState); //This sets the state of the program to our game
 		
 	}
 	
@@ -139,6 +150,10 @@ public class Game implements Runnable {
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public MouseManager getMouseManager() {
+		return mouseManager;
 	}
 	
 	public GameCamera getGameCamera() {
