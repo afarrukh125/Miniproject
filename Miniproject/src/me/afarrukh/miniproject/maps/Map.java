@@ -2,7 +2,7 @@ package me.afarrukh.miniproject.maps;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.entities.EntityManager;
 import me.afarrukh.miniproject.entities.actors.Player;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
@@ -16,7 +16,7 @@ import me.afarrukh.miniproject.utils.UtilityTasks;
  */
 public class Map {
 
-	private Handler handler;
+	private Manager manager;
 	private int width, height; //In terms of tiles this is the size of the map. Note that this is NOT in terms of pixels
 	private int spawnX, spawnY; //Determines which tile the player will arrive for this particular map/world.
 	private int[][] tiles; //We require a multidimensional array to manage the tile positions
@@ -24,14 +24,14 @@ public class Map {
 	//Entities
 	private EntityManager entityManager;
 	
-	public Map(Handler handler, String path) {
-		this.handler = handler;
+	public Map(Manager manager, String path) {
+		this.manager = manager;
 		
-		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+		entityManager = new EntityManager(manager, new Player(manager, 100, 100));
 		
 		//Adding entities
 		for(int i = 0; i <= 8; i++) {
-			entityManager.addEntity(new Tree(handler, 100 * i, 100 * i));
+			entityManager.addEntity(new Tree(manager, 100 * i, 100 * i));
 		}
 		
 		loadMap(path);
@@ -47,15 +47,15 @@ public class Map {
 	public void render(Graphics g) {
 		//The first four lines don't visually change anything but changes the efficiency of the program.
 		//Using math.max with 0 as one of the parameters ensures we always get a positive number, or math.min ensures we get far right
-		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tiles with negative coordinates
-		int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffSet() + handler.getWidth()) / Tile.TILEWIDTH + 1);
-		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
-		int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffSet() + handler.getHeight()) / Tile.TILEHEIGHT + 1);
+		int xStart = (int) Math.max(0, manager.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tiles with negative coordinates
+		int xEnd = (int) Math.min(width, (manager.getGameCamera().getxOffSet() + manager.getWidth()) / Tile.TILEWIDTH + 1);
+		int yStart = (int) Math.max(0, manager.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
+		int yEnd = (int) Math.min(height, (manager.getGameCamera().getyOffSet() + manager.getHeight()) / Tile.TILEHEIGHT + 1);
 		
 		for(int y = yStart; y<yEnd; y++) {
 			for(int x = xStart; x<xEnd ; x++) {
-				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffSet()), 
-										(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffSet()));
+				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - manager.getGameCamera().getxOffSet()), 
+										(int) (y * Tile.TILEHEIGHT - manager.getGameCamera().getyOffSet()));
 				//We must use the TILE.TILEWIDTH/HEIGHT to match the units, otherwise only pixels are rendered
 			}
 		}

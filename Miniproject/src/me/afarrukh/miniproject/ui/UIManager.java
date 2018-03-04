@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.Manager;
 
 /**
  * 
@@ -14,11 +14,11 @@ import me.afarrukh.miniproject.Handler;
 public class UIManager {
 
 	
-	private Handler handler;
+	private Manager manager;
 	private ArrayList<UIObject> objects;
 	
-	public UIManager(Handler handler) {
-		this.handler = handler;
+	public UIManager(Manager manager) {
+		this.manager = manager;
 		objects = new ArrayList<UIObject>();
 	}
 	
@@ -50,12 +50,12 @@ public class UIManager {
 		objects.remove(o);
 	}
 
-	public Handler getHandler() {
-		return handler;
+	public Manager getHandler() {
+		return manager;
 	}
 
-	public void setHandler(Handler handler) {
-		this.handler = handler;
+	public void setHandler(Manager manager) {
+		this.manager = manager;
 	}
 
 	public ArrayList<UIObject> getObjects() {

@@ -2,8 +2,8 @@ package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Handler;
-import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.Manager;
+import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.ui.ClickListener;
 import me.afarrukh.miniproject.ui.UIBasicButton;
 import me.afarrukh.miniproject.ui.UIManager;
@@ -17,18 +17,18 @@ public class MenuState extends State{
 
 	private UIManager uiManager;
 	
-	public MenuState(Handler handler) {
-		super(handler);
-		uiManager = new UIManager(handler);
+	public MenuState(Manager manager) {
+		super(manager);
+		uiManager = new UIManager(manager);
 
-		handler.getMouseManager().setUIManager(uiManager);
+		manager.getMouseManager().setUIManager(uiManager);
 		
-		uiManager.addObject(new UIBasicButton((handler.getWidth() / 2) - Assets.getWidth()
-						, 44, 128, 64, Assets.startBtn, new ClickListener() {
+		uiManager.addObject(new UIBasicButton((manager.getWidth() / 2) - Visuals.getWidth()
+						, 44, 128, 64, Visuals.startBtn, new ClickListener() {
 
 			@Override
 			public void onClick() {
-				State.setState(handler.getGame().gameState);
+				State.setState(manager.getGame().gameState);
 			}})); //This button is set to change to the main game state upon being clicked
 	}
 	

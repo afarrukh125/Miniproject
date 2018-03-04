@@ -1,10 +1,10 @@
 package me.afarrukh.miniproject.tiles;
 
-import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.gfx.Visuals;
 
 public class GrassTile extends Tile {
 
 	public GrassTile(int id) {
-		super(Assets.grass, id);
+		super(Visuals.grass, id);
 	}
 }

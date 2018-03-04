@@ -2,7 +2,7 @@ package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.maps.Map;
 
 //This is the state of the main game
@@ -11,11 +11,11 @@ public class GameState extends State{
 	
 	private Map map;
 
-	public GameState(Handler handler) {
-		super(handler);
+	public GameState(Manager manager) {
+		super(manager);
 		
-		map = new Map(handler, "res/maps/map1.map");
-		handler.setMap(map);
+		map = new Map(manager, "res/maps/map1.map");
+		manager.setMap(map);
 	}
 	
 	@Override

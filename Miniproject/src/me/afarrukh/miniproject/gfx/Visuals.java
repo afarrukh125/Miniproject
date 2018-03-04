@@ -2,7 +2,11 @@ package me.afarrukh.miniproject.gfx;
 
 import java.awt.image.BufferedImage;
 
-public class Assets {
+/**
+ * @author User
+ * This contains the images cropped out and has general visual effects for objects such as tiles.
+ */
+public class Visuals {
 
 	public static BufferedImage grass, rock, water, lava, sand, tree;
 	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still;

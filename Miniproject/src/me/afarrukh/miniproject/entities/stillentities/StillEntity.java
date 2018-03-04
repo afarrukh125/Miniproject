@@ -1,6 +1,6 @@
 package me.afarrukh.miniproject.entities.stillentities;
 
-import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.entities.Entity;
 
 /**
@@ -10,8 +10,8 @@ import me.afarrukh.miniproject.entities.Entity;
  */
 public abstract class StillEntity extends Entity {
 
-	public StillEntity(Handler handler, float x, float y, int width, int height) {
-		super(handler, x, y, width, height);
+	public StillEntity(Manager manager, float x, float y, int width, int height) {
+		super(manager, x, y, width, height);
 	}
 	
 	

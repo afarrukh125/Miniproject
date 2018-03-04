@@ -1,11 +1,11 @@
 package me.afarrukh.miniproject.tiles;
 
-import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.gfx.Visuals;
 
 public class LavaTile extends Tile {
 	
 	public LavaTile(int id) {
-		super(Assets.lava, id);
+		super(Visuals.lava, id);
 	}
 	
 	@Override

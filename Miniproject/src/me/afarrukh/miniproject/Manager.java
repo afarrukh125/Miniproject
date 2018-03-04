@@ -8,16 +8,16 @@ import me.afarrukh.miniproject.maps.Map;
 /**
  * 
  * @author Abdullah
- * @description A handler class is required in order to have one location from which the game and the current world can be loaded from
+ * @description A manager class is required in order to have one location from which the game and the current world can be loaded from
  * It is basically a way to simplify our access to the game.
- * A handler also assists things like collision detection.
+ * A manager also assists things like collision detection and items.
  */
-public class Handler {
+public class Manager {
 
 	private Game game;
 	private Map map;
 	
-	public Handler(Game game) {
+	public Manager(Game game) {
 		this.game = game;
 	}
 	

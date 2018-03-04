@@ -3,8 +3,9 @@ package me.afarrukh.miniproject.entities;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 
-import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.entities.actors.Player;
 
 /**
@@ -13,7 +14,7 @@ import me.afarrukh.miniproject.entities.actors.Player;
  */
 public class EntityManager {
 
-	private Handler handler;
+	private Manager manager;
 	private Player player;
 	private ArrayList<Entity> entities; //By using ArrayLists, we can have entities loaded/removed and 
 										//don't have to commit to a specific number of entities we require for our game
@@ -29,8 +30,8 @@ public class EntityManager {
 		
 	};
 	
-	public EntityManager(Handler handler, Player player) {
-		this.handler = handler;
+	public EntityManager(Manager manager, Player player) {
+		this.manager = manager;
 		this.player = player;
 		
 		entities = new ArrayList<Entity>();
@@ -38,15 +39,15 @@ public class EntityManager {
 	}
 	
 	public void tick() {
-		
-		for(int i = 0; i <entities.size(); i++) { 
-			/*We use a regular for loop here in the tick() method unlike our 
-			 * render method because of the way collisions between entities works.*/
-			Entity e = entities.get(i);
-			e.tick();
-			if(!e.isActive()) {
-				entities.remove(e);
-			}
+		//Iterator used to prevent entities being removed during an important tick event
+		Iterator<Entity> iter = entities.iterator();
+		while(iter.hasNext()) {
+				/*We use a regular for loop here in the tick() method unlike our 
+				 * render method because of the way collisions between entities works.*/
+				Entity e = iter.next();
+				e.tick();
+				if(!e.isActive())
+					iter.remove(); //Removes the entity. This would be the same as e.remove for an individual entity removal
 		}
 		entities.sort(renderSorter);
 	}
@@ -62,12 +63,12 @@ public class EntityManager {
 	}
 
 	//Getter/Setter methods
-	public Handler getHandler() {
-		return handler;
+	public Manager getManager() {
+		return manager;
 	}
 
-	public void setHandler(Handler handler) {
-		this.handler = handler;
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 
 	public Player getPlayer() {

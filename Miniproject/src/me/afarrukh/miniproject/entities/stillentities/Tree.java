@@ -2,14 +2,14 @@ package me.afarrukh.miniproject.entities.stillentities;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Handler;
-import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.Manager;
+import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.tiles.Tile;
 
 public class Tree extends StillEntity {
 
-	public Tree(Handler handler, float x, float y) {
-		super(handler, x, y, Tile.TILEWIDTH*2, Tile.TILEHEIGHT*2);
+	public Tree(Manager manager, float x, float y) {
+		super(manager, x, y, Tile.TILEWIDTH*2, Tile.TILEHEIGHT*2);
 		
 		hitbox.x = hitbox.width /2 - 20;
 		hitbox.y = hitbox.height/2 + 15;
@@ -29,7 +29,7 @@ public class Tree extends StillEntity {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.tree, (int) (x - handler.getGameCamera().getxOffSet()), (int) (y - handler.getGameCamera().getyOffSet()), width, height, null);
+		g.drawImage(Visuals.tree, (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()), width, height, null);
 		
 //		g.fillRect((int) (x + hitbox.x - handler.getGameCamera().getxOffSet()),
 //				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 

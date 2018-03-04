@@ -1,6 +1,6 @@
 package me.afarrukh.miniproject.entities.actors;
 
-import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.entities.Entity;
 import me.afarrukh.miniproject.tiles.Tile;
 
@@ -18,9 +18,9 @@ public abstract class Actor extends Entity{
 	protected float speed;
 	protected float xMove, yMove; //How much the characters move by in pixels
 	
-	public Actor(Handler handler, float x, float y, int width, int height) {
+	public Actor(Manager manager, float x, float y, int width, int height) {
 		
-		super(handler, x, y, width, height);
+		super(manager, x, y, width, height);
 		speed = DEFAULT_MOVESPEED;
 		xMove = 0;
 		yMove = 0;
@@ -91,7 +91,7 @@ public abstract class Actor extends Entity{
 	}
 	
 	protected boolean collisionWithTile(int x, int y) {
-		return handler.getMap().getTile(x, y).isSolid();
+		return manager.getMap().getTile(x, y).isSolid();
 	}
 
 	//Getter/Setter methods for this class

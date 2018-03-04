@@ -2,7 +2,7 @@ package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
 
-import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.Manager;
 
 /**
  * 
@@ -12,8 +12,8 @@ import me.afarrukh.miniproject.Handler;
 
 public class SettingState extends State {
 
-	public SettingState(Handler handler) {
-		super(handler);
+	public SettingState(Manager manager) {
+		super(manager);
 	}
 	
 	@Override

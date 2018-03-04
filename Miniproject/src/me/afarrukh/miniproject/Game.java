@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import me.afarrukh.miniproject.display.Display;
-import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.gfx.GameCamera;
 import me.afarrukh.miniproject.input.KeyManager;
 import me.afarrukh.miniproject.input.MouseManager;
@@ -37,7 +37,7 @@ public class Game implements Runnable {
 	
 	private GameCamera gameCamera; //The camera for the game
 	
-	private Handler handler;
+	private Manager manager;
 	
 	
 	public Game(String title, int width, int height) {
@@ -64,15 +64,15 @@ public class Game implements Runnable {
 		display.getCanvas().addMouseMotionListener(mouseManager);
 		
 		
-		Assets.init();
+		Visuals.init();
 		
-		handler = new Handler(this);
-		gameCamera = new GameCamera(handler, 0, 0);
+		manager = new Manager(this);
+		gameCamera = new GameCamera(manager, 0, 0);
 		
-		gameState = new GameState(handler);
+		gameState = new GameState(manager);
 		//We want to initialise the states we may switch to for easy access
-		menuState = new MenuState(handler); 
-		settingState = new SettingState(handler);
+		menuState = new MenuState(manager); 
+		settingState = new SettingState(manager);
 		
 		State.setState(menuState); //This sets the state of the program to our game
 		

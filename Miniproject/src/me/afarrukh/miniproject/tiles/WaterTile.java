@@ -1,11 +1,11 @@
 package me.afarrukh.miniproject.tiles;
 
-import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.gfx.Visuals;
 
 public class WaterTile extends Tile{
 	
 	public WaterTile(int id) {
-		super(Assets.water, id);
+		super(Visuals.water, id);
 	}
 
 }

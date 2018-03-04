@@ -1,11 +1,11 @@
 package me.afarrukh.miniproject.tiles;
 
-import me.afarrukh.miniproject.gfx.Assets;
+import me.afarrukh.miniproject.gfx.Visuals;
 
 public class RockTile extends Tile {
 
 	public RockTile(int id) {
-		super(Assets.rock, id);
+		super(Visuals.rock, id);
 	}
 	
 	@Override
