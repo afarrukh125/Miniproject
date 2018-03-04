@@ -15,7 +15,7 @@ public abstract class Actor extends Entity{
 	public static final float DEFAULT_MOVESPEED = Constants.ACTORMS;
 	public static final int DEFAULT_ACTOR_WIDTH = 64,
 							DEFAULT_ACTOR_HEIGHT = 64,
-							DEFAULT_ACTOR_ATKPOW = 28;
+							DEFAULT_ACTOR_ATKPOW = 19;
 	
 	protected float speed;
 	protected int attackPower;
