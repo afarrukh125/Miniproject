@@ -29,12 +29,13 @@ public class Assets {
 		mage_down[1] = sheet.crop(width, height*5, width, height);
 		
 		mage_left = new BufferedImage[2];
-		mage_left[0] = sheet.crop(width*2, height*6, width, height);
-		mage_left[1] = sheet.crop(width*3, height*6, width, height);
+		mage_left[0] = sheet.crop(0, height*6, width, height);
+		mage_left[1] = sheet.crop(width, height*6, width, height);
+		
 		
 		mage_right = new BufferedImage[2];
-		mage_right[0] = sheet.crop(0, height*6, width, height);
-		mage_right[1] = sheet.crop(width, height*6, width, height);
+		mage_right[0] = sheet.crop(width*2, height*6, width, height);
+		mage_right[1] = sheet.crop(width*3, height*6, width, height);
 		
 		mage_still = new BufferedImage[2];
 		mage_still[0] = sheet.crop(width*2, 0, width, height);
