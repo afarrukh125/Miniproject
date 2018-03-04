@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import me.afarrukh.miniproject.Handler;
+import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.entities.Entity;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Assets;
@@ -13,8 +14,9 @@ import me.afarrukh.miniproject.gfx.Assets;
 public class Player extends Actor {
 	
 	//Animations
-	private Animation animDown, animUp, animLeft, animRight, animStill;
-	private long prevAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
+	private Animation animDown, animUp, animLeft, animRight, animStill, animAtk;
+	private long prevAttackTimer, attackCooldown = Constants.playerAtkCd, attackTimer = attackCooldown;
+	public boolean attacking; //boolean which determines if animation for attacking is played
 	
 	
 	public Player(Handler handler, float x, float y) {
@@ -26,11 +28,12 @@ public class Player extends Actor {
 		hitbox.height = 56;
 		
 		//Animations
-		animDown = new Animation(250, Assets.archer_down);
-		animUp = new Animation(250, Assets.archer_up);
-		animLeft = new Animation(250, Assets.archer_left);
-		animRight = new Animation(250, Assets.archer_right);
-		animStill = new Animation(250, Assets.archer_still);
+		animDown = new Animation(250, Assets.mage_down);
+		animUp = new Animation(250, Assets.mage_up);
+		animLeft = new Animation(250, Assets.mage_left);
+		animRight = new Animation(250, Assets.mage_right);
+		animStill = new Animation(250, Assets.mage_still);
+		animAtk = new Animation(93, Assets.mage_attack);
 		
 	}
 
@@ -42,6 +45,7 @@ public class Player extends Actor {
 		animLeft.tick();
 		animRight.tick();
 		animStill.tick();
+		animAtk.tick();
 		//Movement
 		getInput();
 		move();
@@ -51,6 +55,9 @@ public class Player extends Actor {
 		checkAttacks();
 	}
 	
+	/**
+	 * Checks if the player is pressing one of the attack keys
+	 */
 	private void checkAttacks() {
 		//We are checking if the user is pressing any of the attack keys
 		
@@ -99,17 +106,14 @@ public class Player extends Actor {
 	public void getInput() {
 		xMove = 0;
 		yMove = 0;
-		
+		attacking = false;
 		if(handler.getKeyManager().up) {
 			yMove = -speed;
-		}
-		if(handler.getKeyManager().down) {
+		}if(handler.getKeyManager().down) {
 			yMove = speed;
-		}
-		if(handler.getKeyManager().left) {
+		}if(handler.getKeyManager().left) {
 			xMove = -speed;
-		}
-		if(handler.getKeyManager().right) {
+		}if(handler.getKeyManager().right) {
 			xMove = speed;
 		}
 	}
@@ -142,6 +146,8 @@ public class Player extends Actor {
 			return animUp.getCurrentFrame();
 		}else if(yMove > 0){
 			return animDown.getCurrentFrame();
+		}else if(handler.getKeyManager().isAttacking()) {
+			return animAtk.getCurrentFrame();
 		}else {
 			return animStill.getCurrentFrame();
 		}

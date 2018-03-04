@@ -6,7 +6,7 @@ public class Assets {
 
 	public static BufferedImage grass, rock, water, lava, sand, tree;
 	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still;
-	private static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still;
+	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack;
 	public static BufferedImage[] startBtn;
 	
 	private static final int width = 44, height = 44;
@@ -19,6 +19,32 @@ public class Assets {
 		startBtn[0] = sheet.crop(width*4, height, width*2, height);
 		startBtn[1] = sheet.crop(width*4, height*2, width*2, height);
 		
+		//Rendering the mage
+		mage_up = new BufferedImage[2];
+		mage_up[0] = sheet.crop(width*2, height*5, width, height);
+		mage_up[1] = sheet.crop(width*3, height*5, width, height);
+		
+		mage_down = new BufferedImage[2];
+		mage_down[0] = sheet.crop(0, height*5, width, height);
+		mage_down[1] = sheet.crop(width, height*5, width, height);
+		
+		mage_left = new BufferedImage[2];
+		mage_left[0] = sheet.crop(width*2, height*6, width, height);
+		mage_left[1] = sheet.crop(width*3, height*6, width, height);
+		
+		mage_right = new BufferedImage[2];
+		mage_right[0] = sheet.crop(0, height*6, width, height);
+		mage_right[1] = sheet.crop(width, height*6, width, height);
+		
+		mage_still = new BufferedImage[2];
+		mage_still[0] = sheet.crop(width*2, 0, width, height);
+		mage_still[1] = sheet.crop(width, height*4, width, height);
+		
+		mage_attack = new BufferedImage[4];
+		mage_attack[0] = sheet.crop(0, height*7, width, height);
+		mage_attack[1] = sheet.crop(width, height*7, width, height);
+		mage_attack[2] = sheet.crop(width*2, height*7, width, height);
+		mage_attack[3] = sheet.crop(width*3, height*7, width, height);
 		
 		
 		//Rendering the archer

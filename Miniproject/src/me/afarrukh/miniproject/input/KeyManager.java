@@ -26,6 +26,18 @@ public class KeyManager implements KeyListener {
 		atkLeft = keys[KeyEvent.VK_A];
 		atkRight = keys[KeyEvent.VK_D];
 		
+		isAttacking(); //We want to check if any of the attack keys are being pressed
+	}
+	
+	/**
+	 * 
+	 * @return whether or not any of the attack keys are being pressed for animation purposes
+	 */
+	public boolean isAttacking() {
+		if(this.atkUp || this.atkDown || this.atkRight || this.atkLeft)
+				return true;
+		
+		return false;
 	}
 	
 	/*
