@@ -16,7 +16,7 @@ import me.afarrukh.miniproject.Handler;
  */
 public abstract class Entity {
 	
-	public static final int DEFAULT_HEALTH = 10;
+	public static final int DEFAULT_HEALTH = 5;
 	
 	protected Handler handler;
 	protected float x, y; //Making it float achieves smooth movement in our game. Furthermore, the calculations we do in our game will not give whole numbers.

@@ -38,6 +38,7 @@ public class EntityManager {
 	}
 	
 	public void tick() {
+		
 		for(int i = 0; i <entities.size(); i++) { 
 			/*We use a regular for loop here in the tick() method unlike our 
 			 * render method because of the way collisions between entities works.*/

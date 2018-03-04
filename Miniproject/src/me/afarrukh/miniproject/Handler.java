@@ -33,7 +33,7 @@ public class Handler {
 		return game.getKeyManager();
 	}
 	
-	public MouseManager getMouseManager() {
+	public MouseManager getMouseManager() { 
 		return game.getMouseManager();
 	}
 	
