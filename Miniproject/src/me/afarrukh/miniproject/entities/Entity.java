@@ -15,10 +15,14 @@ import me.afarrukh.miniproject.Handler;
  * subclasses of this entity can be instantiated
  */
 public abstract class Entity {
-
+	
+	public static final int DEFAULT_HEALTH = 10;
+	
 	protected Handler handler;
 	protected float x, y; //Making it float achieves smooth movement in our game. Furthermore, the calculations we do in our game will not give whole numbers.
 	protected int width, height; //This is the size of the entity
+	protected int health;
+	protected boolean active = true;
 	protected Rectangle hitbox; //The interactable boundaries of which the player can detect if a terrain (tile) is interactable or not
 	
 	
@@ -30,12 +34,26 @@ public abstract class Entity {
 		this.width = width;
 		this.height = height;
 		
+		this.health = DEFAULT_HEALTH;
+		
 		hitbox = new Rectangle(0, 0, width, height);
 	}
 	
 	public abstract void tick();
 	
 	public abstract void render(Graphics g);
+	
+	public abstract void die();
+	
+	public void hurt(int amount) {
+		health -= amount;
+		System.out.println("Entity has been attacked.");
+		if(health <= 0) {
+			active = false;
+			die();
+		}
+		
+	}
 	
 	public boolean checkEntityCollisions(float xOffset, float yOffset) {
 		for(Entity e: handler.getMap().getEntityManager().getEntities()) {
@@ -81,6 +99,22 @@ public abstract class Entity {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 	

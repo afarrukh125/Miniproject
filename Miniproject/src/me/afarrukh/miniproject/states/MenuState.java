@@ -20,15 +20,16 @@ public class MenuState extends State{
 	public MenuState(Handler handler) {
 		super(handler);
 		uiManager = new UIManager(handler);
-		
+
 		handler.getMouseManager().setUIManager(uiManager);
 		
-		uiManager.addObject(new UIBasicButton(200, 200, 128, 64, Assets.startBtn, new ClickListener() {
+		uiManager.addObject(new UIBasicButton((handler.getWidth() / 2) - Assets.getWidth()
+						, 44, 128, 64, Assets.startBtn, new ClickListener() {
 
 			@Override
 			public void onClick() {
 				State.setState(handler.getGame().gameState);
-			}}));
+			}})); //This button is set to change to the main game state upon being clicked
 	}
 	
 	@Override

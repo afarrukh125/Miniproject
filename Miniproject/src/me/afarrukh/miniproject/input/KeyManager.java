@@ -7,7 +7,8 @@ public class KeyManager implements KeyListener {
 
 	private boolean[] keys;
 	
-	public boolean up, down, left, right;
+	public boolean up, down, left, right; //Movement controls
+	public boolean atkUp, atkDown, atkLeft, atkRight; //Attack controls
 	
 	public KeyManager() {
 		keys = new boolean[256]; //Reasonable size for keys being pressed
@@ -19,6 +20,11 @@ public class KeyManager implements KeyListener {
 		down = keys[KeyEvent.VK_DOWN];
 		left = keys[KeyEvent.VK_LEFT];
 		right = keys[KeyEvent.VK_RIGHT];
+		
+		atkUp = keys[KeyEvent.VK_W];
+		atkDown = keys[KeyEvent.VK_S];
+		atkLeft = keys[KeyEvent.VK_A];
+		atkRight = keys[KeyEvent.VK_D];
 		
 	}
 	
