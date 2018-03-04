@@ -3,6 +3,7 @@ package me.afarrukh.miniproject;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.display.Display;
 import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.gfx.GameCamera;
@@ -114,7 +115,7 @@ public class Game implements Runnable {
 		
 		init(); //Initialises the game
 		
-		int fps = 30;
+		int fps = Constants.FPS;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
 		long now;
@@ -129,7 +130,7 @@ public class Game implements Runnable {
 			timer += (now - lastTime);
 			lastTime = now;
 			
-			if(delta >= 1) { //This checks if the game is running at 30 frames
+			if(delta >= 1) { //This checks if the game is running at our frames
 				tick();
 				render();
 				ticks++;

@@ -3,6 +3,7 @@ package me.afarrukh.miniproject.entities.actors;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.constants.Constants;
@@ -13,14 +14,20 @@ import me.afarrukh.miniproject.gfx.Visuals;
 public class Player extends Actor {
 	
 	//Animations
-	private Animation animDown, animUp, animLeft, animRight, animStill, animAtk;
+	protected Animation animDown, animUp, animLeft, animRight, animStill, animAtk;
 	private long prevAttackTimer, attackCooldown = Constants.playerAtkCd, attackTimer = attackCooldown;
 	public boolean attacking; //boolean which determines if animation for attacking is played
+	private int charLuck; //If they are a playable character, (at the very least) their attack accuracy has a luck factor
 	
 	
 	public Player(Manager manager, float x, float y) {
 		super(manager, x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
 		
+		Random random = new Random();
+        int rng = (int) random.nextInt(10) - 4; //This luck factor can be negative
+
+        this.charLuck = rng;
+        
 		hitbox.x = 10;
 		hitbox.y = 12;
 		hitbox.width = 48;
@@ -95,7 +102,7 @@ public class Player extends Actor {
 			if(e.equals(this)) //cannot attack ourselves
 				continue;
 			if(e.getCollisionBounds(0, 0).intersects(attackRectangle)) {
-				e.hurt(1);
+				e.hurt(this.getAttackPower());
 				return; //We only want to hit one entity at a time. It will hit the first entity in the list that is nearest to it and return
 			}
 		}
@@ -150,6 +157,14 @@ public class Player extends Actor {
 		}else {
 			return animStill.getCurrentFrame();
 		}
+	}
+
+	public int getCharLuck() {
+		return charLuck;
+	}
+
+	public void setCharLuck(int charLuck) {
+		this.charLuck = charLuck;
 	}
 	
 	

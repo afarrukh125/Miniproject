@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.entities.actors;
 
 import me.afarrukh.miniproject.Manager;
+import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.entities.Entity;
 import me.afarrukh.miniproject.tiles.Tile;
 
@@ -11,17 +12,33 @@ import me.afarrukh.miniproject.tiles.Tile;
 
 public abstract class Actor extends Entity{
 	
-	public static final float DEFAULT_MOVESPEED = 4.0f;
+	public static final float DEFAULT_MOVESPEED = Constants.ACTORMS;
 	public static final int DEFAULT_ACTOR_WIDTH = 64,
-							DEFAULT_ACTOR_HEIGHT = 64;
+							DEFAULT_ACTOR_HEIGHT = 64,
+							DEFAULT_ACTOR_ATKPOW = 28;
 	
 	protected float speed;
+	protected int attackPower;
+	
 	protected float xMove, yMove; //How much the characters move by in pixels
 	
+	//Other attributes
+	private String name;
+    private String type;
+    private int maxHp;
+    private int Hp;
+    private int HpRegen;
+    private double charEnergy;
+
+    //Attributes pertaining to battle
+    private int resistance;
+    private int attackAccuracy;
+    
 	public Actor(Manager manager, float x, float y, int width, int height) {
 		
 		super(manager, x, y, width, height);
 		speed = DEFAULT_MOVESPEED;
+		attackPower = DEFAULT_ACTOR_ATKPOW;
 		xMove = 0;
 		yMove = 0;
 		
@@ -99,6 +116,78 @@ public abstract class Actor extends Entity{
 		return xMove;
 	}
 
+	public int getAttackPower() {
+		return attackPower;
+	}
+
+	public void setAttackPower(int attackPower) {
+		this.attackPower = attackPower;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
+
+	public int getHp() {
+		return Hp;
+	}
+
+	public void setHp(int hp) {
+		Hp = hp;
+	}
+
+	public int getHpRegen() {
+		return HpRegen;
+	}
+
+	public void setHpRegen(int hpRegen) {
+		HpRegen = hpRegen;
+	}
+
+	public double getEnergy() {
+		return charEnergy;
+	}
+
+	public void setEnergy(double charEnergy) {
+		this.charEnergy = charEnergy;
+	}
+
+	public int getResistance() {
+		return resistance;
+	}
+
+	public void setResistance(int resistance) {
+		this.resistance = resistance;
+	}
+
+	public int getAttackAccuracy() {
+		return attackAccuracy;
+	}
+
+	public void setAttackAccuracy(int attackAccuracy) {
+		this.attackAccuracy = attackAccuracy;
+	}
+
 	public void setxMove(float xMove) {
 		this.xMove = xMove;
 	}
@@ -126,4 +215,6 @@ public abstract class Actor extends Entity{
 	public void setSpeed(float moveSpeed) {
 		this.speed = moveSpeed;
 	}
+	
+	
 }

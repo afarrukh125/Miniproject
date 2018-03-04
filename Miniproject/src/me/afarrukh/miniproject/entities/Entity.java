@@ -16,7 +16,7 @@ import me.afarrukh.miniproject.Manager;
  */
 public abstract class Entity {
 	
-	public static final int DEFAULT_HEALTH = 5;
+	public static final int DEFAULT_HEALTH = 40;
 	
 	protected Manager manager;
 	protected float x, y; //Making it float achieves smooth movement in our game. Furthermore, the calculations we do in our game will not give whole numbers.
@@ -47,8 +47,9 @@ public abstract class Entity {
 	
 	public void hurt(int amount) {
 		health -= amount;
-		System.out.println("Entity has been attacked.");
+		System.out.println("Entity has been attacked for " +amount+ " hp. Current hp is " +health);
 		if(health <= 0) {
+			health = - 1;
 			active = false;
 			die();
 		}
