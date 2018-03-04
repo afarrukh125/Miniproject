@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.gfx.Visuals;
+import me.afarrukh.miniproject.items.Item;
 import me.afarrukh.miniproject.tiles.Tile;
 
 public class Tree extends StillEntity {
@@ -24,7 +25,7 @@ public class Tree extends StillEntity {
 	
 	@Override
 	public void die() {
-		
+		manager.getMap().getItemManager().addItem(Item.woodItem.createCopy((int) x, (int) y));
 	}
 
 	@Override

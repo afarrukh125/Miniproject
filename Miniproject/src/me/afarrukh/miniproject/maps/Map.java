@@ -6,6 +6,7 @@ import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.entities.EntityManager;
 import me.afarrukh.miniproject.entities.actors.Player;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
+import me.afarrukh.miniproject.items.ItemManager;
 import me.afarrukh.miniproject.tiles.Tile;
 import me.afarrukh.miniproject.utils.UtilityTasks;
 
@@ -21,14 +22,15 @@ public class Map {
 	private int spawnX, spawnY; //Determines which tile the player will arrive for this particular map/world.
 	private int[][] tiles; //We require a multidimensional array to manage the tile positions
 	
-	//Entities
+	//Entities/Items
 	private EntityManager entityManager;
+	private ItemManager itemManager;
 	
 	public Map(Manager manager, String path) {
 		this.manager = manager;
 		
 		entityManager = new EntityManager(manager, new Player(manager, 100, 100));
-		
+		itemManager = new ItemManager(manager);
 		//Adding entities
 		for(int i = 0; i <= 8; i++) {
 			entityManager.addEntity(new Tree(manager, 100 * i, 100 * i));
@@ -41,6 +43,7 @@ public class Map {
 	}
 	
 	public void tick() {
+		itemManager.tick();
 		entityManager.tick();
 	}
 	
@@ -60,6 +63,7 @@ public class Map {
 			}
 		}
 		
+		itemManager.render(g);
 		entityManager.render(g);
 	}
 	
@@ -112,6 +116,22 @@ public class Map {
 	
 	public int getHeight() {
 		return height;
+	}
+
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
+	public ItemManager getItemManager() {
+		return itemManager;
+	}
+
+	public void setItemManager(ItemManager itemManager) {
+		this.itemManager = itemManager;
 	}
 		
 }
