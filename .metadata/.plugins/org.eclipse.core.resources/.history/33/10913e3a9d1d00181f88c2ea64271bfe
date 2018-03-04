@@ -1,8 +1,0 @@
-package me.afarrukh.miniproject;
-
-public class Launcher {
-	
-	public static void main(String[] args) {
-		new Display("GameWindow", 1000, 800);
-	}
-}

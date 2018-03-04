@@ -1,5 +1,0 @@
-package me.afarrukh.miniproject.states;
-
-public abstract class State {
-
-}

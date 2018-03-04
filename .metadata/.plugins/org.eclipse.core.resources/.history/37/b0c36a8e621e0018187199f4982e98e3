@@ -1,8 +1,0 @@
-package me.afarrukh.miniproject;
-
-public class Handler {
-
-	public Handler(Game game) {
-		
-	}
-}
