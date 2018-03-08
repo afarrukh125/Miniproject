@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.entities.EntityManager;
-import me.afarrukh.miniproject.entities.actors.Player;
+import me.afarrukh.miniproject.entities.actors.Archer;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
 import me.afarrukh.miniproject.items.ItemManager;
 import me.afarrukh.miniproject.tiles.Tile;
@@ -29,7 +29,7 @@ public class Map {
 	public Map(Manager manager, String path) {
 		this.manager = manager;
 		
-		entityManager = new EntityManager(manager, new Player(manager, 100, 100));
+		entityManager = new EntityManager(manager, new Archer(manager, 100, 100));
 		itemManager = new ItemManager(manager);
 		//Adding entities
 		for(int i = 0; i <= 8; i++) {
