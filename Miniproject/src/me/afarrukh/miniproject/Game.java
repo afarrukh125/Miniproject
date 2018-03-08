@@ -118,17 +118,19 @@ public class Game implements Runnable {
 		int fps = Constants.FPS;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
-		long now;
-		long lastTime = System.nanoTime();
+		long currentTime;
+		long prevTime = System.nanoTime();
 		long timer = 0;
 		int ticks = 0;
 		
+		//By the time we get to our while loop the time will have changed
+		//Since we are dealing with nanoseconds, this difference is pronounced more.
 		
 		while(running) {
-			now = System.nanoTime();
-			delta += (now - lastTime) /timePerTick;
-			timer += (now - lastTime);
-			lastTime = now;
+			currentTime = System.nanoTime();
+			delta += (currentTime - prevTime) /timePerTick;
+			timer += (currentTime - prevTime);
+			prevTime = currentTime;
 			
 			if(delta >= 1) { //This checks if the game is running at our frames
 				tick();
@@ -138,6 +140,7 @@ public class Game implements Runnable {
 				
 			}
 			
+			//If we have exceeded more than one nanosecond, then reset our ticks and timer
 			if(timer >= 1000000000) {
 				System.out.println("Ticks and frames " +ticks);
 				ticks = 0;
