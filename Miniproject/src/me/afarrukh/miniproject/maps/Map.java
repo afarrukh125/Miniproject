@@ -33,11 +33,8 @@ public class Map {
 		
 		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);
-		//Adding entities
-//		for(int i = 0; i <= 8; i++) {
-//			entityManager.addEntity(new Tree(manager, 100 * i, 100 * i));
-//		}
-		
+
+		generateEntities();
 		loadMap(path);
 		
 		entityManager.getPlayer().setX(spawnX);
@@ -97,6 +94,12 @@ public class Map {
 			for(int x = 0; x < width; x++) {
 				tiles[x][y] = UtilityTasks.parseInt(tokens[(x + y * width) + 4]); //Adding 4 to account for first few elements
 			}
+		}
+	}
+
+	public void generateEntities() {
+		for(int i = 0; i <= 8; i++) {
+			entityManager.addEntity(new Tree(manager, 100 * i, 100 * i));
 		}
 	}
 

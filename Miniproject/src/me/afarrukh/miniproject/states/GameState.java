@@ -20,6 +20,10 @@ public class GameState extends State{
 		manager.setMap(map);
 	}
 
+	/**
+	 *
+	 * @return an integer pertaining to a random number for the map
+	 */
 	private int getRandomMapFromLibrary() {
 		Random random = new Random();
 		int rng = random.nextInt(UtilityTasks.getLatestMapIndex());
