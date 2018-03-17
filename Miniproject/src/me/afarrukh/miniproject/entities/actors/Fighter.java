@@ -19,11 +19,11 @@ public class Fighter extends Player {
         this.setHpRegen(Constants.FIGHTER_HPREGEN);
         this.setEnergy(Constants.FIGHTER_ENERGY);
         
-        animDown = new Animation(250, Visuals.archer_down);
-		animUp = new Animation(250, Visuals.archer_up);
-		animLeft = new Animation(250, Visuals.archer_left);
-		animRight = new Animation(250, Visuals.archer_right);
-		animStill = new Animation(250, Visuals.archer_still);
+        animDown = new Animation(250, Visuals.fighter_down);
+		animUp = new Animation(250, Visuals.fighter_up);
+		animLeft = new Animation(250, Visuals.fighter_left);
+		animRight = new Animation(250, Visuals.fighter_right);
+		animStill = new Animation(250, Visuals.fighter_still);
 		animAtk = new Animation(93, Visuals.mage_attack);
 	}
 

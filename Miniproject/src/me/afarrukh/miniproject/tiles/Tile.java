@@ -1,5 +1,7 @@
 package me.afarrukh.miniproject.tiles;
 
+import me.afarrukh.miniproject.constants.Constants;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -22,8 +24,8 @@ public class Tile {
 	public static Tile sandTile = new SandTile(4);
 	
 	//CLASS 
-	public static final int TILEWIDTH = 64, 
-							TILEHEIGHT = 64; //These are the dimensions for a tile.
+	public static final int TILEWIDTH = Constants.TILEWIDTH,
+							TILEHEIGHT = Constants.TILEHEIGHT; //These are the dimensions for a tile.
 	
 	protected BufferedImage image;
 	protected final int id;

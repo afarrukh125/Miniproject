@@ -1,9 +1,11 @@
 package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
+import java.util.Random;
 
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.maps.Map;
+import me.afarrukh.miniproject.utils.UtilityTasks;
 
 //This is the state of the main game
 
@@ -13,9 +15,17 @@ public class GameState extends State{
 
 	public GameState(Manager manager) {
 		super(manager);
-		
-		map = new Map(manager, "res/maps/map1.map");
+		UtilityTasks.generateRandomMap();
+		int mapIndex = getRandomMapFromLibrary();
+		map = new Map(manager, "res/maps/map"+mapIndex+".map");
 		manager.setMap(map);
+	}
+
+	private int getRandomMapFromLibrary() {
+		Random random = new Random();
+		int rng = random.nextInt(UtilityTasks.getLatestMapIndex());
+		System.out.println("Loaded map number " +rng);
+		return rng;
 	}
 	
 	@Override

@@ -9,8 +9,9 @@ import java.awt.image.BufferedImage;
 public class Visuals {
 
 	public static BufferedImage grass, rock, water, lava, sand, tree;
-	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still;
+	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still, archer_attack;
 	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack;
+	public static BufferedImage[] fighter_up, fighter_down, fighter_left, fighter_right, fighter_still, fighter_attack;
 	public static BufferedImage[] startBtn;
 	
 	private static final int width = 44, height = 44;
@@ -72,6 +73,27 @@ public class Visuals {
 		archer_still = new BufferedImage[2];
 		archer_still[0] = sheet.crop(0, height*3, width, height);
 		archer_still[1] = sheet.crop(0, height*4, width, height);
+
+		//Rendering the fighter
+		fighter_up = new BufferedImage[2];
+		fighter_up[0] = sheet.crop(width*6, height*5, width, height);
+		fighter_up[1] = sheet.crop(width*7, height*5, width, height);
+
+		fighter_down = new BufferedImage[2];
+		fighter_down[0] = sheet.crop(width*4, height*5, width, height);
+		fighter_down[1] = sheet.crop(width*5, height*5, width, height);
+
+		fighter_left = new BufferedImage[2];
+		fighter_left[0] = sheet.crop(width*6, height*6, width, height);
+		fighter_left[1] = sheet.crop(width*6, height*6, width, height); //THIS ONE NEEDS TO BE UPDATED
+
+        fighter_right = new BufferedImage[2];
+        fighter_right[0] = sheet.crop(width*4, height*6, width, height);
+        fighter_right[1] = sheet.crop(width*4, height*6, width, height); //THIS ONE NEEDS TO BE UPDATED
+
+        fighter_still = new BufferedImage[2];
+        fighter_still[0] = sheet.crop(width*4, height*6, width, height);
+        fighter_still[1] = sheet.crop(width, 0, width, height);
 				
 		
 		//Assets for the textures

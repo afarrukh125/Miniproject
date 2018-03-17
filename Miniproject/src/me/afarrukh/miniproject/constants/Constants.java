@@ -54,4 +54,12 @@ public class Constants {
     public static final int TANK_MAXHP = 750;
     public static final int TANK_HPREGEN = 14;
     public static final int TANK_ENERGY = 300;
+
+    //Map related constants
+    public static final int MAP_WIDTH = 125; //Both this and the height are NOT in terms of pixels. These are actually how many tiles there are.
+    public static final int MAP_HEIGHT = 125;
+    public static final int numTiles = 5; //This is how many types of tiles there are
+    public static final int GRASS_PERCENTAGE = 93; //This is the percentage of terrain that is generated as a grass tile.
+    public static final int TILEWIDTH = 64;
+    public static final int TILEHEIGHT = 64;
 }
