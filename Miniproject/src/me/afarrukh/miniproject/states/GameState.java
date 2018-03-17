@@ -15,7 +15,6 @@ public class GameState extends State{
 
 	public GameState(Manager manager) {
 		super(manager);
-		UtilityTasks.generateRandomMap();
 		int mapIndex = getRandomMapFromLibrary();
 		map = new Map(manager, "res/maps/map"+mapIndex+".map");
 		manager.setMap(map);
