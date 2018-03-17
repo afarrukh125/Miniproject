@@ -37,6 +37,7 @@ public class Constants {
     public static final int MAGE_MAXHP = 500;
     public static final int MAGE_HPREGEN = 8;
     public static final int MAGE_ENERGY = 400;
+    public static final int MAGE_SPEED = 6;
 
     //Priest class constants
     public static final int PRIEST_ATTACK_ACC = 90;

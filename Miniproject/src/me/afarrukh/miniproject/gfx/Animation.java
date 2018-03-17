@@ -23,6 +23,7 @@ public class Animation {
 	}
 	
 	public void tick() {
+		//We use currentTimeMillis() for consistency with the animation time cycle
 		timer += System.currentTimeMillis() - lastTime;
 		lastTime = System.currentTimeMillis();
 		

@@ -3,6 +3,7 @@ package me.afarrukh.miniproject.entities.stillentities;
 import java.awt.Graphics;
 
 import me.afarrukh.miniproject.Manager;
+import me.afarrukh.miniproject.entities.actors.Archer;
 import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.items.Item;
 import me.afarrukh.miniproject.tiles.Tile;

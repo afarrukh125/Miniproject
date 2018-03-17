@@ -19,6 +19,7 @@ public class Mage extends Player {
         this.setHp(this.getMaxHp());
         this.setHpRegen(Constants.MAGE_HPREGEN);
         this.setEnergy(Constants.MAGE_ENERGY);
+        this.setSpeed(Constants.MAGE_SPEED);
 		
 		animDown = new Animation(250, Visuals.mage_down);
 		animUp = new Animation(250, Visuals.mage_up);
