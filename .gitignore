@@ -1,2 +1,7 @@
 /.metadata/
 /.recommenders/
+
+*.iml
+
+/Miniproject/.idea/
+/Miniproject/.settings/
