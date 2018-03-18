@@ -112,11 +112,11 @@ public class Map {
 				treeCount += 1;
 			}
 		}
-		for(int i = 0; i <= Constants.MAX_ROCKS; i++) { //Maximum number of trees
+		for(int i = 0; i <= Constants.MAX_ROCKS; i++) { //Maximum number of rocks
 			Random random = new Random();
 			int rng = random.nextInt(100);
 			if(rng < Constants.ROCK_PERCENTAGE) {
-				//We want to ensure the trees generated are within map boundaries
+				//We want to ensure the rocks generated are within map boundaries
 				int rngx = random.nextInt(Constants.MAP_WIDTH * Tile.TILEWIDTH); 
 				int rngy = random.nextInt(Constants.MAP_HEIGHT * Tile.TILEHEIGHT);
 				entityManager.addEntity(new RockPile(manager, rngx, rngy));

@@ -27,7 +27,7 @@ public class Player extends Actor {
 		super(manager, x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
 		
 		Random random = new Random();
-        int rng = (int) random.nextInt(10) - 4; //This luck factor can be negative
+        int rng = random.nextInt(10) - 4; //This luck factor can be negative
 
         this.charLuck = rng;
         
@@ -158,9 +158,11 @@ public class Player extends Actor {
 		
 		
 	}
-	
+
+	//We want this to render on top of everything
 	public void postRender(Graphics g) {
 		inventory.render(g);
+		manager.getGame().getGameTimer().render(g);
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {
@@ -195,8 +197,7 @@ public class Player extends Actor {
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
-	
-	
+
 	
 	
 

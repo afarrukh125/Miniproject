@@ -13,6 +13,7 @@ import me.afarrukh.miniproject.states.GameState;
 import me.afarrukh.miniproject.states.MenuState;
 import me.afarrukh.miniproject.states.SettingState;
 import me.afarrukh.miniproject.states.State;
+import me.afarrukh.miniproject.ui.GameTimer;
 
 public class Game implements Runnable {
 	//We implement runnable so we can run it off a thread
@@ -39,6 +40,7 @@ public class Game implements Runnable {
 	private GameCamera gameCamera; //The camera for the game
 	
 	private Manager manager;
+	private GameTimer gameTimer;
 	
 	
 	public Game(String title, int width, int height) {
@@ -68,8 +70,10 @@ public class Game implements Runnable {
 		Visuals.init();
 		
 		manager = new Manager(this);
+
 		gameCamera = new GameCamera(manager, 0, 0);
-		
+		gameTimer = new GameTimer(manager);
+
 		gameState = new GameState(manager);
 		//We want to initialise the states we may switch to for easy access
 		menuState = new MenuState(manager); 
@@ -139,10 +143,11 @@ public class Game implements Runnable {
 				delta--;
 				
 			}
-			
-			//If we have exceeded more than one nanosecond, then reset our ticks and timer
+			//If we have exceeded more than one nanosecond, then reset our ticks and
+			//Operations within this if statement are things that occur once per second
 			if(timer >= 1000000000) {
-				System.out.println("Frame rate " +ticks);
+				//System.out.println("Frame rate " +ticks);
+				gameTimer.tick(); //Only tick the timer once per second
 				ticks = 0;
 				timer = 0;
 			}
@@ -171,6 +176,8 @@ public class Game implements Runnable {
 	public int getHeight() {
 		return height;
 	}
+
+	public GameTimer getGameTimer() { return gameTimer; }
 	
 	public synchronized void start() {
 		if(running)

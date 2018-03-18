@@ -40,6 +40,10 @@ public class Inventory {
 	public void tick() {
 		if(manager.getKeyManager().keyJustPressed(KeyEvent.VK_I))
 			active = !active; //switches the status of the active status of the inventory
+
+		if(manager.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE) && active)
+			active = false;
+
 		if(!active)
 			return;
 		
