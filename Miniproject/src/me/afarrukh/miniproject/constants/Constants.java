@@ -63,4 +63,8 @@ public class Constants {
     public static final int GRASS_PERCENTAGE = 93; //This is the percentage of terrain that is generated as a grass tile.
     public static final int TILEWIDTH = 64;
     public static final int TILEHEIGHT = 64;
+    
+    //Entity related constants
+    public static final int MAX_TREES = 500;
+    public static final int TREE_PERCENTAGE = 50;
 }

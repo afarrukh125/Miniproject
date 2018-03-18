@@ -1,11 +1,11 @@
 package me.afarrukh.miniproject.maps;
 
 import java.awt.Graphics;
+import java.util.Random;
 
 import me.afarrukh.miniproject.Manager;
+import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.entities.EntityManager;
-import me.afarrukh.miniproject.entities.actors.Archer;
-import me.afarrukh.miniproject.entities.actors.Fighter;
 import me.afarrukh.miniproject.entities.actors.Mage;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
 import me.afarrukh.miniproject.items.ItemManager;
@@ -97,10 +97,20 @@ public class Map {
 		}
 	}
 
-	public void generateEntities() {
-		for(int i = 0; i <= 8; i++) {
-			entityManager.addEntity(new Tree(manager, 100 * i, 100 * i));
+	private void generateEntities() {
+		int treeCount = 0;
+		for(int i = 0; i <= Constants.MAX_TREES; i++) { //Maximum number of trees
+			Random random = new Random();
+			int rng = random.nextInt(100);
+			if(rng < Constants.TREE_PERCENTAGE) {
+				//We want to ensure the trees generated are within map boundaries
+				int rngx = random.nextInt(Constants.MAP_WIDTH * Tile.TILEWIDTH); 
+				int rngy = random.nextInt(Constants.MAP_HEIGHT * Tile.TILEHEIGHT);
+				entityManager.addEntity(new Tree(manager, rngx, rngy));
+				treeCount += 1;
+			}
 		}
+		System.out.println("Number of trees: " +treeCount);
 	}
 
 	public EntityManager getEntityManager() {
