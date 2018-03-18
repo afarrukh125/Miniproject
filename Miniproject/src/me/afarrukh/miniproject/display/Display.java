@@ -3,6 +3,7 @@ package me.afarrukh.miniproject.display;
 import java.awt.Canvas;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Display {
@@ -39,6 +40,8 @@ public class Display {
 		
 		frame.add(canvas);
 		frame.pack();
+		ImageIcon img = new ImageIcon("res/images/icon.png");
+		frame.setIconImage(img.getImage());
 	}
 	
 	public Canvas getCanvas() { //Standard getter method to return our canvas

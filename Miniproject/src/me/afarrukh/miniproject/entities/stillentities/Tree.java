@@ -3,7 +3,7 @@ package me.afarrukh.miniproject.entities.stillentities;
 import java.awt.Graphics;
 
 import me.afarrukh.miniproject.Manager;
-import me.afarrukh.miniproject.entities.actors.Archer;
+import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.items.Item;
 import me.afarrukh.miniproject.tiles.Tile;
@@ -12,6 +12,8 @@ public class Tree extends StillEntity {
 
 	public Tree(Manager manager, float x, float y) {
 		super(manager, x, y, Tile.TILEWIDTH*2, Tile.TILEHEIGHT*2);
+		
+		health = Constants.TREE_HEALTH;
 		
 		hitbox.x = hitbox.width /2 - 20;
 		hitbox.y = hitbox.height/2 + 15;

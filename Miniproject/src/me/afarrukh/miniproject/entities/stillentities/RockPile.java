@@ -14,6 +14,7 @@ public class RockPile extends StillEntity {
 	public RockPile(Manager manager, float x, float y) {
 		super(manager, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
 		health = Constants.ROCK_HEALTH;
+		
 		hitbox.x = hitbox.width /2 - 20;
 		hitbox.y = hitbox.height/2 + 15;
 		hitbox.width = 40;
@@ -22,7 +23,6 @@ public class RockPile extends StillEntity {
 
 	@Override
 	public void tick() {
-		
 		
 	}
 
