@@ -80,6 +80,9 @@ public class Player extends Actor {
 		if(attackTimer < attackCooldown) 
 			return;
 		
+		if(inventory.isActive())
+			return;
+		
 		Rectangle collisionBox = getCollisionBounds(0, 0);
 		
 		Rectangle attackRectangle = new Rectangle();
@@ -118,6 +121,10 @@ public class Player extends Actor {
 	}
 	
 	public void getInput() {
+		
+		if(inventory.isActive())
+			return;
+		
 		xMove = 0;
 		yMove = 0;
 		attacking = false;
@@ -148,8 +155,12 @@ public class Player extends Actor {
 //				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 
 //						   hitbox.width, hitbox.height);
 		
-		inventory.render(g);
 		
+		
+	}
+	
+	public void postRender(Graphics g) {
+		inventory.render(g);
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {

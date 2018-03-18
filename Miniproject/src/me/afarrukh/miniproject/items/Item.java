@@ -67,6 +67,14 @@ public class Item {
 		i.setPosition(x, y);
 		return i;
 	}
+	
+	public Item createCopy(int instances) {
+		Item i = new Item(texture, name, id);
+		i.setPickedUp(true);
+		i.setInstances(instances);
+		return i;
+	}
+	
 	public void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -130,6 +138,12 @@ public class Item {
 	public boolean isPickedUp() {
 		return pickedUp;
 	}
+
+	public void setPickedUp(boolean pickedUp) {
+		this.pickedUp = pickedUp;
+	}
+	
+	
 	
 	
 	
