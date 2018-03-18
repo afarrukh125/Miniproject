@@ -7,6 +7,7 @@ import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.entities.EntityManager;
 import me.afarrukh.miniproject.entities.actors.Mage;
+import me.afarrukh.miniproject.entities.stillentities.RockPile;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
 import me.afarrukh.miniproject.items.ItemManager;
 import me.afarrukh.miniproject.tiles.Tile;
@@ -99,6 +100,7 @@ public class Map {
 
 	private void generateEntities() {
 		int treeCount = 0;
+		int rockCount = 0;
 		for(int i = 0; i <= Constants.MAX_TREES; i++) { //Maximum number of trees
 			Random random = new Random();
 			int rng = random.nextInt(100);
@@ -110,7 +112,19 @@ public class Map {
 				treeCount += 1;
 			}
 		}
+		for(int i = 0; i <= Constants.MAX_ROCKS; i++) { //Maximum number of trees
+			Random random = new Random();
+			int rng = random.nextInt(100);
+			if(rng < Constants.ROCK_PERCENTAGE) {
+				//We want to ensure the trees generated are within map boundaries
+				int rngx = random.nextInt(Constants.MAP_WIDTH * Tile.TILEWIDTH); 
+				int rngy = random.nextInt(Constants.MAP_HEIGHT * Tile.TILEHEIGHT);
+				entityManager.addEntity(new RockPile(manager, rngx, rngy));
+				rockCount += 1;
+			}
+		}
 		System.out.println("Number of trees: " +treeCount);
+		System.out.println("Number of rocks: " + rockCount);
 	}
 
 	public EntityManager getEntityManager() {

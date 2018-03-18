@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  */
 public class Visuals {
 
-	public static BufferedImage grass, rock, water, lava, sand, tree;
+	public static BufferedImage grass, rock, water, lava, sand, tree, rockPile, gem;
 	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still, archer_attack;
 	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack;
 	public static BufferedImage[] fighter_up, fighter_down, fighter_left, fighter_right, fighter_still, fighter_attack;
@@ -102,7 +102,11 @@ public class Visuals {
 		grass = sheet.crop(width, height, width, height);
 		rock = sheet.crop(0, height, width, height);
 		sand = sheet.crop(width*3, height, width, height);
+		
+		//Entities/Items
 		tree = sheet.crop(width*4, 0, width, height);
+		rockPile = sheet.crop(width*5, 0, width, height);
+		gem = sheet.crop(width*6, 0, width, height);
 	}
 
 	public static int getWidth() {

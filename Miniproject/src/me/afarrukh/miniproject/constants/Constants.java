@@ -67,4 +67,10 @@ public class Constants {
     //Entity related constants
     public static final int MAX_TREES = 500;
     public static final int TREE_PERCENTAGE = 50;
+    
+    public static final int MAX_ROCKS = 225;
+    public static final int ROCK_PERCENTAGE = 35;
+    public static final int ROCK_HEALTH = 132;
+    public static final int GEM_CHANCE = 10;
+    
 }

@@ -12,6 +12,8 @@ public class Item {
 	//Item Manager - items to be added here
 	public static Item[] items = new Item[256];
 	public static Item woodItem = new Item(Visuals.tree, "Wood", 0);
+	public static Item rockItem = new Item(Visuals.rockPile, "Rock", 1);
+	public static Item gemItem = new Item(Visuals.gem, "Gem", 2);
 	
 	public static final int ITEM_WIDTH = 32, ITEM_HEIGHT = 32;
 	

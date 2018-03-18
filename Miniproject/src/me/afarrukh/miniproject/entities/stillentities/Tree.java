@@ -26,7 +26,6 @@ public class Tree extends StillEntity {
 	
 	@Override
 	public void die() {
-		System.out.println("Tree at (" +x+", "+y+") has been destroyed.");
 		manager.getMap().getItemManager().addItem(Item.woodItem.createCopy((int) x, (int) y));
 	}
 
