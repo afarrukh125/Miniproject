@@ -28,7 +28,7 @@ public class ItemManager {
 		while(iter.hasNext()) {
 			Item i = iter.next();
 			i.tick();
-			if(i.getInstances() == Item.PICKED_UP)
+			if(i.isPickedUp())
 				iter.remove();
 		}
 	}

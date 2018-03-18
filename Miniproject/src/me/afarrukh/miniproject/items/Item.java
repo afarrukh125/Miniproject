@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.items;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import me.afarrukh.miniproject.Manager;
@@ -10,16 +11,19 @@ public class Item {
 
 	//Item Manager - items to be added here
 	public static Item[] items = new Item[256];
-	public static Item woodItem = new Item(Visuals.startBtn[0], "Wood", 0);
+	public static Item woodItem = new Item(Visuals.tree, "Wood", 0);
 	
-	public static final int ITEM_WIDTH = 32, ITEM_HEIGHT = 32, PICKED_UP = -1;
+	public static final int ITEM_WIDTH = 32, ITEM_HEIGHT = 32;
 	
 	protected Manager manager;
 	protected BufferedImage texture; //This is the image that represents this pickup
 	protected String name;
 	protected final int id;
 	
+	protected Rectangle bounds;
+	
 	protected int x, y, instances;
+	protected boolean pickedUp = false;
 	
 	public Item(BufferedImage texture, String name, int id) {
 		this.texture = texture;
@@ -27,11 +31,16 @@ public class Item {
 		this.id = id;
 		instances = 1; //Amount of instances of this item that the player has
 		
+		bounds = new Rectangle(x, y, ITEM_WIDTH, ITEM_HEIGHT);
+		
 		items[id] = this; //Defines what item will be rendered.
 	}
 	
 	public void tick() {
-		
+		if(manager.getMap().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)) {
+			pickedUp = true;
+			manager.getMap().getEntityManager().getPlayer().getInventory().addItem(this);
+		}
 	}
 	
 	public void render(Graphics g) {
@@ -59,6 +68,8 @@ public class Item {
 	public void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
+		bounds.x = x;
+		bounds.y = y;
 	}
 
 	//Getter/Setter methods
@@ -113,6 +124,12 @@ public class Item {
 	public int getId() {
 		return id;
 	}
+
+	public boolean isPickedUp() {
+		return pickedUp;
+	}
+	
+	
 	
 	
 }

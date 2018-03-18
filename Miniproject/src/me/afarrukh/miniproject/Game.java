@@ -142,7 +142,7 @@ public class Game implements Runnable {
 			
 			//If we have exceeded more than one nanosecond, then reset our ticks and timer
 			if(timer >= 1000000000) {
-				System.out.println("Ticks and frames " +ticks);
+				System.out.println("Frame rate " +ticks);
 				ticks = 0;
 				timer = 0;
 			}

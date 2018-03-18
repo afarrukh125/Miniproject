@@ -10,6 +10,7 @@ import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.entities.Entity;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
+import me.afarrukh.miniproject.inventory.Inventory;
 
 public class Player extends Actor {
 	
@@ -19,6 +20,8 @@ public class Player extends Actor {
 	public boolean attacking; //boolean which determines if animation for attacking is played
 	private int charLuck; //If they are a playable character, (at the very least) their attack accuracy has a luck factor
 	
+	//Inventory
+	private Inventory inventory;
 	
 	public Player(Manager manager, float x, float y) {
 		super(manager, x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
@@ -41,6 +44,8 @@ public class Player extends Actor {
 		animStill = new Animation(250, Visuals.mage_still);
 		animAtk = new Animation(93, Visuals.mage_attack);
 		
+		inventory = new Inventory(manager);
+		
 	}
 
 	@Override
@@ -59,6 +64,9 @@ public class Player extends Actor {
 		
 		//Attack
 		checkAttacks();
+		
+		//Inventory
+		inventory.tick();
 	}
 	
 	/**
@@ -140,6 +148,8 @@ public class Player extends Actor {
 //				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 
 //						   hitbox.width, hitbox.height);
 		
+		inventory.render(g);
+		
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {
@@ -165,6 +175,14 @@ public class Player extends Actor {
 
 	public void setCharLuck(int charLuck) {
 		this.charLuck = charLuck;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 	
 	
