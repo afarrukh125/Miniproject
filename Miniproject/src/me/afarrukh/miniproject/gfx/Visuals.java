@@ -14,7 +14,7 @@ public class Visuals {
 	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack;
 	public static BufferedImage[] fighter_up, fighter_down, fighter_left, fighter_right, fighter_still, fighter_attack;
 	public static BufferedImage[] startBtn;
-	public static BufferedImage inventoryScreen;
+	public static BufferedImage inventoryUI;
 	
 	private static final int width = 44, height = 44;
 	
@@ -25,7 +25,7 @@ public class Visuals {
 		font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/images/spritesheet.png"));
-		inventoryScreen = ImageLoader.loadImage("/images/inventoryScreen.png");
+		inventoryUI = ImageLoader.loadImage("/images/inventoryUI.png");
 		
 		startBtn = new BufferedImage[2];
 		startBtn[0] = sheet.crop(width*4, height, width*2, height);

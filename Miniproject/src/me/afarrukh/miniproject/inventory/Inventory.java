@@ -14,18 +14,35 @@ public class Inventory {
 	
 	private Manager manager;
 	private boolean active = false;
+
+	//*******************************************************************
+	//Very specific coordinates
+	private int invWidth = 528, invHeight = 424, invX = 275, invY = 140;
 	
-	private int invWidth = 512, invHeight = 384, invX = 64, invY = 48;
-	
-	private int invListCenterX = invX + 171,
-			invListCenterY = invY + invHeight / 2 + 5,
-			invListSpacing = 30;
-	
+	private int invListCenterX = invX + 220,
+			invListCenterY = invY + invHeight / 2,
+			invListSpacing = 85;
+
+	private int invImgCenterX = invX + 20,
+			invImgCenterY = invListCenterY - 32;
+
 	private int invImageX = 452, invImageY = 82,
 			invImageWidth = 64, invImageHeight = 64;
 	
-	private int invCountX = 484, invCountY = 172;
-	
+	private int invCountX = 495, invCountY = 417;
+
+	//Drawing on the character and stats
+	private int charImgX = invX + invWidth - 165,
+				charImgY = invY + 15,
+				charImgWidth = 128,
+				charImgHeight = 128;
+
+	private int charLabelX = charImgX + 70,
+				charLabelY = charImgY + 168;
+
+	//*******************************************************************
+
+	//Other variables
 	private int selectedItem = 0;
 	
 	
@@ -64,29 +81,39 @@ public class Inventory {
 		if(!active)
 			return;
 		
-		g.drawImage(Visuals.inventoryScreen, invX, invY, invWidth, invHeight, null);
+		g.drawImage(Visuals.inventoryUI, invX, invY, invWidth, invHeight, null);
 		
 		int length = inventoryItems.size();
+		Item item = inventoryItems.get(selectedItem);
 		if(length == 0)
 			return;
 		
-		for(int i = -5; i < 6; i++) {
+		for(int i = -2; i < 3; i++) {
 			if(selectedItem + i < 0 || selectedItem +i >= length) //Checking bounds
 				continue;
 			if(i == 0) {
+				//Drawing both text and image for selected image
 				Text.drawString(g, ">> " +inventoryItems.get(selectedItem + i).getName() + " <<",
-					invListCenterX, invListCenterY + i * invListSpacing, true, Color.YELLOW, Visuals.font28);
+					invListCenterX, invListCenterY + i * invListSpacing, true, Color.GREEN, Visuals.font28);
+
+				g.drawImage(item.getTexture(), invImgCenterX, invImgCenterY + i * invListSpacing, invImageWidth,
+						invImageHeight, null);
+
 			} else {
-				Text.drawString(g, inventoryItems.get(selectedItem + i).getName(),
-						invListCenterX, invListCenterY + i * invListSpacing, true, Color.WHITE, Visuals.font28);
+				g.drawImage(inventoryItems.get(selectedItem + i).getTexture(),
+						invImgCenterX, invImgCenterY + i *invListSpacing, invImageWidth, invImageHeight, null);
 			}
 		}
-		
-		Item item = inventoryItems.get(selectedItem);
-		g.drawImage(item.getTexture(), invImageX, invImageY, invImageWidth,
-				invImageHeight, null);
+		//Draws the number of instances of selected item
 		Text.drawString(g, Integer.toString(item.getInstances()), 
 				invCountX, invCountY, true, Color.WHITE, Visuals.font28);
+
+		//Drawing character attributes and image onto the inventory menu
+		g.drawImage(manager.getMap().getEntityManager().getPlayer().getCurrentAnimationFrame(),
+				charImgX, charImgY, charImgWidth, charImgHeight, null);
+
+		Text.drawString(g, manager.getMap().getEntityManager().getPlayer().getType(),
+						charLabelX, charLabelY, true, Color.WHITE, Visuals.font28);
 	}
 	
 	//Inventory methods here

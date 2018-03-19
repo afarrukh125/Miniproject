@@ -6,6 +6,8 @@ import java.util.Random;
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.entities.EntityManager;
+import me.afarrukh.miniproject.entities.actors.Archer;
+import me.afarrukh.miniproject.entities.actors.Fighter;
 import me.afarrukh.miniproject.entities.actors.Mage;
 import me.afarrukh.miniproject.entities.stillentities.RockPile;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
@@ -35,8 +37,8 @@ public class Map {
 		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);
 
-		generateEntities();
 		loadMap(path);
+		generateEntities();
 		
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
@@ -106,8 +108,8 @@ public class Map {
 			int rng = random.nextInt(100);
 			if(rng < Constants.TREE_PERCENTAGE) {
 				//We want to ensure the trees generated are within map boundaries
-				int rngx = random.nextInt(Constants.MAP_WIDTH * Tile.TILEWIDTH); 
-				int rngy = random.nextInt(Constants.MAP_HEIGHT * Tile.TILEHEIGHT);
+				int rngx = random.nextInt(this.width * Tile.TILEWIDTH);
+				int rngy = random.nextInt(this.height * Tile.TILEHEIGHT);
 				entityManager.addEntity(new Tree(manager, rngx, rngy));
 				treeCount += 1;
 			}
@@ -117,8 +119,8 @@ public class Map {
 			int rng = random.nextInt(100);
 			if(rng < Constants.ROCK_PERCENTAGE) {
 				//We want to ensure the rocks generated are within map boundaries
-				int rngx = random.nextInt(Constants.MAP_WIDTH * Tile.TILEWIDTH); 
-				int rngy = random.nextInt(Constants.MAP_HEIGHT * Tile.TILEHEIGHT);
+				int rngx = random.nextInt(this.width * Tile.TILEWIDTH);
+				int rngy = random.nextInt(this.height * Tile.TILEHEIGHT);
 				entityManager.addEntity(new RockPile(manager, rngx, rngy));
 				rockCount += 1;
 			}

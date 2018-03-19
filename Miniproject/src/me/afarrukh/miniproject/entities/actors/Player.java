@@ -11,6 +11,7 @@ import me.afarrukh.miniproject.entities.Entity;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.inventory.Inventory;
+import me.afarrukh.miniproject.items.Item;
 
 public class Player extends Actor {
 	
@@ -165,7 +166,7 @@ public class Player extends Actor {
 		manager.getGame().getGameTimer().render(g);
 	}
 	
-	private BufferedImage getCurrentAnimationFrame() {
+	public BufferedImage getCurrentAnimationFrame() {
 		if(xMove < 0) {
 			//if we are moving to the left
 			return animLeft.getCurrentFrame();
