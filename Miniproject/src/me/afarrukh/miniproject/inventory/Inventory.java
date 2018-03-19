@@ -82,11 +82,21 @@ public class Inventory {
 			return;
 		
 		g.drawImage(Visuals.inventoryUI, invX, invY, invWidth, invHeight, null);
+		//Drawing character attributes and image onto the inventory menu
+		g.drawImage(manager.getMap().getEntityManager().getPlayer().getCurrentAnimationFrame(),
+				charImgX, charImgY, charImgWidth, charImgHeight, null);
+		Text.drawString(g, manager.getMap().getEntityManager().getPlayer().getType(),
+						charLabelX, charLabelY, true, Color.WHITE, Visuals.font28);
+		
+		
+		//Now proceeding to draw inventory items
 		
 		int length = inventoryItems.size();
-		Item item = inventoryItems.get(selectedItem);
+		//If there are no items in inventory we do not proceed with this menu
 		if(length == 0)
 			return;
+		
+		Item item = inventoryItems.get(selectedItem);
 		
 		for(int i = -2; i < 3; i++) {
 			if(selectedItem + i < 0 || selectedItem +i >= length) //Checking bounds
@@ -108,12 +118,6 @@ public class Inventory {
 		Text.drawString(g, Integer.toString(item.getInstances()), 
 				invCountX, invCountY, true, Color.WHITE, Visuals.font28);
 
-		//Drawing character attributes and image onto the inventory menu
-		g.drawImage(manager.getMap().getEntityManager().getPlayer().getCurrentAnimationFrame(),
-				charImgX, charImgY, charImgWidth, charImgHeight, null);
-
-		Text.drawString(g, manager.getMap().getEntityManager().getPlayer().getType(),
-						charLabelX, charLabelY, true, Color.WHITE, Visuals.font28);
 	}
 	
 	//Inventory methods here
