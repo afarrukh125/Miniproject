@@ -199,7 +199,9 @@ public class Player extends Actor {
 		this.inventory = inventory;
 	}
 
-	
+	public BufferedImage getStillAnim() {
+		return animStill.getCurrentFrame();
+	}
 	
 
 }

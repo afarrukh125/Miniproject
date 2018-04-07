@@ -19,7 +19,7 @@ public class ItemManager {
 	
 	public ItemManager(Manager manager) {
 		this.manager = manager;
-		items = new ArrayList<Item>();
+		items = new ArrayList<>();
 		
 	}
 	

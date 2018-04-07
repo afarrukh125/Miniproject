@@ -34,12 +34,13 @@ public class EntityManager {
 		this.manager = manager;
 		this.player = player;
 		
-		entities = new ArrayList<Entity>();
+		entities = new ArrayList<>();
 		addEntity(player);
 	}
 	
 	public void tick() {
 		//Iterator used to prevent entities being removed during an important tick event
+        //Also because removing an entity using the ArrayList method 'remove' can have unwanted consequences.
 		Iterator<Entity> iter = entities.iterator();
 		while(iter.hasNext()) {
 				/*We use a regular for loop here in the tick() method unlike our 

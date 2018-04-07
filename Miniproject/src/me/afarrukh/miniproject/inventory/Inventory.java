@@ -83,7 +83,7 @@ public class Inventory {
 		
 		g.drawImage(Visuals.inventoryUI, invX, invY, invWidth, invHeight, null);
 		//Drawing character attributes and image onto the inventory menu
-		g.drawImage(manager.getMap().getEntityManager().getPlayer().getCurrentAnimationFrame(),
+		g.drawImage(manager.getMap().getEntityManager().getPlayer().getStillAnim(),
 				charImgX, charImgY, charImgWidth, charImgHeight, null);
 		Text.drawString(g, manager.getMap().getEntityManager().getPlayer().getType(),
 						charLabelX, charLabelY, true, Color.WHITE, Visuals.font28);

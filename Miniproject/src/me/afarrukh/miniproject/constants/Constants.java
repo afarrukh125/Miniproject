@@ -12,7 +12,7 @@ public class Constants {
     public static final int RETALIATION_RESIST = 2; //How much to divide the targets armor by during retaliation attack
 
     //Character specific constants
-    public static final float ACTORMS = 4.0f;
+    public static final float ACTORMS = 6.0f;
     
     //Archer class constants
     public static final int ARCHER_ATTACK_ACC = 85;
@@ -37,7 +37,7 @@ public class Constants {
     public static final int MAGE_MAXHP = 500;
     public static final int MAGE_HPREGEN = 8;
     public static final int MAGE_ENERGY = 400;
-    public static final int MAGE_SPEED = 6;
+    public static final int MAGE_SPEED = 7;
 
     //Priest class constants
     public static final int PRIEST_ATTACK_ACC = 90;
