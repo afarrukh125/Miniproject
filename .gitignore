@@ -3,5 +3,6 @@
 
 *.iml
 
-/Miniproject/.idea/
-/Miniproject/.settings/
+/Miniproject/.idea/*
+/Miniproject/.settings/*
+/Miniproject/Miniproject/bin/*
