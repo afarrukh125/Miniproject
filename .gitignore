@@ -1,10 +1,11 @@
 /.metadata/
 /.recommenders/
-
-*.iml
-
 /Miniproject/.idea/*
 /Miniproject/.settings/*
 /Miniproject/Miniproject/bin/*
+/Miniproject/Miniproject/out/*
 /Miniproject/Miniproject.jar
 /Miniproject/res/META-INF/*
+
+*.iml
+*.class

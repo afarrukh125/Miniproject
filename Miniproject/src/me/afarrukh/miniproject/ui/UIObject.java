@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 /**
  * 
  * @author Abdullah
- * @description A UI object is an object shown to the user on the main menu, for instance a button for the main menu that starts the game
+ * A UI object is an object shown to the user on the main menu, for instance a button for the main menu that starts the game
  */
 abstract class UIObject {
 
@@ -33,14 +33,14 @@ abstract class UIObject {
 	protected abstract void onClick(); //A UI Object will be able to recognise when a user is hovering/clicking on it
 
 	
-	public void onMouseMove(MouseEvent e) {
+	void onMouseMove(MouseEvent e) {
 		if(hitbox.contains(e.getX(), e.getY()))
 			hovering = true;
 		else
 			hovering = false;
 	}
 	
-	public void onMouseRelease(MouseEvent e) {
+	void onMouseRelease(MouseEvent e) {
 		if(hovering)
 			onClick(); //Will call the UI object's method that decides what happens when it is clicked on
 	}
