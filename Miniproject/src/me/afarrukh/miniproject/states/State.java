@@ -9,7 +9,7 @@ import me.afarrukh.miniproject.Manager;
 
 public abstract class State {
 	
-	//The top section of this class is just getters/setters for the current state of the game
+	//The top section of this class consists of static getters/setters for the current state of the game
 	//This could have easily been done in a separate class but as a matter of preference that has not been done.
 	private static State currentState = null;
 	

@@ -13,6 +13,8 @@ public class Constants {
 
     //Character specific constants
     public static final float ACTORMS = 6.0f;
+
+    public static final int DEFAULT_TILE_REFRESH_SPEED = 300; //Speed in milliseconds before a tile changes frames
     
     //Archer class constants
     public static final int ARCHER_ATTACK_ACC = 85;

@@ -43,6 +43,21 @@ public class Map {
 	}
 	
 	public void tick() {
+		int xStart = (int) Math.max(0, manager.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tiles with negative coordinates
+		int xEnd = (int) Math.min(width, (manager.getGameCamera().getxOffSet() + manager.getWidth()) / Tile.TILEWIDTH + 1);
+		int yStart = (int) Math.max(0, manager.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
+		int yEnd = (int) Math.min(height, (manager.getGameCamera().getyOffSet() + manager.getHeight()) / Tile.TILEHEIGHT + 1);
+
+		for(int y = yStart; y<yEnd; y++) {
+			for(int x = xStart; x<xEnd ; x++) {
+				Tile tile = getTile(x, y);
+				if(tile.getMaxAnimationFrames() > 1) {
+					tile.tick();
+				}
+				//We must use the TILE.TILEWIDTH/HEIGHT to match the units, otherwise only pixels are rendered
+			}
+		}
+
 		itemManager.tick();
 		entityManager.tick();
 	}

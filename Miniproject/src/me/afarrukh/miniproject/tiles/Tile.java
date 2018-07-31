@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.tiles;
 
 import me.afarrukh.miniproject.constants.Constants;
+import me.afarrukh.miniproject.gfx.Animation;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -12,7 +13,7 @@ import java.awt.image.BufferedImage;
  * It is simply the terrain handler for the game. We will have many of these on which the character can walk on
  * A tile has a method called isSolid() which returns whether or not the tile is traversable.
  */
-public abstract class Tile {
+public class Tile {
 
 	//STATIC CONSTANTS
 	
@@ -27,11 +28,11 @@ public abstract class Tile {
 	public static final int TILEWIDTH = Constants.TILEWIDTH,
 							TILEHEIGHT = Constants.TILEHEIGHT; //These are the dimensions for a tile.
 	
-	private final BufferedImage image;
+	private final Animation animation;
 	private final int id;
 	
-	Tile(BufferedImage image, int id) {
-		this.image = image;
+	Tile(BufferedImage[] images, int id) {
+		this.animation = new Animation(Constants.DEFAULT_TILE_REFRESH_SPEED, images);
 		this.id = id;
 		
 		tiles[id] = this;
@@ -39,7 +40,7 @@ public abstract class Tile {
 	
 	
 	public void tick() {
-		
+		animation.tick();
 	}
 	
 	/**
@@ -50,7 +51,7 @@ public abstract class Tile {
 	 */
 	
 	public void render(Graphics g, int x, int y) {
-		g.drawImage(image, x, y, TILEWIDTH, TILEHEIGHT, null);
+		g.drawImage(animation.getCurrentFrame(), x, y, TILEWIDTH, TILEHEIGHT, null);
 	}
 	public int getId() {
 		return id;
@@ -59,5 +60,9 @@ public abstract class Tile {
 	public boolean isSolid() { //Determines if this tile is traversable by an entity
 							   //If a tile is solid then it is not traversable by entities
 		return false; //By default it is traversable
+	}
+
+	public int getMaxAnimationFrames() {
+		return this.animation.getFrames().length;
 	}
 }

@@ -9,7 +9,8 @@ import java.awt.image.BufferedImage;
  */
 public class Visuals {
 
-	public static BufferedImage grass, rock, water, lava, sand, tree, rockPile, gem;
+	public static BufferedImage[] grass, rock, water, lava, sand;
+	public static BufferedImage tree, rockPile, gem;
 	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still, archer_attack;
 	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack;
 	public static BufferedImage[] fighter_up, fighter_down, fighter_left, fighter_right, fighter_still, fighter_attack;
@@ -104,11 +105,24 @@ public class Visuals {
 				
 		
 		//Assets for the textures
-		water = sheet.crop(width*3, 0, width, height);
-		lava = sheet.crop(width*2, height, width, height);
-		grass = sheet.crop(width, height, width, height);
-		rock = sheet.crop(0, height, width, height);
-		sand = sheet.crop(width*3, height, width, height);
+
+		//Water
+		water = new BufferedImage[2];
+		water[0] = sheet.crop(width*3, 0, width, height);
+		water[1] = sheet.crop(width*3, 0, width, height); //Change to second water animation
+
+		lava = new BufferedImage[2];
+		lava[0] = sheet.crop(width*2, height, width, height);
+		lava[1] = sheet.crop(width*2, height, width, height); //Change to second lava animation
+
+		grass = new BufferedImage[1];
+		grass[0] = sheet.crop(width, height, width, height);
+
+		rock = new BufferedImage[1];
+		rock[0] = sheet.crop(0, height, width, height);
+
+		sand = new BufferedImage[1];
+		sand[0] = sheet.crop(width*3, height, width, height);
 		
 		//Entities/Items
 		tree = sheet.crop(width*4, 0, width, height);
