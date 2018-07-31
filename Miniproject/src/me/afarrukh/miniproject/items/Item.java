@@ -10,24 +10,27 @@ import me.afarrukh.miniproject.gfx.Visuals;
 public class Item {
 
 	//Item Manager - items to be added here
-	public static Item[] items = new Item[256];
-	public static Item woodItem = new Item(Visuals.tree, "Wood", 0);
-	public static Item rockItem = new Item(Visuals.rockPile, "Rock", 1);
-	public static Item gemItem = new Item(Visuals.gem, "Gem", 2);
+	private static final Item[] items = new Item[256];
+	public static final Item woodItem = new Item(Visuals.tree, "Wood", 0);
+	public static final Item rockItem = new Item(Visuals.rockPile, "Rock", 1);
+	public static final Item gemItem = new Item(Visuals.gem, "Gem", 2);
 	
-	public static final int ITEM_WIDTH = 32, ITEM_HEIGHT = 32;
+	private static final int ITEM_WIDTH = 32;
+	private static final int ITEM_HEIGHT = 32;
 	
-	protected Manager manager;
-	protected BufferedImage texture; //This is the image that represents this pickup
-	protected String name;
-	protected final int id;
+	private Manager manager;
+	private BufferedImage texture; //This is the image that represents this pickup
+	private String name;
+	private final int id;
 	
-	protected Rectangle bounds;
+	private final Rectangle bounds;
 	
-	protected int x, y, instances;
-	protected boolean pickedUp = false;
+	private int x;
+	private int y;
+	private int instances;
+	private boolean pickedUp = false;
 	
-	public Item(BufferedImage texture, String name, int id) {
+	private Item(BufferedImage texture, String name, int id) {
 		this.texture = texture;
 		this.name = name;
 		this.id = id;
@@ -51,7 +54,7 @@ public class Item {
 		render(g, (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()));
 	}
 	
-	public void render(Graphics g,int x, int y) {
+	private void render(Graphics g, int x, int y) {
 		g.drawImage(texture, x, y, ITEM_WIDTH, ITEM_HEIGHT, null);
 	}
 	
@@ -75,7 +78,7 @@ public class Item {
 		return i;
 	}
 	
-	public void setPosition(int x, int y) {
+	private void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
 		bounds.x = x;
@@ -139,7 +142,7 @@ public class Item {
 		return pickedUp;
 	}
 
-	public void setPickedUp(boolean pickedUp) {
+	private void setPickedUp(boolean pickedUp) {
 		this.pickedUp = pickedUp;
 	}
 	

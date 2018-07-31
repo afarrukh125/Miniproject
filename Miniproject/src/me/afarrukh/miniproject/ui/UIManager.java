@@ -19,7 +19,7 @@ public class UIManager {
 	
 	public UIManager(Manager manager) {
 		this.manager = manager;
-		objects = new ArrayList<UIObject>();
+		objects = new ArrayList<>();
 	}
 	
 	public void tick() {

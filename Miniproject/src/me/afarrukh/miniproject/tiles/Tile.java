@@ -12,12 +12,12 @@ import java.awt.image.BufferedImage;
  * It is simply the terrain handler for the game. We will have many of these on which the character can walk on
  * A tile has a method called isSolid() which returns whether or not the tile is traversable.
  */
-public class Tile {
+public abstract class Tile {
 
 	//STATIC CONSTANTS
 	
-	public static Tile[] tiles = new Tile[256]; //This tile array will hold every single tile in our game
-	public static Tile grassTile = new GrassTile(0); //A tile with id 0 is a grass tile
+	public static final Tile[] tiles = new Tile[256]; //This tile array will hold every single tile in our game
+	public static final Tile grassTile = new GrassTile(0); //A tile with id 0 is a grass tile
 	public static Tile rockTile = new RockTile(1); //Rock tiles have id 1
 	public static Tile waterTile = new WaterTile(2);
 	public static Tile lavaTile = new LavaTile(3);
@@ -27,10 +27,10 @@ public class Tile {
 	public static final int TILEWIDTH = Constants.TILEWIDTH,
 							TILEHEIGHT = Constants.TILEHEIGHT; //These are the dimensions for a tile.
 	
-	protected BufferedImage image;
-	protected final int id;
+	private final BufferedImage image;
+	private final int id;
 	
-	public Tile(BufferedImage image, int id) {
+	Tile(BufferedImage image, int id) {
 		this.image = image;
 		this.id = id;
 		

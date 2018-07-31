@@ -15,7 +15,7 @@ import me.afarrukh.miniproject.Manager;
 public class ItemManager {
 
 	private Manager manager;
-	private ArrayList<Item> items;
+	private final ArrayList<Item> items;
 	
 	public ItemManager(Manager manager) {
 		this.manager = manager;

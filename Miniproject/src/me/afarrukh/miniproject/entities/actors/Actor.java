@@ -12,15 +12,16 @@ import me.afarrukh.miniproject.tiles.Tile;
 
 public abstract class Actor extends Entity{
 	
-	public static final float DEFAULT_MOVESPEED = Constants.ACTORMS;
-	public static final int DEFAULT_ACTOR_WIDTH = 64,
-							DEFAULT_ACTOR_HEIGHT = 64,
-							DEFAULT_ACTOR_ATKPOW = 19;
+	private static final float DEFAULT_MOVESPEED = Constants.ACTORMS;
+	static final int DEFAULT_ACTOR_WIDTH = 64;
+    static final int DEFAULT_ACTOR_HEIGHT = 64;
+    private static final int DEFAULT_ACTOR_ATKPOW = 19;
 	
-	protected float speed;
-	protected int attackPower;
+	float speed;
+	private int attackPower;
 	
-	protected float xMove, yMove; //How much the characters move by in pixels
+	float xMove;
+    float yMove; //How much the characters move by in pixels
 	
 	//Other attributes
 	private String name;
@@ -34,7 +35,7 @@ public abstract class Actor extends Entity{
     private int resistance;
     private int attackAccuracy;
     
-	public Actor(Manager manager, float x, float y, int width, int height) {
+	Actor(Manager manager, float x, float y, int width, int height) {
 		
 		super(manager, x, y, width, height);
 		speed = DEFAULT_MOVESPEED;
@@ -44,7 +45,7 @@ public abstract class Actor extends Entity{
 		
 	}
 	
-	public void move() {
+	void move() {
 		if(!checkEntityCollisions(xMove, 0f))
 			moveX();
 		if(!checkEntityCollisions(0f, yMove))
@@ -53,7 +54,7 @@ public abstract class Actor extends Entity{
 	
 	
 	//tx and ty refer to temporary x and y variables in which we check the collision status of a tile
-	public void moveX() {
+    private void moveX() {
 		if(xMove > 0) { //Right side with collision detection
 			int tx = (int) (x + xMove + hitbox.x + hitbox.width) /Tile.TILEWIDTH; //Dividing by tile width to convert between pixels and tile units
 			
@@ -82,7 +83,7 @@ public abstract class Actor extends Entity{
 		}
 	}
 	
-	public void moveY() {
+	private void moveY() {
 		if(yMove < 0) { //Up side with collision detection
 			int ty = (int) (y + yMove + hitbox.y) /Tile.TILEHEIGHT;
 			
@@ -107,7 +108,7 @@ public abstract class Actor extends Entity{
 		}
 	}
 	
-	protected boolean collisionWithTile(int x, int y) {
+	private boolean collisionWithTile(int x, int y) {
 		return manager.getMap().getTile(x, y).isSolid();
 	}
 
@@ -116,11 +117,11 @@ public abstract class Actor extends Entity{
 		return xMove;
 	}
 
-	public int getAttackPower() {
+	int getAttackPower() {
 		return attackPower;
 	}
 
-	public void setAttackPower(int attackPower) {
+	void setAttackPower(int attackPower) {
 		this.attackPower = attackPower;
 	}
 	
@@ -136,15 +137,15 @@ public abstract class Actor extends Entity{
 		return type;
 	}
 
-	public void setType(String type) {
+	void setType(String type) {
 		this.type = type;
 	}
 
-	public int getMaxHp() {
+	int getMaxHp() {
 		return maxHp;
 	}
 
-	public void setMaxHp(int maxHp) {
+	void setMaxHp(int maxHp) {
 		this.maxHp = maxHp;
 	}
 
@@ -152,7 +153,7 @@ public abstract class Actor extends Entity{
 		return Hp;
 	}
 
-	public void setHp(int hp) {
+	void setHp(int hp) {
 		Hp = hp;
 	}
 
@@ -160,7 +161,7 @@ public abstract class Actor extends Entity{
 		return HpRegen;
 	}
 
-	public void setHpRegen(int hpRegen) {
+	void setHpRegen(int hpRegen) {
 		HpRegen = hpRegen;
 	}
 
@@ -168,7 +169,7 @@ public abstract class Actor extends Entity{
 		return charEnergy;
 	}
 
-	public void setEnergy(double charEnergy) {
+	void setEnergy(double charEnergy) {
 		this.charEnergy = charEnergy;
 	}
 
@@ -176,7 +177,7 @@ public abstract class Actor extends Entity{
 		return resistance;
 	}
 
-	public void setResistance(int resistance) {
+	void setResistance(int resistance) {
 		this.resistance = resistance;
 	}
 
@@ -184,7 +185,7 @@ public abstract class Actor extends Entity{
 		return attackAccuracy;
 	}
 
-	public void setAttackAccuracy(int attackAccuracy) {
+	void setAttackAccuracy(int attackAccuracy) {
 		this.attackAccuracy = attackAccuracy;
 	}
 
@@ -212,7 +213,7 @@ public abstract class Actor extends Entity{
 		return speed;
 	}
 
-	public void setSpeed(float moveSpeed) {
+	void setSpeed(float moveSpeed) {
 		this.speed = moveSpeed;
 	}
 	

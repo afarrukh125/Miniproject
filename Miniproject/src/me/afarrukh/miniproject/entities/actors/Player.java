@@ -11,20 +11,25 @@ import me.afarrukh.miniproject.entities.Entity;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.inventory.Inventory;
-import me.afarrukh.miniproject.items.Item;
 
 public class Player extends Actor {
 	
 	//Animations
-	protected Animation animDown, animUp, animLeft, animRight, animStill, animAtk;
-	private long prevAttackTimer, attackCooldown = Constants.playerAtkCd, attackTimer = attackCooldown;
-	public boolean attacking; //boolean which determines if animation for attacking is played
+	Animation animDown;
+	Animation animUp;
+	Animation animLeft;
+	Animation animRight;
+	Animation animStill;
+	Animation animAtk;
+	private long prevAttackTimer;
+	private final long attackCooldown = Constants.playerAtkCd;
+	private long attackTimer = attackCooldown;
 	private int charLuck; //If they are a playable character, (at the very least) their attack accuracy has a luck factor
 	
 	//Inventory
 	private Inventory inventory;
 	
-	public Player(Manager manager, float x, float y) {
+	Player(Manager manager, float x, float y) {
 		super(manager, x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
 		
 		Random random = new Random();
@@ -121,14 +126,15 @@ public class Player extends Actor {
 		
 	}
 	
-	public void getInput() {
+	private void getInput() {
 		
 		if(inventory.isActive())
 			return;
 		
 		xMove = 0;
 		yMove = 0;
-		attacking = false;
+		//boolean which determines if animation for attacking is played
+		boolean attacking = false;
 		if(manager.getKeyManager().up) {
 			yMove = -speed;
 		}if(manager.getKeyManager().down) {
@@ -166,7 +172,7 @@ public class Player extends Actor {
 		manager.getGame().getGameTimer().render(g);
 	}
 	
-	public BufferedImage getCurrentAnimationFrame() {
+	private BufferedImage getCurrentAnimationFrame() {
 		if(xMove < 0) {
 			//if we are moving to the left
 			return animLeft.getCurrentFrame();
@@ -183,7 +189,7 @@ public class Player extends Actor {
 		}
 	}
 
-	public int getCharLuck() {
+	int getCharLuck() {
 		return charLuck;
 	}
 

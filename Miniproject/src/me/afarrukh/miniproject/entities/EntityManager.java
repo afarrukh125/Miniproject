@@ -15,10 +15,10 @@ import me.afarrukh.miniproject.entities.actors.Player;
 public class EntityManager {
 
 	private Manager manager;
-	private Player player;
-	private ArrayList<Entity> entities; //By using ArrayLists, we can have entities loaded/removed and 
+	private final Player player;
+	private final ArrayList<Entity> entities; //By using ArrayLists, we can have entities loaded/removed and
 										//don't have to commit to a specific number of entities we require for our game
-	private Comparator<Entity> renderSorter = new Comparator<Entity>() { //Sorting entities so they are rendered such that the entities higher up render later than entities lower down
+	private final Comparator<Entity> renderSorter = new Comparator<Entity>() { //Sorting entities so they are rendered such that the entities higher up render later than entities lower down
 
 		@Override
 		public int compare(Entity a, Entity b) {

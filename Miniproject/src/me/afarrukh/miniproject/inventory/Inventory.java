@@ -17,28 +17,19 @@ public class Inventory {
 
 	//*******************************************************************
 	//Very specific coordinates
-	private int invWidth = 528, invHeight = 424, invX = 275, invY = 140;
-	
-	private int invListCenterX = invX + 220,
-			invListCenterY = invY + invHeight / 2,
-			invListSpacing = 85;
+	private final int invWidth = 528;
+	private final int invHeight = 424;
+	private final int invX = 275;
+	private final int invY = 140;
 
-	private int invImgCenterX = invX + 20,
-			invImgCenterY = invListCenterY - 32;
+	private final int invListCenterY = invY + invHeight / 2;
 
-	private int invImageX = 452, invImageY = 82,
-			invImageWidth = 64, invImageHeight = 64;
-	
-	private int invCountX = 495, invCountY = 417;
+	private int invImageX = 452;
+	private int invImageY = 82;
 
 	//Drawing on the character and stats
-	private int charImgX = invX + invWidth - 165,
-				charImgY = invY + 15,
-				charImgWidth = 128,
-				charImgHeight = 128;
-
-	private int charLabelX = charImgX + 70,
-				charLabelY = charImgY + 168;
+	private final int charImgX = invX + invWidth - 165;
+	private final int charImgY = invY + 15;
 
 	//*******************************************************************
 
@@ -46,11 +37,11 @@ public class Inventory {
 	private int selectedItem = 0;
 	
 	
-	private ArrayList<Item> inventoryItems;
+	private final ArrayList<Item> inventoryItems;
 
 	public Inventory(Manager manager) {
 		this.manager = manager;
-		inventoryItems = new ArrayList<Item>();
+		inventoryItems = new ArrayList<>();
 		
 	}
 	
@@ -83,10 +74,14 @@ public class Inventory {
 		
 		g.drawImage(Visuals.inventoryUI, invX, invY, invWidth, invHeight, null);
 		//Drawing character attributes and image onto the inventory menu
+		int charImgHeight = 128;
+		int charImgWidth = 128;
 		g.drawImage(manager.getMap().getEntityManager().getPlayer().getStillAnim(),
 				charImgX, charImgY, charImgWidth, charImgHeight, null);
+		int charLabelY = charImgY + 168;
+		int charLabelX = charImgX + 70;
 		Text.drawString(g, manager.getMap().getEntityManager().getPlayer().getType(),
-						charLabelX, charLabelY, true, Color.WHITE, Visuals.font28);
+				charLabelX, charLabelY, true, Color.WHITE, Visuals.font28);
 		
 		
 		//Now proceeding to draw inventory items
@@ -101,21 +96,29 @@ public class Inventory {
 		for(int i = -2; i < 3; i++) {
 			if(selectedItem + i < 0 || selectedItem +i >= length) //Checking bounds
 				continue;
+			int invImageHeight = 64;
+			int invImageWidth = 64;
+			int invImgCenterY = invListCenterY - 32;
+			int invImgCenterX = invX + 20;
+			int invListSpacing = 85;
 			if(i == 0) {
 				//Drawing both text and image for selected image
+				int invListCenterX = invX + 220;
 				Text.drawString(g, ">> " +inventoryItems.get(selectedItem + i).getName() + " <<",
-					invListCenterX, invListCenterY + i * invListSpacing, true, Color.GREEN, Visuals.font28);
+						invListCenterX, invListCenterY + i * invListSpacing, true, Color.GREEN, Visuals.font28);
 
 				g.drawImage(item.getTexture(), invImgCenterX, invImgCenterY + i * invListSpacing, invImageWidth,
 						invImageHeight, null);
 
 			} else {
 				g.drawImage(inventoryItems.get(selectedItem + i).getTexture(),
-						invImgCenterX, invImgCenterY + i *invListSpacing, invImageWidth, invImageHeight, null);
+						invImgCenterX, invImgCenterY + i * invListSpacing, invImageWidth, invImageHeight, null);
 			}
 		}
 		//Draws the number of instances of selected item
-		Text.drawString(g, Integer.toString(item.getInstances()), 
+		int invCountY = 417;
+		int invCountX = 495;
+		Text.drawString(g, Integer.toString(item.getInstances()),
 				invCountX, invCountY, true, Color.WHITE, Visuals.font28);
 
 	}

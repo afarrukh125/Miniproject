@@ -15,7 +15,7 @@ import me.afarrukh.miniproject.ui.UIManager;
  */
 public class MenuState extends State{
 
-	private UIManager uiManager;
+	private final UIManager uiManager;
 	
 	public MenuState(Manager manager) {
 		super(manager);

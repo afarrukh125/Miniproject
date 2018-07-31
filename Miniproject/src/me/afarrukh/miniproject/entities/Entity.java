@@ -16,17 +16,17 @@ import me.afarrukh.miniproject.Manager;
  */
 public abstract class Entity {
 	
-	public static final int DEFAULT_HEALTH = 40;
+	private static final int DEFAULT_HEALTH = 40;
 	
-	protected Manager manager;
+	protected final Manager manager;
 	protected float x, y; //Making it float achieves smooth movement in our game. Furthermore, the calculations we do in our game will not give whole numbers.
 	protected int width, height; //This is the size of the entity
 	protected int health;
-	protected boolean active = true;
-	protected Rectangle hitbox; //The interactable boundaries of which the player can detect if a terrain (tile) is interactable or not
+	private boolean active = true;
+	protected final Rectangle hitbox; //The interactable boundaries of which the player can detect if a terrain (tile) is interactable or not
 	
 	
-	public Entity(Manager manager, float x, float y, int width, int height) {
+	protected Entity(Manager manager, float x, float y, int width, int height) {
 		this.manager = manager;
 		this.x = x;
 		this.y = y;
@@ -43,7 +43,7 @@ public abstract class Entity {
 	
 	public abstract void render(Graphics g);
 	
-	public abstract void die();
+	protected abstract void die();
 	
 	public void hurt(int amount) {
 		health -= amount;
@@ -56,7 +56,7 @@ public abstract class Entity {
 		
 	}
 	
-	public boolean checkEntityCollisions(float xOffset, float yOffset) {
+	protected boolean checkEntityCollisions(float xOffset, float yOffset) {
 		for(Entity e: manager.getMap().getEntityManager().getEntities()) {
 			if(e.equals(this)) //Checks if the entity that is being checked for collisions is not itself
 				continue;

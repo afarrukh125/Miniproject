@@ -12,8 +12,8 @@ import java.awt.*;
 
 public class GameTimer {
 
-    int gameTime;
-    Manager manager;
+    private int gameTime;
+    private final Manager manager;
 
     public GameTimer(Manager manager) {
         gameTime = 0;

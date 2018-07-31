@@ -20,26 +20,20 @@ public class Game implements Runnable {
 	
 	private Display display;
 	
-	public String title;
-	private int width, height;
+	private final String title;
+	private final int width;
+	private final int height;
 	
 	private boolean running = false; //This decides if the game is already running
 	private Thread thread; //Each individual game is only a section of the larger program
-	
-	private BufferStrategy buffStrat; //A bufferstrategy governs how and what is drawn
-	//A bufferstrategy prevents flickering since it preloads elements onto the display.
-	private Graphics g; //A graphics object is a paintbrush style object
-	
+
 	public State gameState; //The state of the game in which characters interact (This should be the main one)
-	public State menuState; //The main menu state
-	public State settingState; //The state for the settings menu
-	
-	private KeyManager keyManager; //The keyboard input manager we have made
-	private MouseManager mouseManager; //This manages the mouse inputs
+
+	private final KeyManager keyManager; //The keyboard input manager we have made
+	private final MouseManager mouseManager; //This manages the mouse inputs
 	
 	private GameCamera gameCamera; //The camera for the game
-	
-	private Manager manager;
+
 	private GameTimer gameTimer;
 	
 	
@@ -68,16 +62,18 @@ public class Game implements Runnable {
 		
 		
 		Visuals.init();
-		
-		manager = new Manager(this);
+
+		Manager manager = new Manager(this);
 
 		gameCamera = new GameCamera(manager, 0, 0);
 		gameTimer = new GameTimer(manager);
 
 		gameState = new GameState(manager);
 		//We want to initialise the states we may switch to for easy access
-		menuState = new MenuState(manager); 
-		settingState = new SettingState(manager);
+		//The main menu state
+		State menuState = new MenuState(manager);
+		//The state for the settings menu
+		State settingState = new SettingState(manager);
 		
 		State.setState(gameState); //This sets the state of the program to our game
 		
@@ -94,13 +90,16 @@ public class Game implements Runnable {
 	
 	private void render() {
 		//This sets our buffer strategy to whatever the buffer strategy is of the canvas
-		buffStrat = display.getCanvas().getBufferStrategy(); 
+		//A bufferstrategy governs how and what is drawn
+		BufferStrategy buffStrat = display.getCanvas().getBufferStrategy();
 		if(buffStrat == null) {
 			display.getCanvas().createBufferStrategy(3); //We will have 3 buffered screens for the game
 			return;
 		}
-		
-		g = buffStrat.getDrawGraphics();
+
+		//A bufferstrategy prevents flickering since it preloads elements onto the display.
+		//A graphics object is a paintbrush style object
+		Graphics g = buffStrat.getDrawGraphics();
 		//Clear the screen
 		g.clearRect(0, 0, width, height); //Clear for further rendering
 		
@@ -187,7 +186,7 @@ public class Game implements Runnable {
 		thread.start();
 	}
 	
-	public synchronized void stop() {
+	private synchronized void stop() {
 		if(!running)
 			return;
 		running = false;

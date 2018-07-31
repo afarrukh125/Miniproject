@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
 
 public class UIBasicButton extends UIObject {
 	
-	private BufferedImage[] images; //The array of images that belong to this UI button
-	private ClickListener clicker;
+	private final BufferedImage[] images; //The array of images that belong to this UI button
+	private final ClickListener clicker;
 
 	public UIBasicButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
 		super(x, y, width, height);

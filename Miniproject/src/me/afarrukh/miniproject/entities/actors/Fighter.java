@@ -5,7 +5,7 @@ import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
 
-public class Fighter extends Player {
+class Fighter extends Player {
 
 	public Fighter(Manager manager, float x, float y) {
 		super(manager, x, y);

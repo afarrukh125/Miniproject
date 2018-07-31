@@ -6,7 +6,7 @@ import me.afarrukh.miniproject.tiles.Tile;
 
 public class GameCamera {
 
-	private Manager manager;
+	private final Manager manager;
 	private float xOffSet, yOffSet;
 	
 	public GameCamera(Manager manager, float xOffSet, float yOffSet) {
@@ -15,7 +15,7 @@ public class GameCamera {
 		this.yOffSet = yOffSet;
 	}
 	
-	public void checkForBlank() { //Checks if we have reached any areas where null tiles/boundaries have been reached
+	private void checkForBlank() { //Checks if we have reached any areas where null tiles/boundaries have been reached
 		if(xOffSet < 0) {
 			xOffSet = 0;
 		} else if(xOffSet > manager.getMap().getWidth() * Tile.TILEWIDTH - manager.getWidth()) {

@@ -6,8 +6,6 @@ import java.util.Random;
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.entities.EntityManager;
-import me.afarrukh.miniproject.entities.actors.Archer;
-import me.afarrukh.miniproject.entities.actors.Fighter;
 import me.afarrukh.miniproject.entities.actors.Mage;
 import me.afarrukh.miniproject.entities.stillentities.RockPile;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
@@ -28,7 +26,7 @@ public class Map {
 	private int[][] tiles; //We require a multidimensional array to manage the tile positions
 	
 	//Entities/Items
-	private EntityManager entityManager;
+	private final EntityManager entityManager;
 	private ItemManager itemManager;
 	
 	public Map(Manager manager, String path) {

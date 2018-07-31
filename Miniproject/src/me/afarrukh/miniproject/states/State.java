@@ -22,11 +22,9 @@ public abstract class State {
 	}
 	
 	//Class methods required of subclasses
-	
-	protected Manager manager;
-	
-	public State(Manager manager) {
-		this.manager = manager;
+
+	State(Manager manager) {
+		Manager manager1 = manager;
 	}
 	
 	public abstract void tick();

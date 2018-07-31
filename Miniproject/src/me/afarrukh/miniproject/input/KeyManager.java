@@ -5,7 +5,9 @@ import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
 
-	private boolean[] keys, justPressed, cantPress;
+	private final boolean[] keys;
+    private final boolean[] justPressed;
+    private final boolean[] cantPress;
 	
 	public boolean up, down, left, right; //Movement controls
 	public boolean atkUp, atkDown, atkLeft, atkRight; //Attack controls

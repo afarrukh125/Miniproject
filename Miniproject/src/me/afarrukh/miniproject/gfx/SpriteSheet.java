@@ -2,9 +2,9 @@ package me.afarrukh.miniproject.gfx;
 
 import java.awt.image.BufferedImage;
 
-public class SpriteSheet {
+class SpriteSheet {
 
-	private BufferedImage sheet;
+	private final BufferedImage sheet;
 	
 	public SpriteSheet(BufferedImage sheet) {
 		this.sheet = sheet;

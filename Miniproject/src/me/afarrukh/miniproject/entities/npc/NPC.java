@@ -8,7 +8,7 @@ import me.afarrukh.miniproject.entities.Entity;
  * @author Abdullah
  * @description This represents a non playable character that the user can interact with.
  */
-public class NPC extends Entity {
+public abstract class NPC extends Entity {
 
 	public NPC(Manager manager, float x, float y, int width, int height) {
 		super(manager, x, y, width, height);

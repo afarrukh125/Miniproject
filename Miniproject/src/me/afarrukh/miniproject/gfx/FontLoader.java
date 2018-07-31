@@ -5,7 +5,7 @@ import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
 
-public class FontLoader {
+class FontLoader {
 
 	public static Font loadFont(String path, int size) {
 		

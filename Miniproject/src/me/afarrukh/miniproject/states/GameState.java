@@ -11,7 +11,7 @@ import me.afarrukh.miniproject.utils.UtilityTasks;
 
 public class GameState extends State{
 	
-	private Map map;
+	private final Map map;
 
 	public GameState(Manager manager) {
 		super(manager);

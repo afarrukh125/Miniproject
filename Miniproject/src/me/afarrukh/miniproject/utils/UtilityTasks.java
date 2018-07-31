@@ -22,7 +22,7 @@ public class UtilityTasks {
 			String line;
 			
 			while((line = br.readLine())!= null) {
-				builder.append(line + "\n");
+				builder.append(line).append("\n");
 			}
 			br.close();
 		}catch(IOException e) {
@@ -48,22 +48,22 @@ public class UtilityTasks {
 				String content = "";
 				for(int y = 0; y < Constants.MAP_WIDTH; y++) { //There are as many columns as the map width
 					if(x == 0)
-						builder.append(content + 1 + " ");
+						builder.append(content).append(1).append(" ");
 					else if(y == 0)
-						builder.append(content + 1 + " ");
+						builder.append(content).append(1).append(" ");
 					else if(x == Constants.MAP_WIDTH -1 )
-						builder.append(content + 1 + " ");
+						builder.append(content).append(1).append(" ");
 					else if(y == Constants.MAP_HEIGHT -1)
-						builder.append(content + 1 + " ");
+						builder.append(content).append(1).append(" ");
 					else {
 						Random random = new Random();
 						int deciderForGrass = random.nextInt(100);
 
 						if(deciderForGrass > Constants.GRASS_PERCENTAGE) {
 							int rng = random.nextInt(Constants.numTiles);
-							builder.append(content + rng + " ");
+							builder.append(content).append(rng).append(" ");
 						} else {
-							builder.append(content + 0 + " ");
+							builder.append(content).append(0).append(" ");
 						}
 					}
 				}

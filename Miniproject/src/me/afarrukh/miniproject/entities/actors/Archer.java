@@ -5,7 +5,7 @@ import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
 
-public class Archer extends Player {
+class Archer extends Player {
 
 	public Archer(Manager manager, float x, float y) {
 		super(manager, x, y);
