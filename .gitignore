@@ -6,7 +6,7 @@ Miniproject/bin/*
 Miniproject/out/*
 Miniproject/Miniproject.jar
 Miniproject/res/META-INF/*
-bin/
+/bin/
 
 *.iml
 *.class
