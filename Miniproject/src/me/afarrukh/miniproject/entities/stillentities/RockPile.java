@@ -36,11 +36,12 @@ public class RockPile extends StillEntity {
 	public void die() {
 		Random random = new Random();
 		int rng = random.nextInt(100);
-		if(rng < Constants.GEM_CHANCE)
+		int gemChance = Constants.GEM_CHANCE + manager.getMap().getEntityManager().getPlayer().getCharLuck();
+		if(rng < gemChance)
 			manager.getMap().getItemManager().addItem(Item.gemItem.createCopy((int) x, (int) y));
 		else
 			manager.getMap().getItemManager().addItem(Item.rockItem.createCopy((int) x, (int) y));
-		System.out.println("RNG Roll for gem: " +rng+ ". Where less than " +Constants.GEM_CHANCE+ " will give a gem.");
+		System.out.println("RNG Roll for gem: " +rng+ ". Where less than " +gemChance+ " will give a gem.");
 	}
 	
 

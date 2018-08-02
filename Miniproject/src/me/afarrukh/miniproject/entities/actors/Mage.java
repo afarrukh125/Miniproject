@@ -26,7 +26,8 @@ public class Mage extends Player {
 		animLeft = new Animation(250, Visuals.mage_left);
 		animRight = new Animation(250, Visuals.mage_right);
 		animStill = new Animation(250, Visuals.mage_still);
-		animAtk = new Animation(93, Visuals.mage_attack);
+		animAtkRight = new Animation(93, Visuals.mage_attack_right);
+		animAtkLeft = new Animation(93, Visuals.mage_attack_left);
 	}
 
 }

@@ -20,7 +20,8 @@ public class Player extends Actor {
 	Animation animLeft;
 	Animation animRight;
 	Animation animStill;
-	Animation animAtk;
+	Animation animAtkRight;
+	Animation animAtkLeft;
 	private long prevAttackTimer;
 	private final long attackCooldown = Constants.playerAtkCd;
 	private long attackTimer = attackCooldown;
@@ -48,10 +49,12 @@ public class Player extends Actor {
 		animLeft = new Animation(250, Visuals.mage_left);
 		animRight = new Animation(250, Visuals.mage_right);
 		animStill = new Animation(250, Visuals.mage_still);
-		animAtk = new Animation(93, Visuals.mage_attack);
+		animAtkRight = new Animation(93, Visuals.mage_attack_right);
+		animAtkLeft = new Animation(93, Visuals.mage_attack_left);
 		
 		inventory = new Inventory(manager);
-		
+
+		System.out.println("Player created with luck " +getCharLuck());
 	}
 
 	@Override
@@ -62,7 +65,8 @@ public class Player extends Actor {
 		animLeft.tick();
 		animRight.tick();
 		animStill.tick();
-		animAtk.tick();
+		animAtkRight.tick();
+		animAtkLeft.tick();
 		//Movement
 		getInput();
 		move();
@@ -155,7 +159,8 @@ public class Player extends Actor {
 	public void render(Graphics g) {
 		
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()), width, height, null);
-		
+
+		//Below code left in to experiment player hitboxes but commented under normal conditions.
 		//		g.setColor(Color.RED);
 //		
 //		g.fillRect((int) (x + hitbox.x - handler.getGameCamera().getxOffSet()),
@@ -183,13 +188,16 @@ public class Player extends Actor {
 		}else if(yMove > 0){
 			return animDown.getCurrentFrame();
 		}else if(manager.getKeyManager().isAttacking()) {
-			return animAtk.getCurrentFrame();
+			if(manager.getKeyManager().atkLeft)
+				return animAtkLeft.getCurrentFrame();
+			else
+				return animAtkRight.getCurrentFrame();
 		}else {
 			return animStill.getCurrentFrame();
 		}
 	}
 
-	int getCharLuck() {
+	public int getCharLuck() {
 		return charLuck;
 	}
 

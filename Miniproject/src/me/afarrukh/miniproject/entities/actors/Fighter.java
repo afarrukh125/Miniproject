@@ -23,8 +23,8 @@ class Fighter extends Player {
 		animUp = new Animation(250, Visuals.fighter_up);
 		animLeft = new Animation(250, Visuals.fighter_left);
 		animRight = new Animation(250, Visuals.fighter_right);
-		animStill = new Animation(250, Visuals.fighter_still);
-		animAtk = new Animation(93, Visuals.mage_attack);
+		animAtkRight = new Animation(93, Visuals.mage_attack_right);
+		animAtkLeft = new Animation(93, Visuals.mage_attack_left);
 	}
 
 }

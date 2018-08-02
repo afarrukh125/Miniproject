@@ -12,7 +12,7 @@ public class Visuals {
 	public static BufferedImage[] grass, rock, water, lava, sand;
 	public static BufferedImage tree, rockPile, gem;
 	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still, archer_attack;
-	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack;
+	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack_right, mage_attack_left;
 	public static BufferedImage[] fighter_up, fighter_down, fighter_left, fighter_right, fighter_still, fighter_attack;
 	public static BufferedImage[] startBtn;
 	public static BufferedImage inventoryUI;
@@ -54,12 +54,17 @@ public class Visuals {
 		mage_still[0] = sheet.crop(width*2, 0, width, height);
 		mage_still[1] = sheet.crop(width, height*4, width, height);
 		
-		mage_attack = new BufferedImage[4];
-		mage_attack[0] = sheet.crop(0, height*7, width, height);
-		mage_attack[1] = sheet.crop(width, height*7, width, height);
-		mage_attack[2] = sheet.crop(width*2, height*7, width, height);
-		mage_attack[3] = sheet.crop(width*3, height*7, width, height);
-		
+		mage_attack_right = new BufferedImage[4];
+		mage_attack_right[0] = sheet.crop(0, height*7, width, height);
+		mage_attack_right[1] = sheet.crop(width, height*7, width, height);
+		mage_attack_right[2] = sheet.crop(width*2, height*7, width, height);
+		mage_attack_right[3] = sheet.crop(width*3, height*7, width, height);
+
+		mage_attack_left = new BufferedImage[4];
+		mage_attack_left[0] = sheet.crop(width*7, height*7, width, height);
+		mage_attack_left[1] = sheet.crop(width*6, height*7, width, height);
+		mage_attack_left[2] = sheet.crop(width*5, height*7, width, height);
+		mage_attack_left[3] = sheet.crop(width*4, height*7, width, height);
 		
 		//Rendering the archer
 		archer_up = new BufferedImage[2];
@@ -102,18 +107,26 @@ public class Visuals {
         fighter_still = new BufferedImage[2];
         fighter_still[0] = sheet.crop(width*4, height*6, width, height);
         fighter_still[1] = sheet.crop(width, 0, width, height);
-				
-		
+
 		//Assets for the textures
 
 		//Water
-		water = new BufferedImage[2];
+		water = new BufferedImage[3];
 		water[0] = sheet.crop(width*3, 0, width, height);
-		water[1] = sheet.crop(width*3, 0, width, height); //Change to second water animation
+		water[1] = sheet.crop(width*7, 0, width, height);
+		water[2] = sheet.crop(width*7, height, width, height);
 
-		lava = new BufferedImage[2];
-		lava[0] = sheet.crop(width*2, height, width, height);
-		lava[1] = sheet.crop(width*2, height, width, height); //Change to second lava animation
+		SpriteSheet lavaSheet = new SpriteSheet(ImageLoader.loadImage("/images/lavasheet.png"));
+		lava = new BufferedImage[8];
+		lava[0] = lavaSheet.crop(width*2, height, width, height);
+		lava[1] = lavaSheet.crop(0, 0, width, height);
+		lava[2] = lavaSheet.crop(width, 0, width, height);
+		lava[3] = lavaSheet.crop(width*2, 0, width, height);
+		lava[4] = lavaSheet.crop(width*3, 0, width, height);
+		lava[5] = lavaSheet.crop(0, height, width, height);
+		lava[6] = lavaSheet.crop(width, height, width, height);
+		lava[7] = lavaSheet.crop(width*3, height, width, height);
+
 
 		grass = new BufferedImage[1];
 		grass[0] = sheet.crop(width, height, width, height);
