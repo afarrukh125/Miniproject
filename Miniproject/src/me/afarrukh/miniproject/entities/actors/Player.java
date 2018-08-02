@@ -1,7 +1,6 @@
 package me.afarrukh.miniproject.entities.actors;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -159,6 +158,16 @@ public class Player extends Actor {
 	public void render(Graphics g) {
 		
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()), width, height, null);
+
+		//Rendering player health bar
+		g.setColor(Color.GRAY);
+		g.fillRect((int) (x - manager.getGameCamera().getxOffSet())
+				, (int) (y - manager.getGameCamera().getyOffSet() - Constants.HEIGHT_ABOVE_PLAYER),
+				Constants.BAR_WIDTH, Constants.BAR_HEIGHT);
+		g.setColor(Color.RED);
+		g.fillRect((int) (x - manager.getGameCamera().getxOffSet()),
+				(int) (y - manager.getGameCamera().getyOffSet()) - Constants.HEIGHT_ABOVE_PLAYER,
+				Constants.BAR_WIDTH*this.getHealthAsPercentage()/100, Constants.BAR_HEIGHT);
 
 		//Below code left in to experiment player hitboxes but commented under normal conditions.
 		//		g.setColor(Color.RED);

@@ -22,6 +22,7 @@ public abstract class Entity {
 	protected float x, y; //Making it float achieves smooth movement in our game. Furthermore, the calculations we do in our game will not give whole numbers.
 	protected int width, height; //This is the size of the entity
 	protected int health;
+	protected final int maxHealth;
 	private boolean active = true;
 	protected final Rectangle hitbox; //The interactable boundaries of which the player can detect if a terrain (tile) is interactable or not
 	
@@ -35,6 +36,7 @@ public abstract class Entity {
 		this.height = height;
 		
 		this.health = DEFAULT_HEALTH;
+		this.maxHealth = health;
 		
 		hitbox = new Rectangle(0, 0, width, height);
 	}
@@ -116,6 +118,10 @@ public abstract class Entity {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public int getHealthAsPercentage() {
+		return (int) Math.round((double) health/maxHealth*100);
 	}
 	
 	

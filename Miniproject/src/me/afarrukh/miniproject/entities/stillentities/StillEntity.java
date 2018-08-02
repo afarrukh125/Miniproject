@@ -13,6 +13,4 @@ abstract class StillEntity extends Entity {
 	StillEntity(Manager manager, float x, float y, int width, int height) {
 		super(manager, x, y, width, height);
 	}
-	
-	
 }

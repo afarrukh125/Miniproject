@@ -75,5 +75,10 @@ public class Constants {
     public static final int ROCK_PERCENTAGE = 35;
     public static final int ROCK_HEALTH = 132;
     public static final int GEM_CHANCE = 10;
+
+    //Player HP Bar Constants
+    public static final int HEIGHT_ABOVE_PLAYER = 20; //Height in pixels above player
+    public static final int BAR_WIDTH = 60;
+    public static final int BAR_HEIGHT = 10;
     
 }
