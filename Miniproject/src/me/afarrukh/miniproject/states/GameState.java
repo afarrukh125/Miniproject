@@ -13,11 +13,11 @@ public class GameState extends State{
 	
 	private final Map map;
 
-	public GameState(Manager manager) {
-		super(manager);
+	public GameState() {
+		super(Manager.getInstance());
 		int mapIndex = getRandomMapFromLibrary();
-		map = new Map(manager, "res/maps/map"+mapIndex+".map");
-		manager.setMap(map);
+		map = new Map("res/maps/map"+mapIndex+".map");
+		Manager.getInstance().setMap(map);
 	}
 
 	/**

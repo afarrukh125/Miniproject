@@ -29,8 +29,8 @@ public class Map {
 	private final EntityManager entityManager;
 	private ItemManager itemManager;
 	
-	public Map(Manager manager, String path) {
-		this.manager = manager;
+	public Map(String path) {
+		this.manager = Manager.getInstance();
 		
 		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);

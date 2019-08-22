@@ -63,17 +63,17 @@ public class Game implements Runnable {
 		
 		Visuals.init();
 
-		Manager manager = new Manager(this);
+		Manager.init(this); // Setting up our manager singleton
 
-		gameCamera = new GameCamera(manager, 0, 0);
-		gameTimer = new GameTimer(manager);
+		gameCamera = new GameCamera(0, 0);
+		gameTimer = new GameTimer();
 
-		gameState = new GameState(manager);
+		gameState = new GameState();
 		//We want to initialise the states we may switch to for easy access
 		//The main menu state
-		State menuState = new MenuState(manager);
+		State menuState = new MenuState();
 		//The state for the settings menu
-		State settingState = new SettingState(manager);
+		State settingState = new SettingState();
 		
 		State.setState(gameState); //This sets the state of the program to our game
 		
