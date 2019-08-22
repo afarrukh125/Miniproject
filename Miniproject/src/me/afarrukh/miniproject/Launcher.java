@@ -1,5 +1,7 @@
 package me.afarrukh.miniproject;
 
+import me.afarrukh.miniproject.mokapot.MokaConstants;
+
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -10,6 +12,7 @@ class Launcher {
 
 		Game game = null;
 		try {
+			MokaConstants.init();
 			game = new Game("Wanderer", 1024, 670);
 		} catch (IOException e) {
 			e.printStackTrace();

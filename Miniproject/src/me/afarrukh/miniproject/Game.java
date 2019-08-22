@@ -13,6 +13,7 @@ import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.gfx.GameCamera;
 import me.afarrukh.miniproject.input.KeyManager;
 import me.afarrukh.miniproject.input.MouseManager;
+import me.afarrukh.miniproject.mokapot.MokaConstants;
 import me.afarrukh.miniproject.states.GameState;
 import me.afarrukh.miniproject.states.MenuState;
 import me.afarrukh.miniproject.states.SettingState;
@@ -48,15 +49,8 @@ public class Game implements Runnable {
 		this.height = height;
 		this.title = title;
 
-		DistributedCommunicator comm =
-				new DistributedCommunicator("client.p12", "testpassword1".toCharArray());
-
-		comm.startCommunication();
-
-		CommunicationAddress remoteAddress = comm.lookupAddress(InetAddress.getLoopbackAddress(), 15238);
-
-		keyManager = DistributedCommunicator.getCommunicator().runRemotely(
-				() -> new KeyManager(), remoteAddress
+		keyManager = MokaConstants.getCommunicator().runRemotely(
+				() -> new KeyManager(), MokaConstants.getRemoteAddress()
 		);
 
 		mouseManager = new MouseManager();

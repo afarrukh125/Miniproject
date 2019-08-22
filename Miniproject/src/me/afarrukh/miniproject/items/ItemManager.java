@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import me.afarrukh.miniproject.Manager;
+import me.afarrukh.miniproject.mokapot.MokaConstants;
 
 /**
  * 
@@ -19,7 +20,9 @@ public class ItemManager {
 	
 	public ItemManager(Manager manager) {
 		this.manager = manager;
-		items = new ArrayList<>();
+		items = MokaConstants.getCommunicator().runRemotely(
+				() -> new ArrayList<>(), MokaConstants.getRemoteAddress()
+		);
 		
 	}
 	
