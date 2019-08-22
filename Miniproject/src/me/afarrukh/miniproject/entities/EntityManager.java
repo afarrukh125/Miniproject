@@ -7,7 +7,6 @@ import java.util.Iterator;
 
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.entities.actors.Player;
-import me.afarrukh.miniproject.mokapot.MokaConstants;
 
 /**
  * @author Abdullah
@@ -35,9 +34,7 @@ public class EntityManager {
 		this.manager = manager;
 		this.player = player;
 		
-		entities = MokaConstants.getCommunicator().runRemotely(
-				() -> new ArrayList<>(), MokaConstants.getRemoteAddress()
-		);
+		entities = new ArrayList<>();
 		addEntity(player);
 	}
 	

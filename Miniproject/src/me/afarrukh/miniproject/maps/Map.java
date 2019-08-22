@@ -32,10 +32,10 @@ public class Map {
 	
 	public Map(String path) {
 		this.manager = Manager.getInstance();
-//		entityManager = MokaConstants.getCommunicator().runRemotely(
-//				() -> new EntityManager(manager, new Mage(manager, 100, 100)), MokaConstants.getRemoteAddress()
-//		);
-		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
+		entityManager = MokaConstants.getCommunicator().runRemotely(
+				() -> new EntityManager(manager, new Mage(manager, 100, 100)), MokaConstants.getRemoteAddress()
+		);
+		//entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);
 
 		loadMap(path);
