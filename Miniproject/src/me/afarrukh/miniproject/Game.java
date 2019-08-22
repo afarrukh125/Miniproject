@@ -2,6 +2,10 @@ package me.afarrukh.miniproject;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
 
 import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.display.Display;
@@ -14,6 +18,8 @@ import me.afarrukh.miniproject.states.MenuState;
 import me.afarrukh.miniproject.states.SettingState;
 import me.afarrukh.miniproject.states.State;
 import me.afarrukh.miniproject.ui.GameTimer;
+import xyz.acygn.mokapot.CommunicationAddress;
+import xyz.acygn.mokapot.DistributedCommunicator;
 
 public class Game implements Runnable {
 	//We implement runnable so we can run it off a thread
@@ -37,11 +43,22 @@ public class Game implements Runnable {
 	private GameTimer gameTimer;
 	
 	
-	public Game(String title, int width, int height) {
+	public Game(String title, int width, int height) throws IOException, KeyStoreException, KeyManagementException {
 		this.width = width;
 		this.height = height;
 		this.title = title;
-		keyManager = new KeyManager();
+
+		DistributedCommunicator comm =
+				new DistributedCommunicator("client.p12", "testpassword1".toCharArray());
+
+		comm.startCommunication();
+
+		CommunicationAddress remoteAddress = comm.lookupAddress(InetAddress.getLoopbackAddress(), 15238);
+
+		keyManager = DistributedCommunicator.getCommunicator().runRemotely(
+				() -> new KeyManager(), remoteAddress
+		);
+
 		mouseManager = new MouseManager();
 		
 	}

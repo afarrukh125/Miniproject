@@ -1,10 +1,23 @@
 package me.afarrukh.miniproject;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+
 class Launcher {
 	
 	public static void main(String[] args) {
-		
-		Game game = new Game("Wanderer", 1024, 670);
+
+		Game game = null;
+		try {
+			game = new Game("Wanderer", 1024, 670);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (KeyStoreException e) {
+			e.printStackTrace();
+		} catch (KeyManagementException e) {
+			e.printStackTrace();
+		}
 		game.start(); //This will actually start running the game.
 	}
 }
