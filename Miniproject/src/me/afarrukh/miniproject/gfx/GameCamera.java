@@ -15,7 +15,7 @@ public class GameCamera {
 		this.yOffSet = yOffSet;
 	}
 	
-	private void checkForBlank() { //Checks if we have reached any areas where null tiles/boundaries have been reached
+	private void checkForBlank() { //Checks if we have reached any areas where null tileArray/boundaries have been reached
 		if(xOffSet < 0) {
 			xOffSet = 0;
 		} else if(xOffSet > manager.getMap().getWidth() * Tile.TILEWIDTH - manager.getWidth()) {

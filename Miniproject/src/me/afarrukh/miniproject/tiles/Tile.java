@@ -17,9 +17,9 @@ public class Tile {
 
 	//STATIC CONSTANTS
 	
-	public static final Tile[] tiles = new Tile[256]; //This tile array will hold every single tile in our game
+	public static final Tile[] tileArray = new Tile[256]; //This tile array will hold every single tile in our game
 	public static final Tile grassTile = new GrassTile(0); //A tile with id 0 is a grass tile
-	public static Tile rockTile = new RockTile(1); //Rock tiles have id 1
+	public static Tile rockTile = new RockTile(1); //Rock tileArray have id 1
 	public static Tile waterTile = new WaterTile(2);
 	public static Tile lavaTile = new LavaTile(3);
 	public static Tile sandTile = new SandTile(4);
@@ -35,7 +35,7 @@ public class Tile {
 		this.animation = new Animation(Constants.DEFAULT_TILE_REFRESH_SPEED, images);
 		this.id = id;
 		
-		tiles[id] = this;
+		tileArray[id] = this;
 	}
 	
 	

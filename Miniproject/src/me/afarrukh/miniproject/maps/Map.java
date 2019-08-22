@@ -10,18 +10,19 @@ import me.afarrukh.miniproject.entities.actors.Mage;
 import me.afarrukh.miniproject.entities.stillentities.RockPile;
 import me.afarrukh.miniproject.entities.stillentities.Tree;
 import me.afarrukh.miniproject.items.ItemManager;
+import me.afarrukh.miniproject.mokapot.MokaConstants;
 import me.afarrukh.miniproject.tiles.Tile;
 import me.afarrukh.miniproject.utils.UtilityTasks;
 
 /**
  * 
  * @author Abdullah
- * This defines a map for the game. A traversable zone containing many tiles to give a particular style for the map.
+ * This defines a map for the game. A traversable zone containing many tileArray to give a particular style for the map.
  */
 public class Map {
 
 	private Manager manager;
-	private int width, height; //In terms of tiles this is the size of the map. Note that this is NOT in terms of pixels
+	private int width, height; //In terms of tileArray this is the size of the map. Note that this is NOT in terms of pixels
 	private int spawnX, spawnY; //Determines which tile the player will arrive for this particular map/world.
 	private int[][] tiles; //We require a multidimensional array to manage the tile positions
 	
@@ -31,7 +32,9 @@ public class Map {
 	
 	public Map(String path) {
 		this.manager = Manager.getInstance();
-		
+//		entityManager = MokaConstants.getCommunicator().runRemotely(
+//				() -> new EntityManager(manager, new Mage(manager, 100, 100)), MokaConstants.getRemoteAddress()
+//		);
 		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);
 
@@ -43,7 +46,7 @@ public class Map {
 	}
 	
 	public void tick() {
-		int xStart = (int) Math.max(0, manager.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tiles with negative coordinates
+		int xStart = (int) Math.max(0, manager.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tileArray with negative coordinates
 		int xEnd = (int) Math.min(width, (manager.getGameCamera().getxOffSet() + manager.getWidth()) / Tile.TILEWIDTH + 1);
 		int yStart = (int) Math.max(0, manager.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
 		int yEnd = (int) Math.min(height, (manager.getGameCamera().getyOffSet() + manager.getHeight()) / Tile.TILEHEIGHT + 1);
@@ -65,7 +68,7 @@ public class Map {
 	public void render(Graphics g) {
 		//The first four lines don't visually change anything but changes the efficiency of the program.
 		//Using math.max with 0 as one of the parameters ensures we always get a positive number, or math.min ensures we get far right
-		int xStart = (int) Math.max(0, manager.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tiles with negative coordinates
+		int xStart = (int) Math.max(0, manager.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tileArray with negative coordinates
 		int xEnd = (int) Math.min(width, (manager.getGameCamera().getxOffSet() + manager.getWidth()) / Tile.TILEWIDTH + 1);
 		int yStart = (int) Math.max(0, manager.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
 		int yEnd = (int) Math.min(height, (manager.getGameCamera().getyOffSet() + manager.getHeight()) / Tile.TILEHEIGHT + 1);
@@ -86,8 +89,8 @@ public class Map {
 		
 		if(x<0 || y <0 || x>=width || y>=height)
 			return Tile.grassTile;
-		//Find the ID in the instance variable tiles and get what tile id it is
-		Tile t = Tile.tiles[tiles[x][y]]; //Finds the tile location in tile position x and y
+		//Find the ID in the instance variable tileArray and get what tile id it is
+		Tile t = Tile.tileArray[tiles[x][y]]; //Finds the tile location in tile position x and y
 		if(t == null) //Return a grass tile if there is no tile in that region
 			return Tile.grassTile;
 		return t;

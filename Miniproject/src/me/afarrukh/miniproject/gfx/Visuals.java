@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * @author User
- * This contains the images cropped out and has general visual effects for objects such as tiles.
+ * This contains the images cropped out and has general visual effects for objects such as tileArray.
  */
 public class Visuals {
 
