@@ -2,6 +2,7 @@ package me.afarrukh.miniproject.entities.actors;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 
 import me.afarrukh.miniproject.Manager;
@@ -30,7 +31,7 @@ public class Player extends Actor {
 	//Inventory
 	private Inventory inventory;
 	
-	Player(Manager manager, float x, float y) {
+	Player(Manager manager, float x, float y) throws IOException {
 		super(manager, x, y, Actor.DEFAULT_ACTOR_WIDTH, Actor.DEFAULT_ACTOR_HEIGHT);
 		
 		Random random = new Random();
