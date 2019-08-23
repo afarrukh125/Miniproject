@@ -24,6 +24,7 @@ public class MokaConstants {
             if (comm==null){
                 try {
                     comm = new DistributedCommunicator("client.p12", "testpassword1".toCharArray());
+                    comm.startCommunication();
                 } catch (KeyStoreException e) {
                     e.printStackTrace();
                 } catch (KeyManagementException e) {
@@ -47,13 +48,22 @@ public class MokaConstants {
             return remoteAddress;
         }
         if (localAddr ==null){
-            localAddr =  getCommunicator().lookupAddress(InetAddress.getLoopbackAddress(), 15238);
+            localAddr =  getCommunicator().getMyAddress();
         }
         return localAddr;
     }
 
-    public static CommunicationAddress getLocalAddr() {
-        return isLocal ? localAddr : remoteAddress;
+    public static CommunicationAddress getLocalAddr() throws IOException {
+        if (!isLocal){
+            if(remoteAddress==null){
+                remoteAddress =getCommunicator().lookupAddress(InetAddress.getLoopbackAddress(), 15238);
+            }
+            return remoteAddress;
+        }
+        if (localAddr ==null){
+            localAddr =  getCommunicator().getMyAddress();
+        }
+        return localAddr;
     }
 
 }
