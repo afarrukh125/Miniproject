@@ -12,7 +12,6 @@ class Launcher {
 
 		Game game = null;
 		try {
-			MokaConstants.init();
 			game = new Game("Wanderer", 1024, 670);
 		} catch (IOException e) {
 			e.printStackTrace();

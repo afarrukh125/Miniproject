@@ -13,24 +13,47 @@ import java.security.KeyStoreException;
  */
 public class MokaConstants {
 
+    final static boolean isLocal = DistributedCommunicator.getCommunicator()==null;
+
     private static DistributedCommunicator comm = null;
     private static CommunicationAddress remoteAddress = null;
-
-    public static void init() throws KeyManagementException, KeyStoreException, IOException {
-        comm = new DistributedCommunicator("client.p12", "testpassword1".toCharArray());
-        comm.startCommunication();
-
-        remoteAddress = comm.lookupAddress(InetAddress.getLoopbackAddress(), 15238);
-
-    }
+    private static CommunicationAddress localAddr = null;
 
     public static DistributedCommunicator getCommunicator() {
-        if(comm == null)
-            System.out.println("Communicator not found");
-        return comm;
+        if (DistributedCommunicator.getCommunicator()==null){
+            if (comm==null){
+                try {
+                    comm = new DistributedCommunicator("client.p12", "testpassword1".toCharArray());
+                } catch (KeyStoreException e) {
+                    e.printStackTrace();
+                } catch (KeyManagementException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return comm;
+            }
+            return comm;
+        }
+        return DistributedCommunicator.getCommunicator();
     }
 
-    public static CommunicationAddress getRemoteAddress() {
-        return remoteAddress;
+
+    public static CommunicationAddress getRemoteAddress() throws IOException {
+        if (isLocal){
+            if(remoteAddress==null){
+                remoteAddress = getCommunicator().lookupAddress(InetAddress.getLoopbackAddress(), 15238);
+            }
+            return remoteAddress;
+        }
+        if (localAddr ==null){
+            localAddr =  getCommunicator().lookupAddress(InetAddress.getLoopbackAddress(), 15238);
+        }
+        return localAddr;
     }
+
+    public static CommunicationAddress getLocalAddr() {
+        return isLocal ? localAddr : remoteAddress;
+    }
+
 }

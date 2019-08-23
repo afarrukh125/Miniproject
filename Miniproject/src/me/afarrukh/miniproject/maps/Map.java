@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.maps;
 
 import java.awt.Graphics;
+import java.io.IOException;
 import java.util.Random;
 
 import me.afarrukh.miniproject.Manager;
@@ -30,7 +31,7 @@ public class Map {
 	private final EntityManager entityManager;
 	private ItemManager itemManager;
 	
-	public Map(String path) {
+	public Map(String path) throws IOException {
 		this.manager = Manager.getInstance();
 		entityManager = MokaConstants.getCommunicator().runRemotely(
 				() -> new EntityManager(manager, new Mage(manager, 100, 100)), MokaConstants.getRemoteAddress()

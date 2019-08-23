@@ -57,7 +57,7 @@ public class Game implements Runnable {
 		
 	}
 	
-	private void init() {
+	private void init() throws IOException {
 		//This method aims to start up the graphics and prepare the game
 		//We also want to begin everything so that the game loops over and over
 		//By looping over and over we continually update the game elements
@@ -126,9 +126,13 @@ public class Game implements Runnable {
 	}
 	
 	public void run() {
-		
-		init(); //Initialises the game
-		
+
+		try {
+			init(); //Initialises the game
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		int fps = Constants.FPS;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;

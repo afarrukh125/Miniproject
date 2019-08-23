@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.items;
 
 import java.awt.Graphics;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,7 +19,7 @@ public class ItemManager {
 	private Manager manager;
 	private final ArrayList<Item> items;
 	
-	public ItemManager(Manager manager) {
+	public ItemManager(Manager manager) throws IOException {
 		this.manager = manager;
 		items = MokaConstants.getCommunicator().runRemotely(
 				() -> new ArrayList<>(), MokaConstants.getRemoteAddress()

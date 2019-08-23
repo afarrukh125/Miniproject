@@ -10,6 +10,7 @@ import me.afarrukh.miniproject.entities.Entity;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.inventory.Inventory;
+import me.afarrukh.miniproject.mokapot.MokaConstants;
 
 public class Player extends Actor {
 	
@@ -43,13 +44,28 @@ public class Player extends Actor {
 		hitbox.height = 56;
 		
 		//Animations
-		animDown = new Animation(250, Visuals.mage_down);
-		animUp = new Animation(250, Visuals.mage_up);
-		animLeft = new Animation(250, Visuals.mage_left);
-		animRight = new Animation(250, Visuals.mage_right);
-		animStill = new Animation(250, Visuals.mage_still);
-		animAtkRight = new Animation(93, Visuals.mage_attack_right);
-		animAtkLeft = new Animation(93, Visuals.mage_attack_left);
+		animDown = MokaConstants.getCommunicator().runRemotely(
+				() -> new Animation(250, Visuals.mage_down), MokaConstants.getLocalAddr()
+		);
+
+		animUp = MokaConstants.getCommunicator().runRemotely(
+				() -> new Animation(250, Visuals.mage_up), MokaConstants.getLocalAddr()
+		);
+		MokaConstants.getCommunicator().runRemotely(
+				() -> new Animation(250, Visuals.mage_left), MokaConstants.getLocalAddr()
+		);
+		MokaConstants.getCommunicator().runRemotely(
+				() -> new Animation(250, Visuals.mage_right), MokaConstants.getLocalAddr()
+		);
+		MokaConstants.getCommunicator().runRemotely(
+				() -> new Animation(250, Visuals.mage_still), MokaConstants.getLocalAddr()
+		);
+		MokaConstants.getCommunicator().runRemotely(
+				() -> new Animation(250, Visuals.mage_attack_right), MokaConstants.getLocalAddr()
+		);
+		MokaConstants.getCommunicator().runRemotely(
+				() -> new Animation(250, Visuals.mage_left), MokaConstants.getLocalAddr()
+		);
 		
 		inventory = new Inventory(manager);
 

@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.states;
 
 import java.awt.Graphics;
+import java.io.IOException;
 import java.util.Random;
 
 import me.afarrukh.miniproject.Manager;
@@ -13,7 +14,7 @@ public class GameState extends State{
 	
 	private final Map map;
 
-	public GameState() {
+	public GameState() throws IOException {
 		super(Manager.getInstance());
 		int mapIndex = getRandomMapFromLibrary();
 		map = new Map("res/maps/map"+mapIndex+".map");
