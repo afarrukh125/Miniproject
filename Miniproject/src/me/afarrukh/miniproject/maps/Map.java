@@ -33,17 +33,7 @@ public class Map {
 	
 	public Map(String path) throws IOException {
 		this.manager = Manager.getInstance();
-		entityManager = MokaConstants.getCommunicator().runRemotely(
-				() -> {
-					try {
-						return new EntityManager(manager, new Mage(manager, 100, 100));
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					return null;
-				}, MokaConstants.getRemoteAddress()
-		);
-		//entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
+		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);
 
 		loadMap(path);
