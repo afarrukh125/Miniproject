@@ -5,9 +5,11 @@ import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
 
+import java.io.IOException;
+
 class Fighter extends Player {
 
-	public Fighter(Manager manager, float x, float y) {
+	public Fighter(Manager manager, float x, float y) throws IOException {
 		super(manager, x, y);
 		
 		this.setType("Fighter");

@@ -5,9 +5,11 @@ import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.gfx.Animation;
 import me.afarrukh.miniproject.gfx.Visuals;
 
-class Archer extends Player {
+import java.io.IOException;
 
-	public Archer(Manager manager, float x, float y) {
+public class Archer extends Player {
+
+	public Archer(Manager manager, float x, float y) throws IOException {
 		super(manager, x, y);
 		
 		//Setting basic attributes

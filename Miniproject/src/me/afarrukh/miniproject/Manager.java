@@ -1,5 +1,7 @@
 package me.afarrukh.miniproject;
 
+import me.afarrukh.miniproject.exceptions.ManagerAlreadyExistsException;
+import me.afarrukh.miniproject.exceptions.ManagerNotInstantiatedException;
 import me.afarrukh.miniproject.gfx.GameCamera;
 import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.input.KeyManager;
@@ -12,10 +14,12 @@ import me.afarrukh.miniproject.maps.Map;
  * @description A manager class is required in order to have one location from which the game and the current world can be loaded from
  * It is basically a way to simplify our access to the game.
  * A manager also assists things like collision detection and items.
+ *
  */
 public class Manager {
 
-	private Game game;
+	private static Manager instance;
+	private static Game game;
 	private Map map;
 	private Visuals visuals;
 	

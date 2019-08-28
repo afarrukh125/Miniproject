@@ -9,13 +9,13 @@ public class GameCamera {
 	private final Manager manager;
 	private float xOffSet, yOffSet;
 	
-	public GameCamera(Manager manager, float xOffSet, float yOffSet) {
-		this.manager = manager;
+	public GameCamera(float xOffSet, float yOffSet) {
+		this.manager = Manager.getInstance();
 		this.xOffSet = xOffSet;
 		this.yOffSet = yOffSet;
 	}
 	
-	private void checkForBlank() { //Checks if we have reached any areas where null tiles/boundaries have been reached
+	private void checkForBlank() { //Checks if we have reached any areas where null tileArray/boundaries have been reached
 		if(xOffSet < 0) {
 			xOffSet = 0;
 		} else if(xOffSet > manager.getMap().getWidth() * Tile.TILEWIDTH - manager.getWidth()) {

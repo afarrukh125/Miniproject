@@ -78,7 +78,6 @@ public class KeyManager implements KeyListener {
 		if(e.getKeyCode() < 0 || e.getKeyCode() >= keys.length)
 			return;
 		keys[e.getKeyCode()] = true; //Keys being pressed is set to true at first when it is pressed
-		//System.out.println("Pressed.");
 	}
 
 	@Override

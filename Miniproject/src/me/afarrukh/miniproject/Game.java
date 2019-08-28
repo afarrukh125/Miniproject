@@ -2,6 +2,10 @@ package me.afarrukh.miniproject;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
 
 import me.afarrukh.miniproject.constants.Constants;
 import me.afarrukh.miniproject.display.Display;
@@ -9,11 +13,14 @@ import me.afarrukh.miniproject.gfx.Visuals;
 import me.afarrukh.miniproject.gfx.GameCamera;
 import me.afarrukh.miniproject.input.KeyManager;
 import me.afarrukh.miniproject.input.MouseManager;
+import me.afarrukh.miniproject.mokapot.MokaConstants;
 import me.afarrukh.miniproject.states.GameState;
 import me.afarrukh.miniproject.states.MenuState;
 import me.afarrukh.miniproject.states.SettingState;
 import me.afarrukh.miniproject.states.State;
 import me.afarrukh.miniproject.ui.GameTimer;
+import xyz.acygn.mokapot.CommunicationAddress;
+import xyz.acygn.mokapot.DistributedCommunicator;
 
 public class Game implements Runnable {
 	//We implement runnable so we can run it off a thread
@@ -37,16 +44,20 @@ public class Game implements Runnable {
 	private GameTimer gameTimer;
 	
 	
-	public Game(String title, int width, int height) {
+	public Game(String title, int width, int height) throws IOException, KeyStoreException, KeyManagementException {
 		this.width = width;
 		this.height = height;
 		this.title = title;
-		keyManager = new KeyManager();
+
+		keyManager = MokaConstants.getCommunicator().runRemotely(
+				() -> new KeyManager(), MokaConstants.getRemoteAddress()
+		);
+
 		mouseManager = new MouseManager();
 		
 	}
 	
-	private void init() {
+	private void init() throws IOException {
 		//This method aims to start up the graphics and prepare the game
 		//We also want to begin everything so that the game loops over and over
 		//By looping over and over we continually update the game elements
@@ -60,17 +71,17 @@ public class Game implements Runnable {
 		display.getCanvas().addMouseListener(mouseManager); 
 		display.getCanvas().addMouseMotionListener(mouseManager);
 
-		Manager manager = new Manager(this);
+		Manager.init(this); // Setting up our manager singleton
 
-		gameCamera = new GameCamera(manager, 0, 0);
-		gameTimer = new GameTimer(manager);
+		gameCamera = new GameCamera(0, 0);
+		gameTimer = new GameTimer();
 
-		gameState = new GameState(manager);
+		gameState = new GameState();
 		//We want to initialise the states we may switch to for easy access
 		//The main menu state
-		State menuState = new MenuState(manager);
+		State menuState = new MenuState();
 		//The state for the settings menu
-		State settingState = new SettingState(manager);
+		State settingState = new SettingState();
 		
 		State.setState(gameState); //This sets the state of the program to our game
 		
@@ -112,9 +123,13 @@ public class Game implements Runnable {
 	}
 	
 	public void run() {
-		
-		init(); //Initialises the game
-		
+
+		try {
+			init(); //Initialises the game
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		int fps = Constants.FPS;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
