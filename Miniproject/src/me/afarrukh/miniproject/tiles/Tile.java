@@ -28,7 +28,7 @@ public class Tile {
 	public static final int TILEWIDTH = Constants.TILEWIDTH,
 							TILEHEIGHT = Constants.TILEHEIGHT; //These are the dimensions for a tile.
 	
-	Animation animation;
+	protected Animation animation;
 	private final int id;
 	
 	Tile(BufferedImage[] images, int id) {
