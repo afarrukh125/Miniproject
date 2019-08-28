@@ -72,7 +72,7 @@ public class Inventory {
 		if(!active)
 			return;
 		
-		g.drawImage(Visuals.inventoryUI, invX, invY, invWidth, invHeight, null);
+		g.drawImage(manager.getVisuals().inventoryUI, invX, invY, invWidth, invHeight, null);
 		//Drawing character attributes and image onto the inventory menu
 		int charImgHeight = 128;
 		int charImgWidth = 128;
@@ -81,7 +81,7 @@ public class Inventory {
 		int charLabelY = charImgY + 168;
 		int charLabelX = charImgX + 70;
 		Text.drawString(g, manager.getMap().getEntityManager().getPlayer().getType(),
-				charLabelX, charLabelY, true, Color.WHITE, Visuals.font28);
+				charLabelX, charLabelY, true, Color.WHITE, manager.getVisuals().font28);
 		
 		
 		//Now proceeding to draw inventory items
@@ -105,7 +105,7 @@ public class Inventory {
 				//Drawing both text and image for selected image
 				int invListCenterX = invX + 220;
 				Text.drawString(g, ">> " +inventoryItems.get(selectedItem + i).getName() + " <<",
-						invListCenterX, invListCenterY + i * invListSpacing, true, Color.GREEN, Visuals.font28);
+						invListCenterX, invListCenterY + i * invListSpacing, true, Color.GREEN, manager.getVisuals().font28);
 
 				g.drawImage(item.getTexture(), invImgCenterX, invImgCenterY + i * invListSpacing, invImageWidth,
 						invImageHeight, null);
@@ -119,7 +119,7 @@ public class Inventory {
 		int invCountY = 417;
 		int invCountX = 495;
 		Text.drawString(g, Integer.toString(item.getInstances()),
-				invCountX, invCountY, true, Color.WHITE, Visuals.font28);
+				invCountX, invCountY, true, Color.WHITE, manager.getVisuals().font28);
 
 	}
 	

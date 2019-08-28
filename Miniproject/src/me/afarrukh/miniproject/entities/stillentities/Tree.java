@@ -33,7 +33,7 @@ public class Tree extends StillEntity {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Visuals.tree, (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()), width, height, null);
+		g.drawImage(manager.getVisuals().tree, (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()), width, height, null);
 		
 //		g.fillRect((int) (x + hitbox.x - handler.getGameCamera().getxOffSet()),
 //				   (int) (y + hitbox.y - handler.getGameCamera().getyOffSet()), 

@@ -59,9 +59,6 @@ public class Game implements Runnable {
 		//Adding the mouseManager to the canvas reduces glitches
 		display.getCanvas().addMouseListener(mouseManager); 
 		display.getCanvas().addMouseMotionListener(mouseManager);
-		
-		
-		Visuals.init();
 
 		Manager manager = new Manager(this);
 

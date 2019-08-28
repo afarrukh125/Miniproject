@@ -21,13 +21,13 @@ public class Mage extends Player {
         this.setEnergy(Constants.MAGE_ENERGY);
         this.setSpeed(Constants.MAGE_SPEED);
 		
-		animDown = new Animation(250, Visuals.mage_down);
-		animUp = new Animation(250, Visuals.mage_up);
-		animLeft = new Animation(250, Visuals.mage_left);
-		animRight = new Animation(250, Visuals.mage_right);
-		animStill = new Animation(250, Visuals.mage_still);
-		animAtkRight = new Animation(93, Visuals.mage_attack_right);
-		animAtkLeft = new Animation(93, Visuals.mage_attack_left);
+		animDown = new Animation(250, manager.getVisuals().mage_down);
+		animUp = new Animation(250, manager.getVisuals().mage_up);
+		animLeft = new Animation(250, manager.getVisuals().mage_left);
+		animRight = new Animation(250, manager.getVisuals().mage_right);
+		animStill = new Animation(250, manager.getVisuals().mage_still);
+		animAtkRight = new Animation(93, manager.getVisuals().mage_attack_right);
+		animAtkLeft = new Animation(93, manager.getVisuals().mage_attack_left);
 	}
 
 }

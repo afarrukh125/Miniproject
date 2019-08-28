@@ -7,8 +7,8 @@ import me.afarrukh.miniproject.gfx.Visuals;
 public class LavaTile extends Tile {
 	
 	public LavaTile(int id) {
-		super(Visuals.lava, id);
-		this.animation = new Animation(750, Visuals.lava);
+		super(new Visuals().lava, id);
+		this.animation = new Animation(750, new Visuals().lava);
 	}
 	
 	@Override

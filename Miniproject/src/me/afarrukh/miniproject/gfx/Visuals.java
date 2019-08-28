@@ -9,19 +9,19 @@ import java.awt.image.BufferedImage;
  */
 public class Visuals {
 
-	public static BufferedImage[] grass, rock, water, lava, sand;
-	public static BufferedImage tree, rockPile, gem;
-	public static BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still, archer_attack;
-	public static BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack_right, mage_attack_left;
-	public static BufferedImage[] fighter_up, fighter_down, fighter_left, fighter_right, fighter_still, fighter_attack;
-	public static BufferedImage[] startBtn;
-	public static BufferedImage inventoryUI;
+	public BufferedImage[] grass, rock, water, lava, sand;
+	public BufferedImage tree, rockPile, gem;
+	public BufferedImage[] archer_up, archer_down, archer_left, archer_right, archer_still, archer_attack;
+	public BufferedImage[] mage_up, mage_down, mage_left, mage_right, mage_still, mage_attack_right, mage_attack_left;
+	public BufferedImage[] fighter_up, fighter_down, fighter_left, fighter_right, fighter_still, fighter_attack;
+	public BufferedImage[] startBtn;
+	public BufferedImage inventoryUI;
 	
 	private static final int width = 44, height = 44;
 	
-	public static Font font28;
+	public Font font28;
 	
-	public static void init() {
+	public Visuals() {
 		
 		font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
 		

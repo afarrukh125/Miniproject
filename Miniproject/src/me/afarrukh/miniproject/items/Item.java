@@ -11,9 +11,9 @@ public class Item {
 
 	//Item Manager - items to be added here
 	private static final Item[] items = new Item[256];
-	public static final Item woodItem = new Item(Visuals.tree, "Wood", 0);
-	public static final Item rockItem = new Item(Visuals.rockPile, "Rock", 1);
-	public static final Item gemItem = new Item(Visuals.gem, "Gem", 2);
+	public static final Item woodItem = new Item(new Visuals().tree, "Wood", 0);
+	public static final Item rockItem = new Item(new Visuals().rockPile, "Rock", 1);
+	public static final Item gemItem = new Item(new Visuals().gem, "Gem", 2);
 	
 	private static final int ITEM_WIDTH = 32;
 	private static final int ITEM_HEIGHT = 32;
@@ -39,6 +39,8 @@ public class Item {
 		bounds = new Rectangle(x, y, ITEM_WIDTH, ITEM_HEIGHT);
 		
 		items[id] = this; //Defines what item will be rendered.
+
+
 	}
 	
 	public void tick() {

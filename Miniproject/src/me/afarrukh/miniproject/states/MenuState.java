@@ -24,7 +24,7 @@ public class MenuState extends State{
 		manager.getMouseManager().setUIManager(uiManager);
 		
 		uiManager.addObject(new UIBasicButton((manager.getWidth() / 2) - Visuals.getWidth()
-						, 44, 128, 64, Visuals.startBtn, new ClickListener() {
+						, 44, 128, 64, manager.getVisuals().startBtn, new ClickListener() {
 
 			@Override
 			public void onClick() {

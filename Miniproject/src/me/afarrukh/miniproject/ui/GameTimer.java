@@ -30,7 +30,7 @@ public class GameTimer {
     }
 
     public void render(Graphics g) {
-        Text.drawString(g, this.toString(), manager.getWidth() - 50, 20, true, Color.WHITE, Visuals.font28);
+        Text.drawString(g, this.toString(), manager.getWidth() - 50, 20, true, Color.WHITE, new Visuals().font28);
     }
 
 

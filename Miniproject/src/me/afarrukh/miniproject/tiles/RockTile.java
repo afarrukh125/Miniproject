@@ -5,7 +5,7 @@ import me.afarrukh.miniproject.gfx.Visuals;
 public class RockTile extends Tile {
 
 	public RockTile(int id) {
-		super(Visuals.rock, id);
+		super(new Visuals().rock, id);
 	}
 	
 	@Override

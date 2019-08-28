@@ -28,7 +28,7 @@ public class RockPile extends StillEntity {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Visuals.rockPile, (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()), width, height, null);
+		g.drawImage(manager.getVisuals().rockPile, (int) (x - manager.getGameCamera().getxOffSet()), (int) (y - manager.getGameCamera().getyOffSet()), width, height, null);
 		
 	}
 

@@ -8,5 +8,7 @@ Miniproject/Miniproject.jar
 Miniproject/res/META-INF/*
 /bin/
 
+.idea/*
+
 *.iml
 *.class

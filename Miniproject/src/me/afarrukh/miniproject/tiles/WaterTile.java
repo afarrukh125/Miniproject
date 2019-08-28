@@ -5,7 +5,7 @@ import me.afarrukh.miniproject.gfx.Visuals;
 class WaterTile extends Tile{
 	
 	public WaterTile(int id) {
-		super(Visuals.water, id);
+		super(new Visuals().water, id);
 	}
 
 }
