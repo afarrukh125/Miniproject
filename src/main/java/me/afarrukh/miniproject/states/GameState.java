@@ -16,7 +16,8 @@ public class GameState extends State{
 	public GameState() {
 		super(Manager.getInstance());
 		int mapIndex = getRandomMapFromLibrary();
-		map = new Map("res/maps/map"+mapIndex+".map");
+		var mapPath = GameState.class.getResourceAsStream("/maps/map"+mapIndex+".map");
+		map = new Map(mapPath);
 		Manager.getInstance().setMap(map);
 	}
 

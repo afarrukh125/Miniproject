@@ -22,8 +22,8 @@ public class Visuals {
 	public static Font font28;
 	
 	public static void init() {
-		
-		font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
+		var fontPath = Visuals.class.getResourceAsStream("/fonts/slkscr.ttf");
+		font28 = FontLoader.loadFont(fontPath, 28);
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/images/spritesheet.png"));
 		inventoryUI = ImageLoader.loadImage("/images/inventoryUI.png");

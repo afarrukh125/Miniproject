@@ -1,6 +1,7 @@
 package me.afarrukh.miniproject.maps;
 
 import java.awt.Graphics;
+import java.io.InputStream;
 import java.util.Random;
 
 import me.afarrukh.miniproject.Manager;
@@ -29,13 +30,13 @@ public class Map {
 	private final EntityManager entityManager;
 	private ItemManager itemManager;
 	
-	public Map(String path) {
+	public Map(InputStream mapPath) {
 		this.manager = Manager.getInstance();
 		
 		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);
 
-		loadMap(path);
+		loadMap(mapPath);
 		generateEntities();
 		
 		entityManager.getPlayer().setX(spawnX);
@@ -94,8 +95,8 @@ public class Map {
 		
 	}
 	
-	private void loadMap(String path) {
-		String file = UtilityTasks.loadFileAsString(path);
+	private void loadMap(InputStream mapPath) {
+		String file = UtilityTasks.loadFileAsString(mapPath);
 		String[] tokens = file.split("\\s+");//Splits the file into string array elements if it is empty space or new line
 		
 		width = UtilityTasks.parseInt(tokens[0]);

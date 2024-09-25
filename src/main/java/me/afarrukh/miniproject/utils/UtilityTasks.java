@@ -14,11 +14,11 @@ import java.util.Random;
 
 public class UtilityTasks {
 	
-	public static String loadFileAsString(String path) {
+	public static String loadFileAsString(InputStream mapPath) {
 		StringBuilder builder = new StringBuilder(); //Add characters to string easily using stringbuilder
 		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(path));
+			BufferedReader br = new BufferedReader(new InputStreamReader(mapPath));
 			String line;
 			
 			while((line = br.readLine())!= null) {
@@ -100,10 +100,11 @@ public class UtilityTasks {
 
 	public static int getLatestMapIndex() {
 		try {
-			BufferedReader mapCountReader = new BufferedReader(new FileReader("res/maps/numMaps.txt"));
+			var mapsResource = UtilityTasks.class.getResourceAsStream("/maps/numMaps.txt");
+			BufferedReader mapCountReader = new BufferedReader(new InputStreamReader(mapsResource));
 
 			int count = parseInt(mapCountReader.readLine());
-			mapCountReader.close(); //Closing the file as we no longer need it.
+			mapCountReader.close();
 			return count;
 
 		} catch (FileNotFoundException e) {
