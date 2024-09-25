@@ -1,15 +1,13 @@
 package me.afarrukh.miniproject.ui;
 
+import java.awt.*;
 import me.afarrukh.miniproject.Manager;
 import me.afarrukh.miniproject.gfx.Text;
 import me.afarrukh.miniproject.gfx.Visuals;
 
-import java.awt.*;
-
 /**
  * Offers a way to get the time of the game
  */
-
 public class GameTimer {
 
     private int gameTime;
@@ -26,13 +24,12 @@ public class GameTimer {
     }
 
     public void tick() {
-        gameTime ++;
+        gameTime++;
     }
 
     public void render(Graphics g) {
         Text.drawString(g, this.toString(), manager.getWidth() - 50, 20, true, Color.WHITE, Visuals.font28);
     }
-
 
     public int getGameTime() {
         return gameTime;

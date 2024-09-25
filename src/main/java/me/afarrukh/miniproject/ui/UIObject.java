@@ -5,87 +5,81 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 /**
- * 
+ *
  * @author Abdullah
  * A UI object is an object shown to the user on the main menu, for instance a button for the main menu that starts the game
  */
 abstract class UIObject {
 
-	float x;
-	float y;
-	int width;
-	int height;
-	private final Rectangle hitbox;
-	boolean hovering = false;
-	
-	UIObject(float x, float y, int width, int height) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		hitbox = new Rectangle((int) x, (int) y, width, height);
-	}
-	
-	public abstract void tick();
-	
-	public abstract void render(Graphics g);
-	
-	protected abstract void onClick(); //A UI Object will be able to recognise when a user is hovering/clicking on it
+    float x;
+    float y;
+    int width;
+    int height;
+    private final Rectangle hitbox;
+    boolean hovering = false;
 
-	
-	void onMouseMove(MouseEvent e) {
-		if(hitbox.contains(e.getX(), e.getY()))
-			hovering = true;
-		else
-			hovering = false;
-	}
-	
-	void onMouseRelease(MouseEvent e) {
-		if(hovering)
-			onClick(); //Will call the UI object's method that decides what happens when it is clicked on
-	}
-	
-	//Getter/Setter methods
-	
-	public float getX() {
-		return x;
-	}
+    UIObject(float x, float y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        hitbox = new Rectangle((int) x, (int) y, width, height);
+    }
 
-	public void setX(float x) {
-		this.x = x;
-	}
+    public abstract void tick();
 
-	public float getY() {
-		return y;
-	}
+    public abstract void render(Graphics g);
 
-	public void setY(float y) {
-		this.y = y;
-	}
+    protected abstract void onClick(); // A UI Object will be able to recognise when a user is hovering/clicking on it
 
-	public float getWidth() {
-		return width;
-	}
+    void onMouseMove(MouseEvent e) {
+        if (hitbox.contains(e.getX(), e.getY())) hovering = true;
+        else hovering = false;
+    }
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
+    void onMouseRelease(MouseEvent e) {
+        if (hovering) onClick(); // Will call the UI object's method that decides what happens when it is clicked on
+    }
 
-	public float getHeight() {
-		return height;
-	}
+    // Getter/Setter methods
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
+    public float getX() {
+        return x;
+    }
 
-	public boolean isHovering() {
-		return hovering;
-	}
+    public void setX(float x) {
+        this.x = x;
+    }
 
-	public void setHovering(boolean hovering) {
-		this.hovering = hovering;
-	}
-	
-	
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public boolean isHovering() {
+        return hovering;
+    }
+
+    public void setHovering(boolean hovering) {
+        this.hovering = hovering;
+    }
 }

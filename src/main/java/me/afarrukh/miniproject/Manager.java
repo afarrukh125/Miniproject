@@ -18,47 +18,47 @@ import me.afarrukh.miniproject.maps.Map;
  */
 public class Manager {
 
-	private Game game;
-	private Map map;
+    private Game game;
+    private Map map;
 
-	public Manager(Game game) {
-		this.game = game;
-	}
+    public Manager(Game game) {
+        this.game = game;
+    }
 
-	public int getWidth() {
-		return game.getWidth();
-	}
+    public int getWidth() {
+        return game.getWidth();
+    }
 
-	public int getHeight() {
-		return game.getHeight();
-	}
+    public int getHeight() {
+        return game.getHeight();
+    }
 
-	public KeyManager getKeyManager() {
-		return game.getKeyManager();
-	}
+    public KeyManager getKeyManager() {
+        return game.getKeyManager();
+    }
 
-	public MouseManager getMouseManager() {
-		return game.getMouseManager();
-	}
+    public MouseManager getMouseManager() {
+        return game.getMouseManager();
+    }
 
-	public GameCamera getGameCamera() {
-		return game.getGameCamera();
-	}
+    public GameCamera getGameCamera() {
+        return game.getGameCamera();
+    }
 
-	//Getter/Setter methods
-	public Game getGame() {
-		return game;
-	}
+    // Getter/Setter methods
+    public Game getGame() {
+        return game;
+    }
 
-	public void setGame(Game game) {
-		this.game = game;
-	}
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
-	public Map getMap() {
-		return map;
-	}
+    public Map getMap() {
+        return map;
+    }
 
-	public void setMap(Map map) {
-		this.map = map;
-	}
+    public void setMap(Map map) {
+        this.map = map;
+    }
 }

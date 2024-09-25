@@ -4,7 +4,7 @@ import me.afarrukh.miniproject.gfx.Visuals;
 
 class GrassTile extends Tile {
 
-	public GrassTile(int id) {
-		super(Visuals.grass, id);
-	}
+    public GrassTile(int id) {
+        super(Visuals.grass, id);
+    }
 }

@@ -4,12 +4,12 @@ import me.afarrukh.miniproject.gfx.Visuals;
 
 public class RockTile extends Tile {
 
-	public RockTile(int id) {
-		super(Visuals.rock, id);
-	}
-	
-	@Override
-	public boolean isSolid() { //A rock is not traversable
-		return true;
-	}
+    public RockTile(int id) {
+        super(Visuals.rock, id);
+    }
+
+    @Override
+    public boolean isSolid() { // A rock is not traversable
+        return true;
+    }
 }
