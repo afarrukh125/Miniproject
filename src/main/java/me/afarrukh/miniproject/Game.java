@@ -112,7 +112,7 @@ public class Game implements Runnable {
         init(); // Initialises the game
 
         int fps = Constants.FPS;
-        double timePerTick = 1000000000 / fps;
+        double timePerTick = (double) 1000000000 / fps;
         double delta = 0;
         long currentTime;
         long prevTime = System.nanoTime();
