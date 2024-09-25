@@ -15,7 +15,7 @@ import me.afarrukh.miniproject.tiles.Tile;
 import me.afarrukh.miniproject.utils.UtilityTasks;
 
 /**
- * 
+ *
  * @author Abdullah
  * This defines a map for the game. A traversable zone containing many tiles to give a particular style for the map.
  */
@@ -25,24 +25,24 @@ public class Map {
 	private int width, height; //In terms of tiles this is the size of the map. Note that this is NOT in terms of pixels
 	private int spawnX, spawnY; //Determines which tile the player will arrive for this particular map/world.
 	private int[][] tiles; //We require a multidimensional array to manage the tile positions
-	
+
 	//Entities/Items
 	private final EntityManager entityManager;
 	private ItemManager itemManager;
-	
-	public Map(InputStream mapPath) {
-		this.manager = Manager.getInstance();
-		
+
+	public Map(Manager manager, InputStream mapPath) {
+		this.manager = manager;
+
 		entityManager = new EntityManager(manager, new Mage(manager, 100, 100));
 		itemManager = new ItemManager(manager);
 
 		loadMap(mapPath);
 		generateEntities();
-		
+
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 	}
-	
+
 	public void tick() {
 		int xStart = (int) Math.max(0, manager.getGameCamera().getxOffSet() / Tile.TILEWIDTH); //We don't want to render tiles with negative coordinates
 		int xEnd = (int) Math.min(width, (manager.getGameCamera().getxOffSet() + manager.getWidth()) / Tile.TILEWIDTH + 1);
@@ -62,7 +62,7 @@ public class Map {
 		itemManager.tick();
 		entityManager.tick();
 	}
-	
+
 	public void render(Graphics g) {
 		//The first four lines don't visually change anything but changes the efficiency of the program.
 		//Using math.max with 0 as one of the parameters ensures we always get a positive number, or math.min ensures we get far right
@@ -70,21 +70,21 @@ public class Map {
 		int xEnd = (int) Math.min(width, (manager.getGameCamera().getxOffSet() + manager.getWidth()) / Tile.TILEWIDTH + 1);
 		int yStart = (int) Math.max(0, manager.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
 		int yEnd = (int) Math.min(height, (manager.getGameCamera().getyOffSet() + manager.getHeight()) / Tile.TILEHEIGHT + 1);
-		
+
 		for(int y = yStart; y<yEnd; y++) {
 			for(int x = xStart; x<xEnd ; x++) {
-				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - manager.getGameCamera().getxOffSet()), 
+				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - manager.getGameCamera().getxOffSet()),
 										(int) (y * Tile.TILEHEIGHT - manager.getGameCamera().getyOffSet()));
 				//We must use the TILE.TILEWIDTH/HEIGHT to match the units, otherwise only pixels are rendered
 			}
 		}
-		
+
 		itemManager.render(g);
 		entityManager.render(g);
 	}
-	
-	public Tile getTile(int x, int y) { 
-		
+
+	public Tile getTile(int x, int y) {
+
 		if(x<0 || y <0 || x>=width || y>=height)
 			return Tile.grassTile;
 		//Find the ID in the instance variable tiles and get what tile id it is
@@ -92,20 +92,20 @@ public class Map {
 		if(t == null) //Return a grass tile if there is no tile in that region
 			return Tile.grassTile;
 		return t;
-		
+
 	}
-	
+
 	private void loadMap(InputStream mapPath) {
 		String file = UtilityTasks.loadFileAsString(mapPath);
 		String[] tokens = file.split("\\s+");//Splits the file into string array elements if it is empty space or new line
-		
+
 		width = UtilityTasks.parseInt(tokens[0]);
 		height = UtilityTasks.parseInt(tokens[1]);
 		spawnX = UtilityTasks.parseInt(tokens[2]);
 		spawnY = UtilityTasks.parseInt(tokens[3]);
-		
+
 		//Now reading data from file regarding world data
-		
+
 		tiles = new int[width][height];
 		for(int y = 0; y < height; y++) {
 			for(int x = 0; x < width; x++) {
@@ -153,12 +153,12 @@ public class Map {
 
 	public int getSpawnY() {
 		return spawnY;
-	}	
-	
+	}
+
 	public int getWidth() {
 		return width;
 	}
-	
+
 	public int getHeight() {
 		return height;
 	}
@@ -178,5 +178,5 @@ public class Map {
 	public void setItemManager(ItemManager itemManager) {
 		this.itemManager = itemManager;
 	}
-		
+
 }

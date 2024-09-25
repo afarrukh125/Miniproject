@@ -12,8 +12,8 @@ import me.afarrukh.miniproject.Manager;
 
 public class SettingState extends State {
 
-	public SettingState() {
-		super(Manager.getInstance());
+	public SettingState(Manager manager) {
+		super(manager);
 	}
 	
 	@Override

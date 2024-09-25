@@ -9,8 +9,8 @@ public class GameCamera {
 	private final Manager manager;
 	private float xOffSet, yOffSet;
 	
-	public GameCamera(float xOffSet, float yOffSet) {
-		this.manager = Manager.getInstance();
+	public GameCamera(Manager manager, float xOffSet, float yOffSet) {
+		this.manager = manager;
 		this.xOffSet = xOffSet;
 		this.yOffSet = yOffSet;
 	}

@@ -10,15 +10,15 @@ import me.afarrukh.miniproject.utils.UtilityTasks;
 //This is the state of the main game
 
 public class GameState extends State{
-	
+
 	private final Map map;
 
-	public GameState() {
-		super(Manager.getInstance());
+	public GameState(Manager manager) {
+		super(manager);
 		int mapIndex = getRandomMapFromLibrary();
-		var mapPath = GameState.class.getResourceAsStream("/maps/map"+mapIndex+".map");
-		map = new Map(mapPath);
-		Manager.getInstance().setMap(map);
+        var mapPath = GameState.class.getResourceAsStream("/maps/map"+mapIndex+".map");
+        map = new Map(manager, mapPath);
+        manager.setMap(map);
 	}
 
 	/**
@@ -31,18 +31,18 @@ public class GameState extends State{
 		System.out.println("Loaded map number " +rng);
 		return rng;
 	}
-	
+
 	@Override
 	public void tick() {
 		map.tick();
-		
+
 	}
 
 	@Override
 	public void render(Graphics g) {
 		map.render(g); //Rendering the map before the everything ensures that no entities are behind the map
-		
+
 	}
 
-	
+
 }

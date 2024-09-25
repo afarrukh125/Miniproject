@@ -17,18 +17,18 @@ public class MenuState extends State{
 
 	private final UIManager uiManager;
 	
-	public MenuState() {
-		super(Manager.getInstance());
-		uiManager = new UIManager(Manager.getInstance());
+	public MenuState(Manager manager) {
+		super(manager);
+		uiManager = new UIManager(manager);
 
-		Manager.getInstance().getMouseManager().setUIManager(uiManager);
+		manager.getMouseManager().setUIManager(uiManager);
 		
-		uiManager.addObject(new UIBasicButton((Manager.getInstance().getWidth() / 2) - Visuals.getWidth()
+		uiManager.addObject(new UIBasicButton((manager.getWidth() / 2) - Visuals.getWidth()
 						, 44, 128, 64, Visuals.startBtn, new ClickListener() {
 
 			@Override
 			public void onClick() {
-				State.setState(Manager.getInstance().getGame().gameState);
+				State.setState(manager.getGame().gameState);
 			}})); //This button is set to change to the main game state upon being clicked
 	}
 	

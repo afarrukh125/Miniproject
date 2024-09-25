@@ -15,9 +15,9 @@ public class GameTimer {
     private int gameTime;
     private final Manager manager;
 
-    public GameTimer() {
+    public GameTimer(Manager manager) {
         gameTime = 0;
-        this.manager = Manager.getInstance();
+        this.manager = manager;
     }
 
     @Override
