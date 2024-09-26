@@ -71,7 +71,7 @@ public class Game implements Runnable {
         // The state for the settings menu
         State settingState = new SettingState(manager);
 
-        State.setState(gameState); // This sets the state of the program to our game
+        State.setState(menuState); // This sets the state of the program to our game
     }
 
     private void tick() {
