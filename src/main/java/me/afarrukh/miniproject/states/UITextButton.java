@@ -23,8 +23,16 @@ class UITextButton extends UIObject {
 
     @Override
     public void render(Graphics g) {
+        drawBackgroundRectangle(g);
+        drawText(g);
+    }
+
+    private void drawBackgroundRectangle(Graphics g) {
         g.setColor(Color.GRAY);
         g.fillRect((int) x, (int) y, width, height);
+    }
+
+    private void drawText(Graphics g) {
         if (isHovering()) {
             g.setColor(Color.CYAN);
         } else {
